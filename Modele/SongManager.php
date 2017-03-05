@@ -83,7 +83,7 @@
 						LEFT JOIN chant ON chant.idChant = S1.idChant
 						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil
 						WHERE MATCH (chant.titre) AGAINST (':$str_key' IN BOOLEAN MODE) OR MATCH (S1.texte) AGAINST (':$str_key' IN BOOLEAN MODE) 
-							ORDER BY score1 DESC, score2 DESC LIMIT 50";
+						GROUP BY idChant
 	
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->bindValue(":str_key", $str_key);
@@ -92,11 +92,14 @@
 						
 			$songs = [];
 			foreach($results as $result) {
-				$songs[] = $this->getSong($result["idChant"]);
+				$song = $this->getSong($result["idChant"]);
+				if($song != NULL) {
+					$songs[] = $song;
+				}
 			}
 			
-			Kint::dump( $songs );
-			die();
+			//Kint::dump( $songs );
+			//die();
 			return $songs;
 		}
 		
@@ -105,11 +108,11 @@
 			$stmt = $this->dbh->prepare("SELECT * FROM strophe WHERE idChant = ?");
 			$stmt->execute(array($songId));
 			$stropheResults = $stmt->fetchAll(PDO::FETCH_ASSOC);	
-			if (count($stropheResults) >1){
+			if (count($stropheResults, COUNT_RECURSIVE) >1){
 				$strophes = $this->hydrateStrophes($stropheResults);
 				return $strophes;
 			}
-			else{
+			else if (count($stropheResults, COUNT_RECURSIVE) >0){
 				$strophe = $this->hydrateStrophe($stropheResults);
 				return $strophe;
 			}
@@ -119,7 +122,7 @@
 		/******************************************************************************************************************
 		*	FONCTION : hydrateSong
 		*	PARAMETRES EN ENTREE :	entre de la table chant provenant de la base de donnes
-		*	DESCRIPTION : Renvoit une instance de la classe Chant  partir d'une entre de la table chant
+		*	DESCRIPTION : Renvoit une instance de la classe Chant  partir d'une entree de la table chant
 		*	VALEUR RETOURNEE : instance de la classe Chant
 		*******************************************************************************************************************/
 		public function hydrateSong($songResult){
