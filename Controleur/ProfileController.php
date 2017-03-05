@@ -14,11 +14,8 @@
 			if($error != ""){
 				$params = array ( "error" => $error);
 			}
-			$router = new Router();
-			$url=$router->generateUrl(Config::HOME_CONTROLLER, Config::HOME_METHOD, $params);
-			
-			header("Location: $url");
-			//new View("accueil.php", Config::APP_NAME, $params);
+			$sc = new SongController();
+			$sc->homeAction();
 			die();
 		}
 
@@ -58,15 +55,15 @@
 
 		function logoutAction(){
 
+			if(isset($_SESSION)){
+				unset($_SESSION);
+				session_destroy();
+			}
 			session_start();
-
-			unset($_SESSION);
-			session_destroy();
 
 			setcookie("remember_me_user", "", 1, "/");
 			setcookie("remember_me_token", "", 1, "/");
-
-			new View("accueil.php", Config::APP_NAME);
+			$this->goback();
 			die();
 		}
 
