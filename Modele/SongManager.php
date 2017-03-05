@@ -84,6 +84,7 @@
 						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil
 						WHERE MATCH (chant.titre) AGAINST (':$str_key' IN BOOLEAN MODE) OR MATCH (S1.texte) AGAINST (':$str_key' IN BOOLEAN MODE) 
 						GROUP BY idChant
+						ORDER BY score1 DESC, score2 DESC, nbConsultations, numChant, recueil.idRecueil LIMIT 50";
 	
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->bindValue(":str_key", $str_key);

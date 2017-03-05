@@ -14,7 +14,7 @@
 	
 			<?php foreach ($song->getStrophes() as $strophe){  ?>
 				<h3><?php echo $strophe->getType(). " ".$strophe->getIdentifiant(); ?></h3>
-				<p><?php echo $strophe->getTexte(); } ?></p>
+				<p><?php echo nl2br ($strophe->getTexte()); } ?></p>
 </div>
 <!-- End Container -->
 
@@ -23,7 +23,7 @@
 	
 	<div class="sidebox widget">
 		<h3 class="widget-title">Recherche</h3>
-		<form class="searchform" method="get" action="<?php echo $this->relativeUrl("song", "search") ?>">
+		<form class="searchform" method="post" action="<?php echo $this->relativeUrl("song", "search") ?>">
 			<input type="text" name="keywords" type="text" placeholder="tapez et appuyez sur Entr&eacute;e"/>
 		</form>
 	</div>
