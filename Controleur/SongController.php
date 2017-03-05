@@ -44,6 +44,7 @@
 							$intro = "$nomRecueil #$numChant - $titre";
 						}
 					}
+					$this->sm->songSeen($song);
 					$params = array( "song"=>$song,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro );
 					new View("detail.php", Config::APP_NAME." - ".$song->getTitre(), $params);
 					die();

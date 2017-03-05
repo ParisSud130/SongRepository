@@ -20,6 +20,14 @@
 
 <!-- Begin Sidebar -->
 <div class="sidebar box">
+
+	<div class="sidebox widget">
+		<h3 class="widget-title">Actions</h3>
+		<ul>
+			<li><a href="#">Ajouter à ma trame</a></li>
+			<li><a href="#">Exporter ce chant en PDF</a></li>
+		</ul>
+	</div>
 	
 	<div class="sidebox widget">
 		<h3 class="widget-title">Recherche</h3>
@@ -36,27 +44,7 @@
 			<li><a href="#">Video</a></li>
 		</ul>
 	</div>
-  	<div class="sidebox widget">
-		<h3 class="widget-title">Chants populaires</h3>
-		<ul class="post-list">
-			
-		<?php $i=1;
-			foreach($mostViewedSongs as $song){ 
-		?>
-				<li> 
-					<div class="frame">
-						<a href="<?php echo $this->relativeUrl("song", "show", array("id"=>$song->getIdChant())) ?>"><img src="Vue/style/images/art/s<?php echo $i ?>.jpg" /></a>
-					</div>
-					<div class="meta">
-						<h6><a href="<?php echo $this->relativeUrl("song", "show", array("id"=>$song->getIdChant())) ?>"> <?php echo $song->getTitre() ?> </a></h6>
-						<em>Vu <?php echo $song->getNbConsultations() ?> fois </em>
-					</div>
-				</li>
-		<?php 	++$i; } ?>
-		</ul>
-			
-	</div>
-	
+
 </div>
 <!--End Sidebar -->
 <div class="clear"></div>

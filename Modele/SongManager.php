@@ -178,11 +178,10 @@
 		}
 		
 		public function persistSong($song){
-            var_dump($song);
-            die();
+
             $sql = "UPDATE chant ";
             $sql = $sql." SET titre = :titre, titreUsuel = :titreUsuel, idRecueil = :idRecueil, auteur = :auteur, compositeur = :compositeur, 
-            copyright = :copyright, tonalité = :tonalité, lien = :lien, typeLien = :typeLien, commentaire = :commentaire, etat = :etat, dateModification = :dateModification, nbConsultations = :nbConsultations, numChant=:numChant ";
+            copyright = :copyright, tonalite = :tonalite, lien = :lien, typeLien = :typeLien, commentaire = :commentaire, etat = :etat, dateModification = :dateModification, nbConsultations = :nbConsultations, numChant=:numChant ";
             $sql = $sql." WHERE idChant=:idChant";
             $stmt = $this->dbh->prepare($sql);
             $parameters = array("titre"=>$song->getTitre(), 
@@ -191,7 +190,7 @@
             	"auteur"=>$song->getAuteur(),  
             	"compositeur"=>$song->getCompositeur(),  
             	"copyright"=>$song->getCopyright(),  
-            	"tonalité"=>$song->getTonalite(),  
+            	"tonalite"=>$song->getTonalite(),  
             	"lien"=>$song->getLien(),  
             	"typeLien"=>$song->getTypeLien(),  
             	"commentaire"=>$song->getCommentaire(),  
