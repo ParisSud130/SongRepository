@@ -1,7 +1,7 @@
 			
  		<!-- Begin Standard Format -->
  		<div class="post format-standard box"> 
-			<h2 class="title"><a href="<?php echo $this->relativeUrl("song", "show", array("id"=>$song->getIdChant())) ?>"><?php echo $song->getTitre() ?></a></h2>
+			<h2 class="title"><a href="<?php echo $this->relativeUrl("song", "show", array("id"=>$song->getIdChant())) ?>"><?php echo $song->getTitre() ?></a><span style="float: right;"> <?= $song->getRecueil()->getNomRecueil()." #".$song->getNumChant() ?></span></h2>
 			<p><?php echo $song->getStrophes()[0]->getTexte() ?> ...</p>
 			
 			<div class="details">

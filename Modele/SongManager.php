@@ -11,7 +11,7 @@
 		 **/
 		public function getSong($songId){
 			$song = null; //Pour l'instant nous n'avons pas de chanson
-			$sql = "SELECT chant.*,recueil.nomRecueil 
+			$sql = "SELECT chant.*, recueil.idRecueil, recueil.nomRecueil 
 						FROM chant
 						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil WHERE chant.idChant = ?";
 			//va chercher les infos en bdd
@@ -31,7 +31,9 @@
 		 **/
 		public function getLastSongs(){
 		//va chercher les infos en bdd
-			$stmt = $this->dbh->prepare("SELECT * FROM chant ORDER BY dateModification DESC LIMIT 3");
+			$stmt = $this->dbh->prepare("SELECT * FROM chant
+						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil 
+						ORDER BY dateModification DESC LIMIT 3");
 			$stmt->execute();
 			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$songs = $this->hydrateSongs($results);
@@ -43,7 +45,9 @@
 		 **/
 		public function getMostViewedSongs(){
 		//va chercher les infos en bdd
-			$stmt = $this->dbh->prepare("SELECT * FROM chant ORDER BY nbConsultations DESC LIMIT 3");
+			$stmt = $this->dbh->prepare("SELECT * FROM chant 
+						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil
+						ORDER BY nbConsultations DESC LIMIT 3");
 			$stmt->execute();
 			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$songs = $this->hydrateSongs($results);
@@ -78,7 +82,7 @@
 			$str_key = implode($new_key," ");
 			
 			//va chercher les infos sur cette page en bdd
-			$sql = "SELECT DISTINCT chant.idChant, MATCH (chant.titre) AGAINST (':$str_key' IN BOOLEAN MODE) AS score1, MATCH (S1.texte) AGAINST (':$str_key' IN BOOLEAN MODE) AS score2
+			$sql = "SELECT DISTINCT chant.*, recueil.*, MATCH (chant.titre) AGAINST (':$str_key' IN BOOLEAN MODE) AS score1, MATCH (S1.texte) AGAINST (':$str_key' IN BOOLEAN MODE) AS score2
 						FROM strophe S1
 						LEFT JOIN chant ON chant.idChant = S1.idChant
 						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil
@@ -91,6 +95,10 @@
 			$stmt->execute();
 			$results = $stmt->fetchAll();
 						
+
+			$songs = $this->hydrateSongs($results);
+			
+			/*
 			$songs = [];
 			foreach($results as $result) {
 				$song = $this->getSong($result["idChant"]);
@@ -98,7 +106,7 @@
 					$songs[] = $song;
 				}
 			}
-			
+			*/
 			//Kint::dump( $songs );
 			//die();
 			return $songs;
@@ -234,23 +242,6 @@
 				$strophes[] = $this->hydrateStrophe($result);
 			}
 			return $strophes;
-		}
-
-		public function hydrateRecueil($result){
-			$infos = array (
-				'_idRecueil' => $result["idRecueil"],
-				'_nomRecueil' => $result["nomRecueil"]);
-	
-			$recueil = new Strophe($infos);
-			return $recueil;
-		}
-
-		public function hydrateRecueils($results){
-			$recueils = [];
-			foreach($results as $result) {
-				$recueils[] = $this->hydrateRecueil($result);
-			}
-			return $recueils;
 		}
 	}
 

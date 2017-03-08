@@ -15,6 +15,7 @@
 			<?php foreach ($song->getStrophes() as $strophe){  ?>
 				<h3><?php echo $strophe->getType(). " ".$strophe->getIdentifiant(); ?></h3>
 				<p><?php echo nl2br ($strophe->getTexte()); } ?></p>
+	<div class="site-generator"><?php echo $song->getCopyright() ?></div>
 </div>
 <!-- End Container -->
 
