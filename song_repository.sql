@@ -8366,6 +8366,63 @@ ALTER TABLE `recueil`
 --
 ALTER TABLE `strophe`
   MODIFY `idStrophe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6696;
+
+--
+-- Structure de la table `trame`
+--
+
+CREATE TABLE `trame` (
+  `idTrame` int(11) NOT NULL,
+  `dateModification` datetime NOT NULL,
+  `dateExecution` date NOT NULL,
+  `propriétaire` int(11) NOT NULL,
+  `commentaire` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Structure de la table `trame_chant`
+--
+
+CREATE TABLE `trame_chant` (
+  `idTrame` int(11) NOT NULL,
+  `idChant` int(11) NOT NULL,
+  `ordre` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Structure de la table `trame_chant_strophe`
+--
+
+CREATE TABLE `trame_chant_strophe` (
+  `idTrame` int(11) NOT NULL,
+  `idChant` int(11) NOT NULL,
+  `idStrophe` int(11) NOT NULL,
+  `ordre` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `trame`
+--
+ALTER TABLE `trame`
+  ADD PRIMARY KEY (`idTrame`);
+
+--
+-- Index pour la table `trame_chant`
+--
+ALTER TABLE `trame_chant`
+  ADD PRIMARY KEY (`idTrame`,`idChant`);
+
+--
+-- Index pour la table `trame_chant_strophe`
+--
+ALTER TABLE `trame_chant_strophe`
+  ADD PRIMARY KEY (`idTrame`,`idChant`,`idStrophe`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
