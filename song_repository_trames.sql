@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `trame`
 --
-
+DROP TABLE IF EXISTS `trame`;
 CREATE TABLE `trame` (
   `idTrame` int(11) NOT NULL,
   `dateModification` datetime NOT NULL,
@@ -40,6 +40,7 @@ CREATE TABLE `trame` (
 -- Structure de la table `trame_chant`
 --
 
+DROP TABLE IF EXISTS `trame_chant`;
 CREATE TABLE `trame_chant` (
   `idTrame` int(11) NOT NULL,
   `idChant` int(11) NOT NULL,
@@ -52,6 +53,7 @@ CREATE TABLE `trame_chant` (
 -- Structure de la table `trame_chant_strophe`
 --
 
+DROP TABLE IF EXISTS `trame_chant_strophe`;
 CREATE TABLE `trame_chant_strophe` (
   `idTrame` int(11) NOT NULL,
   `idChant` int(11) NOT NULL,

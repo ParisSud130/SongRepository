@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `chant`
 --
 
+DROP TABLE IF EXISTS `chant`;
 CREATE TABLE `chant` (
   `idChant` int(11) NOT NULL,
   `titre` varchar(255) NOT NULL,
@@ -34,7 +35,7 @@ CREATE TABLE `chant` (
   `auteur` varchar(250) NOT NULL,
   `compositeur` varchar(250) NOT NULL,
   `copyright` varchar(250) NOT NULL,
-  `tonalité` varchar(50) NOT NULL,
+  `tonalite` varchar(50) NOT NULL,
   `lien` varchar(250) NOT NULL,
   `typeLien` varchar(20) NOT NULL,
   `commentaire` text NOT NULL,
@@ -48,7 +49,7 @@ CREATE TABLE `chant` (
 -- Contenu de la table `chant`
 --
 
-INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalité`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
+INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
 (1, 'Je veux chanter', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 1),
 (2, 'Dieu tout-puissant', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 2),
 (3, 'Il est tant de beautés', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 3),
@@ -457,7 +458,7 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 (406, 'Toi qui aimes', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 407),
 (407, 'Heureux des maintenant', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 408),
 (408, 'Jésus soit avec vous', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 409);
-INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalité`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
+INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
 (409, 'Merci Seigneur, pour ta lumière', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 410),
 (410, 'Merci pour ce repas', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 411),
 (411, 'Pour ce repas', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 412),
@@ -789,7 +790,7 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 (737, 'Le temple de Dieu', '', 2, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 1977 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 217),
 (738, 'La famille', '', 2, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 1977 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 218),
 (739, 'Les souffrances de Jésus', '', 2, 'Texte de Louise Neuenschwander', 'Louise Neuenschwander', '© 1977 Jeunesse en Mission', '', '', '', '', 'à valider', '2016-07-26', 0, 219);
-INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalité`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
+INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
 (740, 'Par le voile déchiré', '', 2, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 1977 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 220),
 (741, 'Jésus mon bien-aimé', '', 2, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 1977 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 221),
 (742, 'Jésus, c\'est le plus beau nom', '', 2, 'Texte de Patricia Cain', 'Naida Hearn', '© 1976 Scripture in Song / Integrity\'s Hosanna! Music / LTC', '', '', '', '', 'à valider', '2016-07-26', 0, 222),
@@ -1084,7 +1085,7 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 (1031, 'Tu es mon rocher', '', 3, 'Texte de Sylvain Freymond', 'Sylvain Freymond', '© 1992 Sylvain Freymond', '', '', '', '', 'à valider', '2016-07-26', 0, 511),
 (1032, 'Tu es saint, Agneau de Dieu', '', 3, 'Texte de Chris Bowater', 'Chris Bowater', '© 1988 Sovereign Music / LTC', '', '', '', '', 'à valider', '2016-07-26', 0, 512),
 (1033, 'Unis nos cœurs', '', 3, 'Texte de Graham Kendrick', 'Graham Kendrick', '© 1991 Make Way Music', '', '', '', '', 'à valider', '2016-07-26', 0, 513);
-INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalité`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
+INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
 (1034, 'Un si grand miracle', '', 3, 'Texte de David &amp; Rebecca Durham', 'David &amp; Rebecca Durham', '© 1992 David Durham', '', '', '', '', 'à valider', '2016-07-26', 0, 514),
 (1035, 'Venez bâtissons', '', 3, 'Texte de Sylvain Freymond', 'Sylvain Freymond', '© 1993 Sylvain Freymond', '', '', '', '', 'à valider', '2016-07-26', 0, 515),
 (1036, 'Venez le célébrer', '', 3, 'Texte de Patricia Morgan', 'Patricia Morgan', '© 1984 Kingsway Thankyou Music / LTC', '', '', '', '', 'à valider', '2016-07-26', 0, 516),
@@ -1381,7 +1382,7 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 (1327, 'Ô Dieu, tu es mon Dieu', '', 4, 'Texte de Beaker', 'Beaker', '© 1991 BMG Songs Inc./Kid Brothers of St. Frank Publishing Inc.Word Music/Copycare France', '', '', '', '', 'à valider', '2016-07-26', 0, 807),
 (1328, 'Oui ce pain', '', 4, 'Texte de Jean-Jacques Gallay', 'Jean-Jacques Gallay', '© 1998 Jean-Jacques Gallay', '', '', '', '', 'à valider', '2016-07-26', 0, 808),
 (1329, 'Ouvre le ciel', '', 4, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 2003 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 809);
-INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalité`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
+INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
 (1330, 'Par ton Esprit', '', 4, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 2006 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 810),
 (1331, 'Père', '', 4, 'Texte de Nicolas Ternisien', 'Nicolas Ternisien', '© 2000 Editions Grains de Ciel', '', '', '', '', 'à valider', '2016-07-26', 0, 811),
 (1332, 'Peuples, élevez la bannière', '', 4, 'Texte de Richard Gillard', 'Richard Gillard', '© 1975 Western Music', '', '', '', '', 'à valider', '2016-07-26', 0, 812),
@@ -8366,63 +8367,6 @@ ALTER TABLE `recueil`
 --
 ALTER TABLE `strophe`
   MODIFY `idStrophe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6696;
-
---
--- Structure de la table `trame`
---
-
-CREATE TABLE `trame` (
-  `idTrame` int(11) NOT NULL,
-  `dateModification` datetime NOT NULL,
-  `dateExecution` date NOT NULL,
-  `propriétaire` int(11) NOT NULL,
-  `commentaire` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Structure de la table `trame_chant`
---
-
-CREATE TABLE `trame_chant` (
-  `idTrame` int(11) NOT NULL,
-  `idChant` int(11) NOT NULL,
-  `ordre` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Structure de la table `trame_chant_strophe`
---
-
-CREATE TABLE `trame_chant_strophe` (
-  `idTrame` int(11) NOT NULL,
-  `idChant` int(11) NOT NULL,
-  `idStrophe` int(11) NOT NULL,
-  `ordre` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `trame`
---
-ALTER TABLE `trame`
-  ADD PRIMARY KEY (`idTrame`);
-
---
--- Index pour la table `trame_chant`
---
-ALTER TABLE `trame_chant`
-  ADD PRIMARY KEY (`idTrame`,`idChant`);
-
---
--- Index pour la table `trame_chant_strophe`
---
-ALTER TABLE `trame_chant_strophe`
-  ADD PRIMARY KEY (`idTrame`,`idChant`,`idStrophe`);
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-

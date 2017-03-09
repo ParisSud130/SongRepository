@@ -25,9 +25,28 @@
 			//$this->songSeen($song);
 			return $song;
 		}
+		/**
+		 * 
+		 **/
+		public function getSongsByRecueil($recueilId){
+			$song = null; //Pour l'instant nous n'avons pas de chanson
+			$sql = "SELECT chant.*, recueil.idRecueil, recueil.nomRecueil 
+						FROM chant
+						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil 
+						WHERE recueil.idRecueil = ?
+						ORDER BY chant.numchant";
+			//va chercher les infos en bdd
+			$stmt = $this->dbh->prepare($sql);
+			$stmt->execute(array($recueilId));
+			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			$songs = $this->hydrateSongs($results);
+			//Kint::dump( $songs );
+			//die();
+			return $songs;
+		}
 		
 		/**
-		 * Récupère les 3 derniers chants modifiés en base de données
+		 * Rï¿½cupï¿½re les 3 derniers chants modifiï¿½s en base de donnï¿½es
 		 **/
 		public function getLastSongs(){
 		//va chercher les infos en bdd
@@ -41,7 +60,7 @@
 		}
 		
 		/**
-		 * Récupère les 3 chants les plus souvent consultés
+		 * Rï¿½cupï¿½re les 3 chants les plus souvent consultï¿½s
 		 **/
 		public function getMostViewedSongs(){
 		//va chercher les infos en bdd
@@ -57,7 +76,7 @@
 		
 		
 		/**
-		 * Recherche un chant en base de données à partir des mots clés de la chaine de charactères passée en paramètre
+		 * Recherche un chant en base de donnï¿½es ï¿½ partir des mots clï¿½s de la chaine de charactï¿½res passï¿½e en paramï¿½tre
 		 * retourne les 50 chants qui correspondent le plus
 		 **/
 		public function searchSongs($keywords){

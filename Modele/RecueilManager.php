@@ -6,7 +6,7 @@
 		 * 
 		 **/
 		public function getRecueil($recueilId){
-			$song = null; //Pour l'instant nous n'avons pas de chanson
+			$recueil = null; //Pour l'instant nous n'avons pas de recueil
 			$sql = "SELECT recueil.* 
 						FROM recueil 
 						WHERE recueil.idRecueil = ?";
@@ -26,7 +26,7 @@
 				'_idRecueil' => $result["idRecueil"],
 				'_nomRecueil' => $result["nomRecueil"]);
 	
-			$recueil = new Strophe($infos);
+			$recueil = new Recueil($infos);
 			return $recueil;
 		}
 
