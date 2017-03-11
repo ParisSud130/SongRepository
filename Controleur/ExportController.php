@@ -1,6 +1,6 @@
 <?php
-    class ExportController extends Controller{
         
+    class ExportController extends Controller{
         private $sm;    
         private $tm;    
 
@@ -16,6 +16,9 @@
         }
 
         public function chantToPdfAction() {
+            if (!class_exists('FPDF')) {
+                require (__DIR__."/../Utils/fpdf/fpdf.php");
+            }
             if (isset($_GET["id"])){
                 $id = $_GET["id"];
                 $texte = $this->chantToTexte($id);
@@ -32,7 +35,7 @@
         private function chantToTexte($id) {
             $song = $this->sm->getSong($id);
             $text = utf8_decode($song->getTitre()) . "\n\n";
-    
+            
             foreach ($song->getStrophes() as $strophe){
                 $text .= $strophe->getType(). " ".$strophe->getIdentifiant() . "\n";
                 $strophe->setTexte(str_replace("œ","oe",$strophe->getTexte()));

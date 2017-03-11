@@ -151,13 +151,15 @@ class Chant{
 	
 	
 	public function getStrophes(){ return $this->_strophes; }
-	public function setStrophes($strophes){ 
+	public function setStrophes(array $strophes){ 
 		if(is_array($strophes) && !empty($strophes)){
 			$this->_strophes = $strophes; 
 		}
 	}
+	public function getStrophe($numStrophe){ return $this->_strophes[$numStrophe]; }
+
 	public function getRecueil(){ return $this->_recueil; }
-	public function setRecueil($recueil){ 
+	public function setRecueil(Recueil $recueil){ 
 		if (is_a($recueil, 'Recueil')) {
 			$this->_recueil = $recueil; 
 		}

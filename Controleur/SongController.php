@@ -21,10 +21,21 @@
 		public function searchAction(){
 			//rcupre les mots-cl saisis par l'utilisateur
 			$keywords = (empty($_POST['keywords'])) ? "" : $_POST['keywords'];
-			$searchedSongs = $this->sm->searchSongs($keywords);
+
+			// 1 : On force la conversion en nombre entier
+			$numberToSearch = (int) $keywords;
+			if ($numberToSearch >= 1 ) {//Si le nombre obtenu est supérieur à 1, c'est un numéro qui a été entré
+				$searchedSongs = $this->sm->getSongsByNumChant($numberToSearch);
+				$intro = "Les chants ayant pour numéro $numberToSearch";
+			}
+			else{//Sinon on cherche la chaine telle qu'elle a été saisie
+				$searchedSongs = $this->sm->searchSongs($keywords);
+				$intro = "Les chants contenant $keywords";
+			}
+
 			$mostViewedSongs = $this->sm->getMostViewedSongs();
+
 			//shoote la vue
-			$intro = "Les chants contenant $keywords";
 			$params = array( "songs"=>$searchedSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro );
 			new View("accueil.php", Config::APP_NAME, $params);
 		}
@@ -47,10 +58,14 @@
 					$this->sm->songSeen($song);
 					$params = array( "song"=>$song,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro );
 					new View("detail.php", Config::APP_NAME." - ".$song->getTitre(), $params);
-					die();
+				}
+				else{
+					die("chant introuvable; page à coder");
 				}
 			}
-			die("chant introuvable; page à coder");
+			else{
+				$this->homeAction();
+			}
 		}
 }
 ?>

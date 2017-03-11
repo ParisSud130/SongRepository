@@ -28,9 +28,28 @@
 		/**
 		 * 
 		 **/
+		public function getSongsByNumChant($numChant){
+			$song = null; //Pour l'instant nous n'avons pas de chanson
+			$sql = "SELECT chant.*, recueil.*
+						FROM chant
+						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil 
+						WHERE chant.numchant = ?
+						ORDER BY chant.numchant";
+			//va chercher les infos en bdd
+			$stmt = $this->dbh->prepare($sql);
+			$stmt->execute(array($numChant));
+			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			$songs = $this->hydrateSongs($results);
+			//Kint::dump( $songs );
+			//die();
+			return $songs;
+		}
+		/**
+		 * 
+		 **/
 		public function getSongsByRecueil($recueilId){
 			$song = null; //Pour l'instant nous n'avons pas de chanson
-			$sql = "SELECT chant.*, recueil.idRecueil, recueil.nomRecueil 
+			$sql = "SELECT chant.*, recueil.*
 						FROM chant
 						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil 
 						WHERE recueil.idRecueil = ?
@@ -105,7 +124,7 @@
 						FROM strophe S1
 						LEFT JOIN chant ON chant.idChant = S1.idChant
 						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil
-						WHERE MATCH (chant.titre) AGAINST (':$str_key' IN BOOLEAN MODE) OR MATCH (S1.texte) AGAINST (':$str_key' IN BOOLEAN MODE) 
+						WHERE MATCH (chant.titre) AGAINST (':$str_key' IN BOOLEAN MODE) OR MATCH (chant.titreUsuel) AGAINST (':$str_key' IN BOOLEAN MODE) OR MATCH (S1.texte) AGAINST (':$str_key' IN BOOLEAN MODE) 
 						GROUP BY idChant
 						ORDER BY score1 DESC, score2 DESC, nbConsultations, numChant, recueil.idRecueil LIMIT 50";
 	
@@ -149,7 +168,7 @@
 
 		/******************************************************************************************************************
 		*	FONCTION : hydrateSong
-		*	PARAMETRES EN ENTREE :	entre de la table chant provenant de la base de donnes
+		*	PARAMETRES EN ENTREE :	entree de la table chant provenant de la base de donnes
 		*	DESCRIPTION : Renvoit une instance de la classe Chant  partir d'une entree de la table chant
 		*	VALEUR RETOURNEE : instance de la classe Chant
 		*******************************************************************************************************************/
@@ -186,6 +205,47 @@
 		
 			$song = new Chant($infos);
 			$song -> setStrophes($strophes);
+	
+			return $song;
+		}
+
+		/******************************************************************************************************************
+		*	FONCTION : hydrateSongWithoutStrophe
+		*	PARAMETRES EN ENTREE :	entree de la table chant provenant de la base de donnees
+		*	DESCRIPTION : Renvoit une instance de la classe Chant  partir d'une entree de la table chant
+		*	VALEUR RETOURNEE : instance de la classe Chant
+		*******************************************************************************************************************/
+		public function hydrateSongWithoutStrophe($songResult){
+			$nbConsultations = $songResult["nbConsultations"];
+			settype($nbConsultations, "integer");
+
+			$infos = array (
+	
+				'_idChant' => $songResult["idChant"],
+				'_titre' => $songResult["titre"],
+				'_titreUsuel' => $songResult["titreUsuel"],
+				'_idRecueil' => $songResult["idRecueil"],
+				'_auteur' => $songResult["auteur"],
+				'_compositeur' => $songResult["compositeur"],
+				'_copyright' => $songResult["copyright"],
+				'_tonalite' => $songResult["tonalite"],
+				'_lien' => $songResult["lien"],
+				'_typeLien' => $songResult["typeLien"],
+				'_commentaire' => $songResult["commentaire"],
+				'_etat' => $songResult["etat"],
+				'_dateModification' => $songResult["dateModification"],
+				'_nbConsultations' => $nbConsultations,
+				'_numChant' => $songResult["numChant"] );
+
+			if (array_key_exists('idRecueil', $songResult) && array_key_exists('nomRecueil', $songResult)) {
+				$infosRecueil = array (
+					'_idRecueil' => $songResult["idRecueil"],
+					'_nomRecueil' => $songResult["nomRecueil"]);
+				$recueil = new Recueil($infosRecueil);
+				$infos['_recueil'] = $recueil;
+			}
+		
+			$song = new Chant($infos);
 	
 			return $song;
 		}

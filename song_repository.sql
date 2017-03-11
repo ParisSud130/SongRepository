@@ -1569,6 +1569,7 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 -- Structure de la table `recueil`
 --
 
+DROP TABLE IF EXISTS `recueil`;
 CREATE TABLE `recueil` (
   `idRecueil` int(11) NOT NULL,
   `nomRecueil` varchar(50) NOT NULL
@@ -1591,6 +1592,7 @@ INSERT INTO `recueil` (`idRecueil`, `nomRecueil`) VALUES
 -- Structure de la table `strophe`
 --
 
+DROP TABLE IF EXISTS `strophe`;
 CREATE TABLE `strophe` (
   `idStrophe` int(11) NOT NULL,
   `type` varchar(12) NOT NULL,

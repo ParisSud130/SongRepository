@@ -22,15 +22,14 @@
 
 		function handleLoginAction(){
 
-			$error="test";
+			$error="";
 			//redirige vers le formulaire de connexion
 			//en cas d'erreurs
 			if (empty($_POST)){
 				$this->goback("formulaire non soumis");
 			}
-
 			//info de connexion vide ?
-			if (empty($_POST['login'])){
+			else if (empty($_POST['login'])){
 				$error = "Veuillez entrer un nom d'utilisateur ou un email";
 				$this->goback($error);
 				die();
@@ -40,17 +39,16 @@
 				goback($error);
 				die();
 			}
-			//existe en base ?
 			else {
 				$hashed_password = hash("sha512", $_POST['password']);
 				$loginSuccess = $this->pm->login($_POST['login'], $hashed_password);
 				if (!$loginSuccess){
 					$this->goback("Erreur d'identification !") ;
 				}
-				$this->goback() ;
-				die();
+				else{
+					$this->goback() ;
+				}
 			}
-			$this->goback("Une erreur inconnue s'est produite") ;
 		}
 
 		function logoutAction(){

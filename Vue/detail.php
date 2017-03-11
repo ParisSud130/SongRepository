@@ -26,7 +26,7 @@
 		<h3 class="widget-title">Actions</h3>
 		<ul>
 			<li><a href="#">Ajouter à ma trame</a></li>
-			<li><a href="#">Exporter ce chant en PDF</a></li>
+			<li><a target="_blank" href="<?php echo $this->relativeUrl("export", "chantToPdf", array("id"=>$song->getIdChant())) ?>">Exporter ce chant en PDF</a></li>
 		</ul>
 	</div>
 	
