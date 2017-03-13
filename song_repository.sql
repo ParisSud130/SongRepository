@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 13 Mars 2017 à 12:23
+-- Généré le :  Lun 13 Mars 2017 à 12:40
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `song_repository`
 --
+CREATE DATABASE IF NOT EXISTS `song_repository` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `song_repository`;
 
 -- --------------------------------------------------------
 
@@ -26,8 +28,9 @@ SET time_zone = "+00:00";
 -- Structure de la table `chant`
 --
 
-CREATE TABLE `chant` (
-  `idChant` int(11) NOT NULL,
+DROP TABLE IF EXISTS `chant`;
+CREATE TABLE IF NOT EXISTS `chant` (
+  `idChant` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(255) NOT NULL,
   `titreUsuel` varchar(255) NOT NULL,
   `idRecueil` smallint(11) NOT NULL,
@@ -41,8 +44,9 @@ CREATE TABLE `chant` (
   `etat` varchar(20) NOT NULL,
   `dateModification` date NOT NULL,
   `nbConsultations` int(11) NOT NULL,
-  `numChant` smallint(6) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `numChant` smallint(6) NOT NULL,
+  PRIMARY KEY (`idChant`)
+) ENGINE=MyISAM AUTO_INCREMENT=2162 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `chant`
@@ -456,8 +460,7 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 (405, 'Dieu, ton amour', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 406),
 (406, 'Toi qui aimes', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 407),
 (407, 'Heureux des maintenant', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 408),
-(408, 'Jésus soit avec vous', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 409);
-INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
+(408, 'Jésus soit avec vous', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 409),
 (409, 'Merci Seigneur, pour ta lumière', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 410),
 (410, 'Merci pour ce repas', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 411),
 (411, 'Pour ce repas', '', 1, '', '', '© Éditions Vie et Santé', '', '', '', '', 'à valider', '2016-07-26', 0, 412),
@@ -788,10 +791,10 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 (736, 'Si mon peuple…', '', 2, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 1977 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 216),
 (737, 'Le temple de Dieu', '', 2, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 1977 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 217),
 (738, 'La famille', '', 2, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 1977 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 218),
-(739, 'Les souffrances de Jésus', '', 2, 'Texte de Louise Neuenschwander', 'Louise Neuenschwander', '© 1977 Jeunesse en Mission', '', '', '', '', 'à valider', '2016-07-26', 0, 219);
-INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
+(739, 'Les souffrances de Jésus', '', 2, 'Texte de Louise Neuenschwander', 'Louise Neuenschwander', '© 1977 Jeunesse en Mission', '', '', '', '', 'à valider', '2016-07-26', 0, 219),
 (740, 'Par le voile déchiré', '', 2, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 1977 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 220),
-(741, 'Jésus mon bien-aimé', '', 2, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 1977 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 221),
+(741, 'Jésus mon bien-aimé', '', 2, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 1977 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 221);
+INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
 (742, 'Jésus, c\'est le plus beau nom', '', 2, 'Texte de Patricia Cain', 'Naida Hearn', '© 1976 Scripture in Song / Integrity\'s Hosanna! Music / LTC', '', '', '', '', 'à valider', '2016-07-26', 0, 222),
 (743, 'Combien j\'admire tes demeures', '', 2, 'Texte de Bin Soto', 'Bin Soto', '© 1976 Scripture in Song / Integrity\'s Hosanna! Music / LTC', '', '', '', '', 'à valider', '2016-07-26', 0, 223),
 (744, 'Autant les cieux sont élevés', '', 2, 'Texte de Serge Ilg', 'Serge Ilg', '© 1977 Jeunesse en Mission', '', '', '', '', 'à valider', '2016-07-26', 0, 224),
@@ -1083,8 +1086,7 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 (1030, 'Tu es mon père', '', 3, 'Texte de J.E.M.', 'J.E.M.', '© 1993 Jeunesse en Mission', '', '', '', '', 'à valider', '2016-07-26', 0, 510),
 (1031, 'Tu es mon rocher', '', 3, 'Texte de Sylvain Freymond', 'Sylvain Freymond', '© 1992 Sylvain Freymond', '', '', '', '', 'à valider', '2016-07-26', 0, 511),
 (1032, 'Tu es saint, Agneau de Dieu', '', 3, 'Texte de Chris Bowater', 'Chris Bowater', '© 1988 Sovereign Music / LTC', '', '', '', '', 'à valider', '2016-07-26', 0, 512),
-(1033, 'Unis nos cœurs', '', 3, 'Texte de Graham Kendrick', 'Graham Kendrick', '© 1991 Make Way Music', '', '', '', '', 'à valider', '2016-07-26', 0, 513);
-INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
+(1033, 'Unis nos cœurs', '', 3, 'Texte de Graham Kendrick', 'Graham Kendrick', '© 1991 Make Way Music', '', '', '', '', 'à valider', '2016-07-26', 0, 513),
 (1034, 'Un si grand miracle', '', 3, 'Texte de David &amp; Rebecca Durham', 'David &amp; Rebecca Durham', '© 1992 David Durham', '', '', '', '', 'à valider', '2016-07-26', 0, 514),
 (1035, 'Venez bâtissons', '', 3, 'Texte de Sylvain Freymond', 'Sylvain Freymond', '© 1993 Sylvain Freymond', '', '', '', '', 'à valider', '2016-07-26', 0, 515),
 (1036, 'Venez le célébrer', '', 3, 'Texte de Patricia Morgan', 'Patricia Morgan', '© 1984 Kingsway Thankyou Music / LTC', '', '', '', '', 'à valider', '2016-07-26', 0, 516),
@@ -1380,11 +1382,11 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 (1327, 'Ô Dieu, tu es mon Dieu', '', 4, 'Texte de Beaker', 'Beaker', '© 1991 BMG Songs Inc./Kid Brothers of St. Frank Publishing Inc.Word Music/Copycare France', '', '', '', '', 'à valider', '2016-07-26', 0, 807),
 (1328, 'Oui ce pain', '', 4, 'Texte de Jean-Jacques Gallay', 'Jean-Jacques Gallay', '© 1998 Jean-Jacques Gallay', '', '', '', '', 'à valider', '2016-07-26', 0, 808),
 (1329, 'Ouvre le ciel', '', 4, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 2003 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 809),
-(1330, 'Par ton Esprit', '', 4, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 2006 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 810);
-INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
+(1330, 'Par ton Esprit', '', 4, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 2006 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 810),
 (1331, 'Père', '', 4, 'Texte de Nicolas Ternisien', 'Nicolas Ternisien', '© 2000 Editions Grains de Ciel', '', '', '', '', 'à valider', '2016-07-26', 0, 811),
 (1332, 'Peuples, élevez la bannière', '', 4, 'Texte de Richard Gillard', 'Richard Gillard', '© 1975 Western Music', '', '', '', '', 'à valider', '2016-07-26', 0, 812),
-(1333, 'Préparez au désert', '', 4, 'Texte de Elisabeth Bourbouze', 'Elisabeth Bourbouze', '© 1999 Elisabeth Bourbouze', '', '', '', '', 'à valider', '2016-07-26', 0, 813),
+(1333, 'Préparez au désert', '', 4, 'Texte de Elisabeth Bourbouze', 'Elisabeth Bourbouze', '© 1999 Elisabeth Bourbouze', '', '', '', '', 'à valider', '2016-07-26', 0, 813);
+INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
 (1334, 'Parfum de louange', '', 4, 'Texte de Rolf Schneider', 'Rolf Schneider', '© 2005 Rolf Schneider', '', '', '', '', 'à valider', '2016-07-26', 0, 814),
 (1335, 'Prosternés', '', 4, 'Texte de Viola Grafstrom', 'Viola Grafstrom', '© 1996 Kingswaysongs / LTC', '', '', '', '', 'à valider', '2016-07-26', 0, 815),
 (1336, 'Quand les montagnes', '', 4, 'Texte de Elisabeth Bourbouze', 'Elisabeth Bourbouze', '© 2006 Rolf Schneider © 2006 Elisabeth Bourbouze/LTC', '', '', '', '', 'à valider', '2016-07-26', 0, 816),
@@ -1780,8 +1782,7 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 (1726, 'Tel que je suis', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 218),
 (1727, 'Contemplez, ô chrétiens!', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 219),
 (1728, 'Je viens, Seigneur', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 220),
-(1729, 'De ce monde...', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 221);
-INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `compositeur`, `copyright`, `tonalite`, `lien`, `typeLien`, `commentaire`, `etat`, `dateModification`, `nbConsultations`, `numChant`) VALUES
+(1729, 'De ce monde...', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 221),
 (1730, 'Mort avec Christ', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 222),
 (1731, 'Seigneur Jésus...', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 223),
 (1732, 'Tel que je suis sans rien à moi', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 224),
@@ -2177,7 +2178,7 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 (2122, 'Ô toi, source intarissable', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 615),
 (2123, 'Nuit sans espoir', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 616),
 (2124, 'L\'Éternel seul est Seigneur', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 617),
-(2125, 'Christ est mon rocher', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 618),
+(2125, 'Christ est mon rocher', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 1, 618),
 (2126, 'Chrétiens, voici le Rédempteur!', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 619),
 (2127, 'Vous qui pleurez, venez', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 620),
 (2128, 'Christ va venir', '', 6, '', '', '', '', '', '', '', 'à valider', '2017-03-13', 0, 621),
@@ -2221,9 +2222,11 @@ INSERT INTO `chant` (`idChant`, `titre`, `titreUsuel`, `idRecueil`, `auteur`, `c
 -- Structure de la table `chant_theme`
 --
 
-CREATE TABLE `chant_theme` (
+DROP TABLE IF EXISTS `chant_theme`;
+CREATE TABLE IF NOT EXISTS `chant_theme` (
   `idChant` int(11) NOT NULL,
-  `idTheme` int(11) NOT NULL
+  `idTheme` int(11) NOT NULL,
+  UNIQUE KEY `idChant` (`idChant`,`idTheme`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2232,12 +2235,14 @@ CREATE TABLE `chant_theme` (
 -- Structure de la table `profil`
 --
 
-CREATE TABLE `profil` (
-  `idProfil` int(11) NOT NULL,
+DROP TABLE IF EXISTS `profil`;
+CREATE TABLE IF NOT EXISTS `profil` (
+  `idProfil` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(50) NOT NULL,
   `motDePasse` varchar(255) NOT NULL,
-  `commentaire` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `commentaire` varchar(255) NOT NULL,
+  PRIMARY KEY (`idProfil`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `profil`
@@ -2252,10 +2257,12 @@ INSERT INTO `profil` (`idProfil`, `login`, `motDePasse`, `commentaire`) VALUES
 -- Structure de la table `recueil`
 --
 
-CREATE TABLE `recueil` (
-  `idRecueil` int(11) NOT NULL,
-  `nomRecueil` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `recueil`;
+CREATE TABLE IF NOT EXISTS `recueil` (
+  `idRecueil` int(11) NOT NULL AUTO_INCREMENT,
+  `nomRecueil` varchar(50) NOT NULL,
+  PRIMARY KEY (`idRecueil`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `recueil`
@@ -2275,14 +2282,16 @@ INSERT INTO `recueil` (`idRecueil`, `nomRecueil`) VALUES
 -- Structure de la table `strophe`
 --
 
-CREATE TABLE `strophe` (
-  `idStrophe` int(11) NOT NULL,
+DROP TABLE IF EXISTS `strophe`;
+CREATE TABLE IF NOT EXISTS `strophe` (
+  `idStrophe` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(12) NOT NULL,
   `identifiant` int(11) NOT NULL,
   `texte` text NOT NULL,
   `position` int(11) NOT NULL,
-  `idChant` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `idChant` int(11) NOT NULL,
+  PRIMARY KEY (`idStrophe`)
+) ENGINE=MyISAM AUTO_INCREMENT=9372 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `strophe`
@@ -2539,8 +2548,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (248, 'Strophe', 2, 'Qu\'est tout l\'or et l\'argent, \n\r Qu\'est le plus beau présent? \n\r Que sont tous les honneurs, \n\r Si non des biens trompeurs? \n\r Dans l\'immense univers, \n\r Rien ne m\'est aussi cher, \n\r Rien n\'apaise mon cœur, \n\r Que Jésus, mon Sauveur!', 3, 55),
 (249, 'Strophe', 3, 'Le plus beau lys des champs \n\r N\'est pas si ravissant; \n\r Du miel, de sa douceur, \n\r Il passe la saveur! \n\r Tel est mon bien-aimé, \n\r Qui pour moi s\'est donné, \n\r Je ne puis un seul jour, \n\r Vivre sans son amour!', 4, 55),
 (250, 'Strophe', 4, 'Les discours du prochain, \n\r Les assauts du malin, \n\r Ne sauraient m\'ébranler, \n\r Christ est mon bouclier! \n\r Il est mon chef, mon roi, \n\r Et je puis, par la foi, \n\r Du monde et de l\'erreur, \n\r Être plus que vainqueur!', 5, 55),
-(251, 'Strophe', 1, 'Quel ami fidèle et tendre! \n\r Nous avons en Jésus-Christ, \n\r Toujours prêt à nous entendre \n\r À répondre à notre cri! \n\r Il connaît nos défaillances, \n\r Nos chutes de chaque jour. \n\r Sévère en ses exigences, \n\r Il est riche en son amour.', 1, 56);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(251, 'Strophe', 1, 'Quel ami fidèle et tendre! \n\r Nous avons en Jésus-Christ, \n\r Toujours prêt à nous entendre \n\r À répondre à notre cri! \n\r Il connaît nos défaillances, \n\r Nos chutes de chaque jour. \n\r Sévère en ses exigences, \n\r Il est riche en son amour.', 1, 56),
 (252, 'Strophe', 2, 'Quel ami fidèle et tendre! \n\r Nous avons en Jésus-Christ, \n\r Toujours prêt à nous comprendre \n\r Quand nous sommes en souci! \n\r Disons-lui toutes nos craintes, \n\r Ouvrons-lui tout notre cœur. \n\r Bientôt ses paroles saintes \n\r Nous rendront le vrai bonheur.', 2, 56),
 (253, 'Strophe', 3, 'Quel ami fidèle et tendre! \n\r Nous avons en Jésus-Christ, \n\r Toujours prêt à nous défendre \n\r Quand nous presse l\'ennemi! \n\r Il nous suit dans la mélée, \n\r Nous entoure de ses bras, \n\r Et c\'est lui qui tient l\'épée \n\r Qui décide des combats.', 3, 56),
 (254, 'Strophe', 4, 'Quel ami fidèle et tendre! \n\r Nous avons en Jésus-Christ, \n\r Toujours prêt à nous apprendre \n\r À vaincre en comptant sur lui. \n\r S\'il nous voit vrais et sincères \n\r À chercher la sainteté, \n\r Il écoute nos prières \n\r Et nous met en liberté.', 4, 56),
@@ -2789,9 +2797,9 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (497, 'Strophe', 2, 'Descends, ô pluie abondante, \n\r Coule à flots dans notre cœur, \n\r Donne à l\'âme languissante \n\r Une nouvelle fraîcheur.', 3, 112),
 (498, 'Refrain', 1, 'Fraîches rosées, \n\r Descendez sur nous tous! \n\r O divines ondées, \n\r Venez, arrosez-nous!', 4, 112),
 (499, 'Strophe', 3, 'Ne laisse en nous rien d\'aride \n\r Qui ne soit fertilisé; \n\r Que le cœur le plus avide \n\r Soit pleinement arrosé.', 5, 112),
-(500, 'Refrain', 1, 'Fraîches rosées, \n\r Descendez sur nous tous! \n\r O divines ondées, \n\r Venez, arrosez-nous!', 6, 112);
+(500, 'Refrain', 1, 'Fraîches rosées, \n\r Descendez sur nous tous! \n\r O divines ondées, \n\r Venez, arrosez-nous!', 6, 112),
+(501, 'Strophe', 4, 'Oui, que les déserts fleurissent \n\r Sous tes bienfaisantes eaux; \n\r Que les lieux secs reverdissent \n\r Et portent des fruits nouveaux.', 7, 112);
 INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
-(501, 'Strophe', 4, 'Oui, que les déserts fleurissent \n\r Sous tes bienfaisantes eaux; \n\r Que les lieux secs reverdissent \n\r Et portent des fruits nouveaux.', 7, 112),
 (502, 'Refrain', 1, 'Fraîches rosées, \n\r Descendez sur nous tous! \n\r O divines ondées, \n\r Venez, arrosez-nous!', 8, 112),
 (503, 'Strophe', 5, 'Viens, ô salutaire pluie, \n\r Esprit de grâce et de paix, \n\r Répands en nous une vie \n\r Qui ne tarisse jamais.', 9, 112),
 (504, 'Refrain', 1, 'Fraîches rosées, \n\r Descendez sur nous tous! \n\r O divines ondées, \n\r Venez, arrosez-nous!', 10, 112),
@@ -3051,8 +3059,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (758, 'Refrain', 1, 'La paix nous vient des mains du Fils. \n\r Attachés à la croix du Christ, \n\r Dans sa promesse nous marchons.', 6, 169),
 (759, 'Strophe', 4, 'Ta royauté lui est remise, \n\r Lui premier-né d\'entre les morts, \n\r Tu l\'as donné à ton Église. \n\r Il est la tête de son corps.', 7, 169),
 (760, 'Refrain', 1, 'La paix nous vient des mains du Fils. \n\r Attachés à la croix du Christ, \n\r Dans sa promesse nous marchons.', 8, 169),
-(761, 'Strophe', 5, 'Il tient de toi la plénitude \n\r Et tu as tout réconcilié; \n\r C\'est dans sa mort que naît la vie. \n\r Gloire à Jésus crucifié!', 9, 169);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(761, 'Strophe', 5, 'Il tient de toi la plénitude \n\r Et tu as tout réconcilié; \n\r C\'est dans sa mort que naît la vie. \n\r Gloire à Jésus crucifié!', 9, 169),
 (762, 'Refrain', 1, 'La paix nous vient des mains du Fils. \n\r Attachés à la croix du Christ, \n\r Dans sa promesse nous marchons.', 10, 169),
 (763, 'Strophe', 1, 'Louez le Seigneur \n\r Du haut des cieux. \n\r Chantez sa grandeur. \n\r Vous, anges de Dieu; \n\r Brillantes étoiles, \n\r Soleil, firmament, \n\r Louez, dans sa gloire, \n\r Le Dieu tout-puissant.', 1, 170),
 (764, 'Strophe', 2, 'Louez le Seigneur, \n\r Terrestres voix. \n\r De tout votre cœur. \n\r Chantez ses exploits; \n\r Sa droite éternelle \n\r Soutient l\'univers, \n\r D\'une âme fidèle \n\r Louez le Seigneur.', 2, 170),
@@ -3324,10 +3331,10 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (1030, 'Refrain', 1, 'Dès le printemps de ta vie \n\r Donne ton cœur à Jésus. \n\r À le suivre il te convie, \n\r Revêts-toi de ses vertus.', 2, 262),
 (1031, 'Strophe', 2, 'Oui, le meilleur de toi-même \n\r Offre-le sur son autel, \n\r Au printemps, que ta main sème \n\r Ce qui mûrit pour le ciel. \n\r Donne comme ton Dieu donne \n\r L\'infini de son amour. \n\r Dans un Sauveur qui pardonne \n\r Et pour toi mourut un jour.', 3, 262),
 (1032, 'Refrain', 1, 'Dès le printemps de ta vie \n\r Donne ton cœur à Jésus. \n\r À le suivre il te convie, \n\r Revêts-toi de ses vertus.', 4, 262),
-(1033, 'Strophe', 3, 'Viens, prends les ordres du Maître \n\r Dès l\'aube où c\'est un plaisir. \n\r Cette heure va disparaître \n\r Avec ce pieux désir. \n\r Hâte-toi, la vie est brève, \n\r La vigueur a son déclin. \n\r D\'autres attraits, fuis le rêve \n\r Et viens au bonheur divin.', 5, 262);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(1033, 'Strophe', 3, 'Viens, prends les ordres du Maître \n\r Dès l\'aube où c\'est un plaisir. \n\r Cette heure va disparaître \n\r Avec ce pieux désir. \n\r Hâte-toi, la vie est brève, \n\r La vigueur a son déclin. \n\r D\'autres attraits, fuis le rêve \n\r Et viens au bonheur divin.', 5, 262),
 (1034, 'Refrain', 1, 'Dès le printemps de ta vie \n\r Donne ton cœur à Jésus. \n\r À le suivre il te convie, \n\r Revêts-toi de ses vertus.', 6, 262),
-(1035, 'Strophe', 1, 'Doucement, tendrement, Jésus appelle, \n\r Nous appelle, vous et moi. \n\r Patiemment Jésus attend le rebelle, \n\r Il nous attend vous et moi.', 1, 263),
+(1035, 'Strophe', 1, 'Doucement, tendrement, Jésus appelle, \n\r Nous appelle, vous et moi. \n\r Patiemment Jésus attend le rebelle, \n\r Il nous attend vous et moi.', 1, 263);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (1036, 'Refrain', 1, 'Venez, venez, venez à moi, \n\r Fatigués, chargés, venez à moi. \n\r Doucement, tendrement, Jésus appelle: \n\r «Venez, oh! venez à moi.»', 2, 263),
 (1037, 'Strophe', 2, 'Le monde, hélas, est une ombre qui passe, \n\r Passe pour vous et pour moi. \n\r Gloire à Jésus! Au ciel est une place \n\r Prête pour vous et pour moi.', 3, 263),
 (1038, 'Refrain', 1, 'Venez, venez, venez à moi, \n\r Fatigués, chargés, venez à moi. \n\r Doucement, tendrement, Jésus appelle: \n\r «Venez, oh! venez à moi.»', 4, 263),
@@ -3583,8 +3590,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (1288, 'Refrain', 1, 'Je suis fort, fort! oui, plus que vainqueur, par le sang de Jésus! \n\r Je suis fort, fort! oui, plus que vainqueur, par le sang de Jésus mon Sauveur.', 2, 318),
 (1289, 'Strophe', 2, 'Veux-tu marcher toujours pur, triomphant? \n\r La force est en Christ, la force est en Christ. \n\r Pour te garder, Jésus est tout-puissant: \n\r La force est dans le sang de Christ!', 3, 318),
 (1290, 'Refrain', 1, 'Je suis fort, fort! oui, plus que vainqueur, par le sang de Jésus! \n\r Je suis fort, fort! oui, plus que vainqueur, par le sang de Jésus mon Sauveur.', 4, 318),
-(1291, 'Strophe', 3, 'Veux-tu du ciel t\'approcher chaque jour? \n\r La force est en Christ, la force est en Christ. \n\r Avec Jésus, demeurer pour toujours? \n\r La force est dans le sang de Christ!', 5, 318);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(1291, 'Strophe', 3, 'Veux-tu du ciel t\'approcher chaque jour? \n\r La force est en Christ, la force est en Christ. \n\r Avec Jésus, demeurer pour toujours? \n\r La force est dans le sang de Christ!', 5, 318),
 (1292, 'Refrain', 1, 'Je suis fort, fort! oui, plus que vainqueur, par le sang de Jésus! \n\r Je suis fort, fort! oui, plus que vainqueur, par le sang de Jésus mon Sauveur.', 6, 318),
 (1293, 'Strophe', 1, 'Prends ma vie, elle doit être \n\r À toi seul, ô divin Maître, \n\r Que sur le flot de mes jours, \n\r Ton regard brille toujours!', 1, 319),
 (1294, 'Strophe', 2, 'Que mes mains, à ton service, \n\r S\'offrent pour le sacrifice, \n\r Qu\'à te suivre pas à pas \n\r Mes pieds ne faiblissent pas!', 2, 319),
@@ -3850,11 +3856,11 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (1554, 'Strophe', 1, 'Tous unis dans l\'Esprit, tous unis en Jésus, \n\r Tous unis dans l\'Esprit, tous unis en Jésus, \n\r Nous prions que bientôt ce qui divise ne soit plus.', 1, 368),
 (1555, 'Refrain', 1, 'Et le monde saura que nous sommes chrétiens \n\r Par l\'amour dont nos actes sont empreints.', 2, 368),
 (1556, 'Strophe', 2, 'Nous marchons côte à côte et la main dans la main, \n\r Nous marchons côte à côte et la main dans la main, \n\r À la table du roi nous partageons le même pain.', 3, 368),
-(1557, 'Refrain', 1, 'Et le monde saura que nous sommes chrétiens \n\r Par l\'amour dont nos actes sont empreints.', 4, 368);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(1557, 'Refrain', 1, 'Et le monde saura que nous sommes chrétiens \n\r Par l\'amour dont nos actes sont empreints.', 4, 368),
 (1558, 'Strophe', 3, 'D\'un seul cœur nous voulons travailler pour Jésus, \n\r D\'un seul cœur nous voulons travailler pour Jésus, \n\r Proclamer à tout homme qu\'il nous offre le salut.', 5, 368),
 (1559, 'Refrain', 1, 'Et le monde saura que nous sommes chrétiens \n\r Par l\'amour dont nos actes sont empreints.', 6, 368),
-(1560, 'Strophe', 4, 'Gloire au Dieu créateur de la terre et des cieux, \n\r Gloire au Fils éternel, rédempteur glorieux, \n\r Gloire, gloire à l\'Esprit qui verse en nous l\'amour de Dieu.', 7, 368),
+(1560, 'Strophe', 4, 'Gloire au Dieu créateur de la terre et des cieux, \n\r Gloire au Fils éternel, rédempteur glorieux, \n\r Gloire, gloire à l\'Esprit qui verse en nous l\'amour de Dieu.', 7, 368);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (1561, 'Refrain', 1, 'Et le monde saura que nous sommes chrétiens \n\r Par l\'amour dont nos actes sont empreints.', 8, 368),
 (1562, 'Strophe', 1, 'Père, unis-nous tous, \n\r Père, unis-nous tous, \n\r Que le monde croie à ton amour; \n\r Père, unis-nous tous!', 1, 369),
 (1563, 'Refrain', 1, 'Un jour dans tes parvis \n\r Vaut mieux que mille ailleurs; \n\r Seigneur, tu nous unis, \n\r Nous sommes frères et sœurs.', 1, 370),
@@ -4100,8 +4106,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (1803, 'Strophe', 1, 'Je l\'ai trouvé, je l\'ai trouvé, \n\r Le bonheur ineffable! \n\r Je suis sauvé, je suis sauvé, \n\r Ô joie inexprimable! \n\r Tous mes péchés sont effacés, \n\r Le sang de Christ me lave. \n\r Les jours des larmes sont passés: \n\r Je ne suis plus esclave!', 1, 425),
 (1804, 'Strophe', 2, 'Oh! quel bonheur! oh! quel bonheur \n\r D\'avoir Jésus pour Maître! \n\r Ô mon Sauveur, mon seul Sauveur! \n\r À toi seul je veux être! \n\r Tu vins briser, puissant Vainqueur, \n\r Du mal la tyrannie, \n\r Affranchissant mon pauvre cœur \n\r Et me donnant la vie!', 2, 425),
 (1805, 'Strophe', 3, 'Dans ton amour, tu m\'as cherché, \n\r Errant bien loin du Père! \n\r Tu m\'as sauvé de mon péché, \n\r Tu fis de moi ton frère: \n\r Et maintenant, et pour jamais, \n\r Sous ton joug je me plie. \n\r Je ne puis vivre désormais, \n\r Jésus, que de ta vie!', 3, 425),
-(1806, 'Strophe', 4, 'Ah! laissez-moi chanter mon Roi, \n\r Oui, qu\'à genoux, je chante! \n\r Jésus n\'est-il pas tout pour moi? \n\r Gloire à sa croix sanglante! \n\r Sans se lasser, jour après jour, \n\r Il m\'aime, il m\'aime encore. \n\r Comment répondre à tant d\'amour? \n\r Je crois, j\'aime et j\'adore.', 4, 425);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(1806, 'Strophe', 4, 'Ah! laissez-moi chanter mon Roi, \n\r Oui, qu\'à genoux, je chante! \n\r Jésus n\'est-il pas tout pour moi? \n\r Gloire à sa croix sanglante! \n\r Sans se lasser, jour après jour, \n\r Il m\'aime, il m\'aime encore. \n\r Comment répondre à tant d\'amour? \n\r Je crois, j\'aime et j\'adore.', 4, 425),
 (1807, 'Strophe', 1, 'Pour cet immense bonheur, alléluia, \n\r Que tu as mis dans mon cœur, alléluia, \n\r Je veux te chanter, Seigneur, alléluia, \n\r Oui, Jésus est mon Sauveur, alléluia!', 1, 426),
 (1808, 'Strophe', 2, 'Je le redirai encore, alléluia, \n\r Que pour moi, Jésus est mort, alléluia, \n\r Voilà pourquoi je l\'adore, alléluia, \n\r Lui seul est tout mon trésor, alléluia!', 2, 426),
 (1809, 'Strophe', 3, 'Que chaque jour, à chaque heure, alléluia, \n\r En moi tu aies ta demeure, alléluia, \n\r Que ma vie soit une fleur, alléluia, \n\r Un parfum pour toi, Seigneur, alléluia!', 3, 426),
@@ -4352,12 +4357,12 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (2054, 'Strophe', 3, 'Le malheureux qui, dans son infortune, \n\r S\'adresse à toi, jamais ne t\'importune. \n\r Allez à lui, fatigués et chargés, \n\r Vous reviendrez guéris ou soulagés. \n\r Allez à lui, fatigués et chargés, \n\r Vous reviendrez guéris ou soulagés.', 3, 480),
 (2055, 'Strophe', 4, 'Nous voulons donc marcher à ta lumière, \n\r Guide céleste, Esprit de notre Père. \n\r Oui, nous voulons, docile à ta voix, \n\r Suivre joyeux le chemin de la croix. \n\r Oui, nous voulons, docile à ta voix, \n\r Suivre joyeux le chemin de la croix.', 4, 480),
 (2056, 'Strophe', 1, 'Son nom est Jésus, Jésus. \n\r Il vient pour te consoler. \n\r Il guérit les cœurs brisés, soulage les opprimés. \n\r Il est toujours capable de délivrer.', 1, 481),
-(2057, 'Strophe', 1, 'Quand écrasé, courbant la tête, \n\r Tu te nourris de tes malheurs, \n\r Ou que le désespoir te guette, \n\r Te livrant aux pires frayeurs:', 1, 482);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(2057, 'Strophe', 1, 'Quand écrasé, courbant la tête, \n\r Tu te nourris de tes malheurs, \n\r Ou que le désespoir te guette, \n\r Te livrant aux pires frayeurs:', 1, 482),
 (2058, 'Refrain', 1, 'Fixe les yeux sur le Maître \n\r Viens sur son merveilleux regard, \n\r Et tu seras dans tout ton être. \n\r Vivifié et pour lui mis à part.', 2, 482),
 (2059, 'Strophe', 2, 'Quand sur l\'océan ta nacelle \n\r Se remplit de flots écumants, \n\r Lorsqu\'autour de toi tout chancelle, \n\r Que tout te manque en un instant:', 3, 482),
 (2060, 'Refrain', 1, 'Fixe les yeux sur le Maître \n\r Viens sur son merveilleux regard, \n\r Et tu seras dans tout ton être. \n\r Vivifié et pour lui mis à part.', 4, 482),
-(2061, 'Strophe', 3, 'Quand ton cœur même devient tiède, \n\r En perdant ton premier amour; \n\r Quand le péché caché t\'obsède, \n\r Te tourmentant de nuit, de jour:', 5, 482),
+(2061, 'Strophe', 3, 'Quand ton cœur même devient tiède, \n\r En perdant ton premier amour; \n\r Quand le péché caché t\'obsède, \n\r Te tourmentant de nuit, de jour:', 5, 482);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (2062, 'Refrain', 1, 'Fixe les yeux sur le Maître \n\r Viens sur son merveilleux regard, \n\r Et tu seras dans tout ton être. \n\r Vivifié et pour lui mis à part.', 6, 482),
 (2063, 'Strophe', 4, 'Quand, affaibli, tu perds courage \n\r Dans ton service, pour Jésus; \n\r Quand lassé du pèlerinage, \n\r Ton œil ne le discerne plus:', 7, 482),
 (2064, 'Refrain', 1, 'Fixe les yeux sur le Maître \n\r Viens sur son merveilleux regard, \n\r Et tu seras dans tout ton être. \n\r Vivifié et pour lui mis à part.', 8, 482),
@@ -4607,8 +4612,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (2308, 'Strophe', 1, 'On t\'a fait connaître ô homme ce qui est bien; \n\r Et ce que l\'Éternel demande de toi, \n\r C\'est que tu pratiques la justice, \n\r Que tu aimes la miséricorde, \n\r Que tu marches humblement avec ton Dieu, \n\r Que tu marches humblement avec ton Dieu.', 1, 552),
 (2309, 'Refrain', 1, 'L\'Éternel, ton Dieu, \n\r Est au milieu de toi, \n\r Comme un héros qui sauve; \n\r Il fera de toi sa plus grande joie; \n\r Il gardera le silence dans son amour; \n\r La, la, la, la, la, la!', 1, 553),
 (2310, 'Refrain', 1, 'L\'Éternel, ton Dieu, \n\r Est au milieu de toi, \n\r Comme un héros qui sauve; \n\r Il fera de toi sa plus grande joie; \n\r Il gardera le silence dans son amour; \n\r La, la, la, la, la, la!', 2, 553),
-(2311, 'Strophe', 1, 'Pousse des cris de joie, fille de Sion. \n\r Pousse des cris de joie, Israël! \n\r Réjouis-toi et triomphe de tout ton cœur! \n\r La, la, la, la, la, \n\r La, la, la, la, la!', 3, 553);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(2311, 'Strophe', 1, 'Pousse des cris de joie, fille de Sion. \n\r Pousse des cris de joie, Israël! \n\r Réjouis-toi et triomphe de tout ton cœur! \n\r La, la, la, la, la, \n\r La, la, la, la, la!', 3, 553),
 (2312, 'Refrain', 1, 'L\'Éternel, ton Dieu, \n\r Est au milieu de toi, \n\r Comme un héros qui sauve; \n\r Il fera de toi sa plus grande joie; \n\r Il gardera le silence dans son amour.', 4, 553),
 (2313, 'Strophe', 1, 'Non par puissance, \n\r Non par force, \n\r Mais par mon Esprit. \n\r Non par puissance, \n\r Non par force, \n\r Mais par mon Esprit, \n\r Dit Dieu, l\'Éternel des armées, \n\r Dit Dieu, l\'Éternel des armées.', 1, 554),
 (2314, 'Strophe', 1, 'Non par puissance, \n\r Non par force, \n\r Mais par mon Esprit. \n\r Non par puissance, \n\r Non par force, \n\r Mais par mon Esprit, \n\r Dit Dieu, l\'Éternel des armées, \n\r Dit Dieu, l\'Éternel des armées.', 2, 554),
@@ -4881,14 +4885,14 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (2581, 'Strophe', 1, 'Ô Dieu, relève-nous, ô Dieu, relève-nous! \n\r Et que ton Fils à nos yeux se révèle. \n\r Qu\'en nous jaillisse une vie nouvelle, \n\r Ô Dieu, relève-nous, relève-nous!', 2, 613),
 (2582, 'Strophe', 2, 'Ô Dieu réveille-nous! que ta lumière \n\r Vienne chasser la nuit qui nous endort. \n\r Brise et transforme enfin nos cœurs de pierres, \n\r Relève-nous, Seigneur, d\'entre les morts.', 3, 613),
 (2583, 'Strophe', 2, 'Ô Dieu, réveille-nous, ô Dieu, réveille-nous! \n\r Et que ton Fils à nos yeux se révèle. \n\r Qu\'en nous jaillisse une vie nouvelle, \n\r Ô Dieu, réveille-nous, réveille-nous!', 4, 613),
-(2584, 'Strophe', 3, 'Ô Dieu visite-nous! viens et pardonne \n\r La tolérance de nos compromis. \n\r Que ton Esprit nous remplisse et nous donne \n\r D\'être en ta grâce toujours affermis.', 5, 613);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(2584, 'Strophe', 3, 'Ô Dieu visite-nous! viens et pardonne \n\r La tolérance de nos compromis. \n\r Que ton Esprit nous remplisse et nous donne \n\r D\'être en ta grâce toujours affermis.', 5, 613),
 (2585, 'Strophe', 3, 'Ô Dieu, visite-nous, ô Dieu visite-nous! \n\r Et que ton Fils à nos yeux se révèle. \n\r Qu\'en nous jaillisse une vie nouvelle, \n\r Ô Dieu visite-nous, visite-nous!', 6, 613),
 (2586, 'Strophe', 1, 'Quand sur terre tout déçoit, \n\r Que tout semble vain, \n\r Un ami dans ton effroi, \n\r Près de toi se tient.', 1, 614),
 (2587, 'Refrain', 1, 'Seul Jésus demeure, \n\r Seul Jésus demeure. \n\r Terre et ciel pourraient passer: \n\r Toujours Jésus demeure.', 2, 614),
 (2588, 'Strophe', 2, 'Quand le ciel est noir et lourd, \n\r Que l\'orage vient, \n\r Christ est là, son grand amour \n\r Près de toi se tient.', 3, 614),
 (2589, 'Refrain', 1, 'Seul Jésus demeure, \n\r Seul Jésus demeure. \n\r Terre et ciel pourraient passer: \n\r Toujours Jésus demeure.', 4, 614),
-(2590, 'Strophe', 3, 'À l\'heure où la sombre mort \n\r Croise ton chemin, \n\r C\'est Jésus qui veille encor \n\r Et vers toi se tient.', 5, 614),
+(2590, 'Strophe', 3, 'À l\'heure où la sombre mort \n\r Croise ton chemin, \n\r C\'est Jésus qui veille encor \n\r Et vers toi se tient.', 5, 614);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (2591, 'Refrain', 1, 'Seul Jésus demeure, \n\r Seul Jésus demeure. \n\r Terre et ciel pourraient passer: \n\r Toujours Jésus demeure.', 6, 614),
 (2592, 'Strophe', 1, 'Reste avec nous, Seigneur, le jour décline, \n\r La nuit s\'approche et nous menace tous; \n\r Nous implorons ta présence divine: \n\r Reste avec nous, Seigneur, reste avec nous!', 1, 615),
 (2593, 'Strophe', 2, 'Les vains bonheurs de ce monde infidèle \n\r N\'enfante rien que regrets et dégoûts; \n\r Nous avons soif d\'une joie éternelle: \n\r Reste avec nous, Seigneur, reste avec nous!', 2, 615),
@@ -5149,8 +5153,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (2848, 'Strophe', 1, 'Bénissez Dieu, \n\r Vous tous serviteurs de Dieu, \n\r Qui vous tenez, \n\r Dans la maison de Dieu, \n\r Levez vos mains, \n\r Vers le lieu très saint, \n\r Bénissez Dieu, \n\r l\'Éternel Dieu.', 1, 692),
 (2849, 'Strophe', 1, 'Chantez au Seigneur \n\r Un chant nouveau, \n\r Car il a fait des merveilles. \n\r Chantez au Seigneur \n\r Un chant nouveau, \n\r Car il a fait des merveilles.', 1, 693),
 (2850, 'Strophe', 1, 'Sa droite et son bras saint, \n\r Lui sont venus en aide. \n\r Chantez au Seigneur un chant nouveau, \n\r Chantez, chantez, un chant nouveau.', 2, 693),
-(2851, 'Refrain', 1, 'Tu es ma gloire, tu relèves ma tête, \n\r Tu es ma gloire, tu relèves ma tête. \n\r Ô Seigneur, tu es mon bouclier, \n\r Tu es ma gloire, tu relèves ma tête.', 1, 694);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(2851, 'Refrain', 1, 'Tu es ma gloire, tu relèves ma tête, \n\r Tu es ma gloire, tu relèves ma tête. \n\r Ô Seigneur, tu es mon bouclier, \n\r Tu es ma gloire, tu relèves ma tête.', 1, 694),
 (2852, 'Strophe', 1, 'Seigneur, de ma voix je crie à toi, \n\r Seigneur, de ma voix je crie à toi, \n\r Seigneur, de ma voix je crie à toi, \n\r Et tu me réponds de ton saint lieu.', 2, 694),
 (2853, 'Refrain', 1, 'Tu es ma gloire, tu relèves ma tête, \n\r Tu es ma gloire, tu relèves ma tête. \n\r Ô Seigneur, tu es mon bouclier, \n\r Tu es ma gloire, tu relèves ma tête.', 3, 694),
 (2854, 'Strophe', 1, 'Louons le Seigneur, le Seigneur, \n\r Élevons nos voix vers le ciel \n\r Et louons Dieu! \n\r Louons le Seigneur, le Seigneur, \n\r Élevons nos voix vers le ciel \n\r Et louons Dieu!', 1, 695),
@@ -5453,15 +5456,15 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (3151, 'Strophe', 3, 'Par son nom, par son nom, \n\r Nous avons la victoire, \n\r Par son nom, par son nom, \n\r Nous avons la victoire,', 9, 766),
 (3152, 'Strophe', 3, 'Par son nom, par son nom, \n\r Nous avons la victoire, \n\r Alléluia, gloire à toi, Seigneur!', 10, 766),
 (3153, 'Refrain', 1, 'Allélu, alléluia, gloire à toi, Seigneur; \n\r Allélu, alléluia, gloire à toi, Seigneur;', 11, 766),
-(3154, 'Refrain', 1, 'Allélu, alléluia, gloire à toi, Seigneur; \n\r Alléluia, gloire à toi, Seigneur!', 12, 766);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(3154, 'Refrain', 1, 'Allélu, alléluia, gloire à toi, Seigneur; \n\r Alléluia, gloire à toi, Seigneur!', 12, 766),
 (3155, 'Strophe', 4, 'Tous unis, tous unis, \n\r Nous aimons Jésus-Christ; \n\r Tous unis, tous unis, \n\r Nous aimons Jésus-Christ;', 13, 766),
 (3156, 'Strophe', 4, 'Tous unis, tous unis, \n\r Nous aimons Jésus-Christ; \n\r Alléluia, gloire à toi, Seigneur!', 14, 766),
 (3157, 'Refrain', 1, 'Allélu, alléluia, gloire à toi, Seigneur; \n\r Allélu, alléluia, gloire à toi, Seigneur;', 15, 766),
 (3158, 'Refrain', 1, 'Allélu, alléluia, gloire à toi, Seigneur; \n\r Alléluia, gloire à toi, Seigneur!', 16, 766),
 (3159, 'Strophe', 1, 'Je lève les yeux vers les montagnes… \n\r D\'où me viendra le secours? \n\r Le secours me vient de Dieu, \n\r Qui a fait la terre et les cieux.', 1, 767),
 (3160, 'Refrain', 1, 'Maranatha! Viens, Seigneur, viens! \n\r Seigneur Jésus nous tendons les mains vers toi. \n\r Maranatha! Viens, Seigneur, viens! \n\r Et là où tu es, oh prends nous avec toi!', 2, 767),
-(3161, 'Strophe', 2, 'Je suis dans la joie quand on me dit: \n\r Allons à la maison du Seigneur! \n\r Car nos peines sont finies, \n\r Au grand jour de l\'Éternel.', 3, 767),
+(3161, 'Strophe', 2, 'Je suis dans la joie quand on me dit: \n\r Allons à la maison du Seigneur! \n\r Car nos peines sont finies, \n\r Au grand jour de l\'Éternel.', 3, 767);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (3162, 'Refrain', 1, 'Maranatha! Viens, Seigneur, viens! \n\r Seigneur Jésus nous tendons les mains vers toi. \n\r Maranatha! Viens, Seigneur, viens! \n\r Et là où tu es, oh prends nous avec toi!', 4, 767),
 (3163, 'Strophe', 1, 'En présence de ton peuple, \n\r Je publie ton nom, \n\r Tu es saint et tu trônes \n\r Au milieu des louanges d\'Israël. \n\r Nous proclamons tous ensemble ta fidélité. \n\r Que ton nom soit exalté \n\r Sur la terre et dans le ciel!', 1, 768),
 (3164, 'Refrain', 1, 'Comme une biche soupire \n\r Après des courants d\'eau, courants d\'eau. \n\r Comme une biche soupire \n\r Après des courants d\'eau.', 1, 769),
@@ -5758,8 +5761,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (3455, 'Strophe', 1, 'Et tous les arbres des champs \n\r Battront des mains, \n\r Les arbres des champs battront des mains, \n\r Les arbres des champs battront des mains, \n\r Quand Dieu vous conduira.', 2, 842),
 (3456, 'Refrain', 1, 'Vous bondirez de joie, \n\r Vous marcherez en paix, \n\r Montagnes et collines, éclatez de joie! \n\r Et la nature entière, \n\r Et tous les arbres des champs \n\r Battront, battront des mains.', 3, 842),
 (3457, 'Strophe', 1, 'Je veux danser de joie \n\r Pour le Roi des rois, \n\r Il donna sa vie pour moi, \n\r Il vint me libérer, \n\r Je peux marcher \n\r Dans sa liberté.', 1, 843),
-(3458, 'Strophe', 2, 'Quand il toucha mon cœur, \n\r J\'ai senti son bonheur, \n\r Et j\'ai trouvé ma place, \n\r Car tu m\'as racheté, \n\r Seigneur par ta grâce, \n\r Et je veux toujours te louer.', 2, 843);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(3458, 'Strophe', 2, 'Quand il toucha mon cœur, \n\r J\'ai senti son bonheur, \n\r Et j\'ai trouvé ma place, \n\r Car tu m\'as racheté, \n\r Seigneur par ta grâce, \n\r Et je veux toujours te louer.', 2, 843),
 (3459, 'Strophe', 1, 'Je veux danser de joie \n\r Pour le Roi des rois, \n\r Il donna sa vie pour moi, \n\r Il vint me libérer, \n\r Je peux marcher \n\r Dans sa liberté.', 3, 843),
 (3460, 'Strophe', 2, 'Quand il toucha mon cœur, \n\r J\'ai senti son bonheur, \n\r Et j\'ai trouvé ma place, \n\r Car tu m\'as racheté, \n\r Seigneur par ta grâce, \n\r Et je veux toujours te louer.', 4, 843),
 (3461, 'Strophe', 3, 'Je veux danser, je veux chanter, \n\r Libéré du désespoir, \n\r Je veux louer, je veux crier \n\r Au Seigneur de victoire.', 5, 843),
@@ -6075,8 +6077,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (3771, 'Refrain', 1, 'Christ en vous l\'espoir de gloire. \n\r Christ en vous l\'espoir de gloire. \n\r Christ en vous l\'espoir de gloire, \n\r Pour l\'éternité.', 1, 910),
 (3772, 'Refrain', 1, 'Christ en vous l\'espoir de gloire. \n\r Christ en vous l\'espoir de gloire. \n\r Christ en vous l\'espoir de gloire, \n\r Pour l\'éternité.', 2, 910),
 (3773, 'Strophe', 1, 'Jésus, image du Père, \n\r En toi Dieu créa tout l\'univers. \n\r Par toi, il subsiste encore, \n\r Toi, le chef de ce corps que nous formons.', 3, 910),
-(3774, 'Refrain', 1, 'Christ en vous l\'espoir de gloire. \n\r Christ en vous l\'espoir de gloire. \n\r Christ en vous l\'espoir de gloire, \n\r Pour l\'éternité.', 4, 910);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(3774, 'Refrain', 1, 'Christ en vous l\'espoir de gloire. \n\r Christ en vous l\'espoir de gloire. \n\r Christ en vous l\'espoir de gloire, \n\r Pour l\'éternité.', 4, 910),
 (3775, 'Refrain', 1, 'Christ en vous l\'espoir de gloire. \n\r Christ en vous l\'espoir de gloire. \n\r Christ en vous l\'espoir de gloire, \n\r Pour l\'éternité.', 5, 910),
 (3776, 'Strophe', 1, 'Sans ta lumière, Seigneur, que ferions-nous dans ce monde? \n\r Perdus au large, dans le brouillard, au gré des vents.', 1, 911),
 (3777, 'Strophe', 1, 'Sans ta lumière, Seigneur, où irions-nous dans ce monde? \n\r La mer est immense, sans ta présence, que ferions-nous?', 2, 911),
@@ -6085,7 +6086,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (3780, 'Strophe', 2, 'Sans ta lumière, Seigneur, où irions-nous dans ce monde? \n\r Que décider? Qui écouter? Que ferions-nous?', 5, 911),
 (3781, 'Refrain', 1, 'Comme un phare dans la nuit, tu brilles sur tes enfants, tu nous guides vers le port, au cœur de ton amour. \n\r (2x)', 6, 911),
 (3782, 'Refrain', 1, 'Comme un souffle fragile, ta parole se donne. \n\r Comme un vase d\'argile, ton amour nous façonne.', 1, 912),
-(3783, 'Strophe', 1, 'Ta parole est murmure. \n\r Comme un secret d\'amour, ta parole est blessure, qui nous ouvre le jour.', 2, 912),
+(3783, 'Strophe', 1, 'Ta parole est murmure. \n\r Comme un secret d\'amour, ta parole est blessure, qui nous ouvre le jour.', 2, 912);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (3784, 'Refrain', 1, 'Comme un souffle fragile, ta parole se donne. \n\r Comme un vase d\'argile, ton amour nous façonne.', 3, 912),
 (3785, 'Strophe', 2, 'Ta parole est naissance. \n\r Comme on sort de prison, ta parole est semence, qui promet la moisson.', 4, 912),
 (3786, 'Refrain', 1, 'Comme un souffle fragile, ta parole se donne. \n\r Comme un vase d\'argile, ton amour nous façonne.', 5, 912),
@@ -6390,8 +6392,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (4085, 'Strophe', 3, 'Proclamons que Jésus est Roi, \n\r qu\'il est l\'Alpha et l\'Oméga. \n\r Celui qui est et qui était, \n\r celui qui vient, Prince de paix.', 6, 981),
 (4086, 'Refrain', 1, 'Nous proclamons que Jésus revient \n\r et cette ville lui appartient. \n\r Le Fils de Dieu par son Esprit Saint \n\r nous conduira dans le combat.', 7, 981),
 (4087, 'Strophe', 1, 'Nous sommes ton peuple, \n\r et nous portons ton nom; \n\r tu nous as rachetés \n\r pour proclamer ta gloire.', 1, 982),
-(4088, 'Strophe', 1, 'Au milieu de l\'obscurité, \n\r nous sommes la lumière, \n\r nous cherchons ta face Seigneur, \n\r révèle-toi.', 2, 982);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(4088, 'Strophe', 1, 'Au milieu de l\'obscurité, \n\r nous sommes la lumière, \n\r nous cherchons ta face Seigneur, \n\r révèle-toi.', 2, 982),
 (4089, 'Strophe', 1, 'Construis l\'Église, guéris ce pays \n\r et que ton royaume vienne. \n\r Construis l\'Église, guéris ce pays, \n\r que ta volonté soit faite.', 3, 982),
 (4090, 'Strophe', 1, 'Nous t\'adorons, ô Père, dans ton temple, \n\r nous t\'adorons en esprit et en vérité. \n\r Tu habites nos louanges, \n\r nous t\'adorons en esprit et en vérité.', 1, 983),
 (4091, 'Refrain', 1, 'Car un jour près de toi vaut mieux que mille ailleurs, \n\r je désire habiter dans ton temple.', 2, 983),
@@ -6699,8 +6700,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (4393, 'Refrain', 1, 'Le nom du Seigneur est un refuge, \n\r le juste accourt dans ses murs \n\r pour être sauvé. \n\r (2x)', 6, 1043),
 (4394, 'Refrain', 1, 'Brise-moi, brise tout ce qui est rebelle en moi. \n\r Émonde-moi de ces branches mortes qui ne fleuriront pas.', 1, 1044),
 (4395, 'Refrain', 1, 'Brise-moi, brise tout ce qui est rebelle en moi. \n\r Émonde-moi de ces branches mortes qui ne fleuriront pas.', 2, 1044),
-(4396, 'Strophe', 1, 'Il faut que tu grandisses et que je diminue, \n\r que tu grandisses et que je diminue, Jésus.', 3, 1044);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(4396, 'Strophe', 1, 'Il faut que tu grandisses et que je diminue, \n\r que tu grandisses et que je diminue, Jésus.', 3, 1044),
 (4397, 'Refrain', 1, 'Car Dieu a fait le serment \n\r de nous délivrer \n\r du pouvoir de tous nos ennemis. \n\r Car Dieu a fait le serment \n\r de nous libérer, \n\r afin de le servir sans crainte.', 1, 1045),
 (4398, 'Strophe', 1, 'Et de marcher devant lui, \n\r dans la sainteté et la justice. \n\r Et de marcher devant lui, \n\r dans la sainteté et la justice, \n\r tous les jours de notre vie, \n\r tous les jours de notre vie.', 2, 1045),
 (4399, 'Refrain', 1, 'Car Dieu a fait le serment \n\r de nous délivrer \n\r du pouvoir de tous nos ennemis. \n\r Car Dieu a fait le serment \n\r de nous libérer, \n\r afin de le servir sans crainte.', 3, 1045),
@@ -6709,7 +6709,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (4402, 'Refrain', 1, 'Chaque jour, \n\r je veux marcher dans tes voies \n\r chaque instant à chaque pas \n\r et vivre de ton amour.', 3, 1046),
 (4403, 'Strophe', 2, 'Chaque jour, \n\r je veux entendre ta voix \n\r et que ma vie soit pour toi \n\r tout comme un parfum d\'amour \n\r que je répands devant toi.', 4, 1046),
 (4404, 'Strophe', 2, 'Mais tu connais mon cœur, \n\r tu connais mes pensées, \n\r tous mes désirs secrets \n\r je ne peux les cacher.', 5, 1046),
-(4405, 'Strophe', 2, 'Tu te tiens devant moi \n\r et tout autour de moi, \n\r où donc pourrais-je aller \n\r sans toi à mes côtés?', 6, 1046),
+(4405, 'Strophe', 2, 'Tu te tiens devant moi \n\r et tout autour de moi, \n\r où donc pourrais-je aller \n\r sans toi à mes côtés?', 6, 1046);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (4406, 'Refrain', 1, 'Chaque jour, \n\r je veux marcher dans tes voies \n\r chaque instant à chaque pas \n\r et vivre de ton amour.', 7, 1046),
 (4407, 'Refrain', 1, 'Chaque jour, \n\r je veux entendre ta voix \n\r et que ma vie soit pour toi \n\r tout comme un parfum d\'amour \n\r que je répands devant toi.', 8, 1046),
 (4408, 'Strophe', 3, 'Mais j\'ai besoin de toi \n\r pour assurer mon pas, \n\r pour que ma vie entière \n\r soit noyée de lumière.', 9, 1046),
@@ -6989,8 +6990,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (4682, 'Refrain', 1, 'Le Dieu de victoire habite en moi. \n\r Le Dieu de victoire habite en moi. \n\r Je marche non par la vue, \n\r mais par la foi. \n\r Le Dieu de victoire habite en moi.', 4, 1098),
 (4683, 'Strophe', 1, 'Merveilleux Seigneur, \n\r merveilleux Sauveur, \n\r nous t\'adorons, \n\r nous t\'adorons, \n\r nous t\'adorons, \n\r merveilleux Seigneur.', 1, 1099),
 (4684, 'Strophe', 1, 'Merveilleux Seigneur, \n\r merveilleux Sauveur, \n\r nous t\'adorons, \n\r nous t\'adorons, \n\r nous t\'adorons, \n\r merveilleux Seigneur.', 2, 1099),
-(4685, 'Strophe', 1, 'Nous t\'adorons, \n\r nous t\'adorons, \n\r nous t\'adorons, \n\r merveilleux Seigneur.', 3, 1099);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(4685, 'Strophe', 1, 'Nous t\'adorons, \n\r nous t\'adorons, \n\r nous t\'adorons, \n\r merveilleux Seigneur.', 3, 1099),
 (4686, 'Strophe', 1, 'Nous t\'adorons, \n\r nous t\'adorons, \n\r nous t\'adorons, \n\r merveilleux Seigneur, \n\r merveilleux Seigneur, \n\r merveilleux Seigneur.', 4, 1099),
 (4687, 'Strophe', 1, 'Mon cœur s\'incline devant toi \n\r pour te louer, t\'adorer, \n\r tout-puissant Prince de paix. \n\r Tu es mon Roi. \n\r Assis au ciel avec toi, \n\r je te contemple, Éternel, \n\r parfait dans toutes tes voies, \n\r tu es mon Roi, tu es mon Roi.', 1, 1100),
 (4688, 'Strophe', 1, 'Nous adorons Adonaï, \n\r nous adorons El Shadaï. \n\r Nous élevons ton grand nom, \n\r nous te louons Seigneur.', 1, 1101),
@@ -7296,8 +7296,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (4988, 'Strophe', 3, 'Nous recevons sa puissance, \n\r l\'autorité, la délivrance. \n\r Nous allons marcher en vainqueurs, \n\r soumis à notre Seigneur.', 6, 1158),
 (4989, 'Refrain', 1, 'Nous élevons le nom de Jésus, \n\r au-dessus de tout esprit méchant. \n\r Nous élevons le nom de Jésus, \n\r car c\'est le nom du salut.', 7, 1158),
 (4990, 'Strophe', 1, 'Nous tous, qui reflétons le Seigneur de gloire \n\r à visage découvert, comme dans un miroir, \n\r nous sommes transformés à son image, \n\r transfigurés, de gloire en gloire \n\r par le Seigneur, l\'Esprit.', 1, 1159),
-(4991, 'Refrain', 1, 'Tu es merveilleux notre Dieu, notre Père, \n\r tu es glorieux sur ton trône de lumière \n\r et tu resplendis dans ton palais de gloire. \n\r Sur ta beauté, nous fixons nos regards, \n\r sur ta beauté, nous fixons nos regards.', 2, 1159);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(4991, 'Refrain', 1, 'Tu es merveilleux notre Dieu, notre Père, \n\r tu es glorieux sur ton trône de lumière \n\r et tu resplendis dans ton palais de gloire. \n\r Sur ta beauté, nous fixons nos regards, \n\r sur ta beauté, nous fixons nos regards.', 2, 1159),
 (4992, 'Strophe', 1, 'Oh! Jésus, mon Sauveur, \n\r Seigneur, nul n\'est comme toi. \n\r Jour après jour, je te louerai, \n\r car ton amour est merveilleux.', 1, 1160),
 (4993, 'Strophe', 2, 'Mon abri, mon refuge, \n\r mon réconfort, mon rocher \n\r tout ce qui vit, ce que je suis, \n\r ne cesse de t\'adorer.', 2, 1160),
 (4994, 'Refrain', 1, 'Chante au Seigneur, crie de joie terre entière. \n\r À Dieu la gloire, la puissance et l\'honneur. \n\r Les monts s\'inclinent et les flots rugissent \n\r à l\'écho de ton nom.', 3, 1160),
@@ -7306,7 +7305,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (4997, 'Refrain', 1, 'C\'est vrai, mon cœur est tortueux; \n\r c\'est vrai, il est dur et orgueilleux, \n\r et sans toi, je ne peux pas changer, \n\r Seigneur, viens m\'apprendre à aimer.', 2, 1161),
 (4998, 'Strophe', 2, 'Pardon de mépriser mes frères, \n\r pardon de rester là sans rien faire, \n\r pardon, c\'est mon cœur qui te prie, \n\r pardon, oh! viens purifier ma vie.', 3, 1161),
 (4999, 'Refrain', 1, 'C\'est vrai, mon cœur est tortueux; \n\r c\'est vrai, il est dur et orgueilleux, \n\r et sans toi, je ne peux pas changer, \n\r Seigneur, viens m\'apprendre à aimer.', 4, 1161),
-(5000, 'Strophe', 3, 'Tu nous as donné ta vie. \n\r Tu as donné ton Esprit \n\r pour que l\'on soit tes témoins. \n\r Tu as dit, c\'est par l\'amour \n\r que le monde qui nous entoure \n\r verra que tu es vivant. \n\r Alors entends nos prières, \n\r viens renverser nos barrières, \n\r viens nous apprendre à aimer.', 5, 1161),
+(5000, 'Strophe', 3, 'Tu nous as donné ta vie. \n\r Tu as donné ton Esprit \n\r pour que l\'on soit tes témoins. \n\r Tu as dit, c\'est par l\'amour \n\r que le monde qui nous entoure \n\r verra que tu es vivant. \n\r Alors entends nos prières, \n\r viens renverser nos barrières, \n\r viens nous apprendre à aimer.', 5, 1161);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (5001, 'Refrain', 1, 'C\'est vrai, nos cœurs sont tortueux; \n\r c\'est vrai, ils sont durs et orgueilleux, \n\r mais par toi, nous serons transformés; \n\r Seigneur, rétablis l\'unité.', 6, 1161),
 (5002, 'Strophe', 1, 'C\'est vrai, mais toi tu as payé; \n\r c\'est vrai, mais toi tu as tout changé, \n\r et par toi nous serons transformés; \n\r Seigneur, rétablis l\'unité. \n\r   \n\r Seigneur, nous voulons l\'unité. (2x)', 7, 1161),
 (5003, 'Strophe', 1, 'Pardon, Seigneur, pardon \n\r pour notre orgueil, nos résistances; \n\r viens enlever nos suffisances \n\r et chasser notre arrogance.', 1, 1162),
@@ -7564,8 +7564,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (5255, 'Refrain', 1, 'Oui, le Seigneur est bon \n\r et son amour n\'a pas de fin, \n\r de siècle en siècle \n\r et à jamais Il reste fidèle.', 9, 1213),
 (5256, 'Refrain', 1, 'Ouvre les yeux de mon cœur, \n\r ouvre les yeux de mon cœur. \n\r Je désire te voir, \n\r je désire te voir.', 1, 1214),
 (5257, 'Refrain', 1, 'Ouvre les yeux de mon cœur, \n\r ouvre les yeux de mon cœur. \n\r Je désire te voir, \n\r je désire te voir \n\r élevé au plus haut des cieux, \n\r rayonnant de l\'éclat de ta gloire.', 2, 1214),
-(5258, 'Refrain', 1, 'Répands ton amour, ta force, \n\r alors que nous chantons: «Tu es saint.»', 3, 1214);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(5258, 'Refrain', 1, 'Répands ton amour, ta force, \n\r alors que nous chantons: «Tu es saint.»', 3, 1214),
 (5259, 'Refrain', 1, 'Ouvre les yeux de mon cœur, \n\r ouvre les yeux de mon cœur. \n\r Je désire te voir, \n\r je désire te voir.', 4, 1214),
 (5260, 'Refrain', 1, 'Ouvre les yeux de mon cœur, \n\r ouvre les yeux de mon cœur. \n\r Je désire te voir, \n\r je désire te voir \n\r élevé au plus haut des cieux, \n\r rayonnant de l\'éclat de ta gloire.', 5, 1214),
 (5261, 'Refrain', 1, 'Répands ton amour, ta force, \n\r alors que nous chantons: «Tu es saint.» \n\r   \n\r Tu es saint, tu es saint, (3x) \n\r   \n\r je désire te voir.', 6, 1214),
@@ -7827,8 +7826,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (5517, 'Strophe', 2, 'Qui pourrait s\'élever plus haut que toi? \n\r Qui pourrait contempler ce que tu vois? \n\r Ton pouvoir infini surpasse tout. \n\r Tu es près de nous.', 2, 1267),
 (5518, 'Refrain', 1, 'Souverain sur tout ce qui existe, \n\r tu es maître de toute la terre. \n\r El Elyon, tu es le plus haut. \n\r Nous, ton peuple, chantons ta grandeur.', 3, 1267),
 (5519, 'Refrain', 1, 'Élève-toi, ô notre Dieu! \n\r Élève-toi, ô notre Dieu! \n\r Que ton règne vienne sur la terre! \n\r Que ton règne vienne parmi nous! \n\r (2x)', 1, 1268),
-(5520, 'Strophe', 1, 'J\'éclaterai en chants de triomphe, \n\r à la tête des grandes nations; \n\r je publierai tes hauts faits, ta gloire, \n\r pour l\'honneur de ton nom.', 2, 1268);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(5520, 'Strophe', 1, 'J\'éclaterai en chants de triomphe, \n\r à la tête des grandes nations; \n\r je publierai tes hauts faits, ta gloire, \n\r pour l\'honneur de ton nom.', 2, 1268),
 (5521, 'Refrain', 1, 'Élève-toi, ô notre Dieu! \n\r Élève-toi, ô notre Dieu! \n\r Que ton règne vienne sur la terre! \n\r Que ton règne vienne parmi nous! \n\r (2x)', 3, 1268),
 (5522, 'Strophe', 2, 'Je t\'élèverai parmi les peuples, \n\r en proclamant haut ta sainteté. \n\r Races et tribus de toute la terre \n\r te loueront à jamais.', 4, 1268),
 (5523, 'Refrain', 1, 'Élève-toi, ô notre Dieu! \n\r Élève-toi, ô notre Dieu! \n\r Que ton règne vienne sur la terre! \n\r Que ton règne vienne parmi nous! \n\r (2x)', 5, 1268),
@@ -7838,7 +7836,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (5527, 'Refrain', 1, 'Tu es le Dieu jaloux et devant ta justice \n\r un amour divisé ne pourrait subsister. \n\r Ta passion infinie demeure sans compromis. \n\r Toi, Dieu au cœur de feu, c\'est mon cœur que tu veux.', 2, 1269),
 (5528, 'Strophe', 2, 'Tu es jaloux de ton nom, tu es jaloux de ta gloire. \n\r Rien ne peut se comparer à ton immensité. \n\r De ton trône de lumière, tu fais trembler l\'univers. \n\r Toi, le Dieu de sainteté, tu nous veux tout entier.', 3, 1269),
 (5529, 'Refrain', 1, 'Tu es le Dieu jaloux et devant ta justice \n\r un amour divisé ne pourrait subsister. \n\r Ta passion infinie demeure sans compromis. \n\r Toi, Dieu au cœur de feu, c\'est mon cœur que tu veux.', 4, 1269),
-(5530, 'Refrain', 1, 'Reçois toute notre affection; \n\r tu es le seul Dieu vivant! \n\r Reçois toute notre affection; \n\r tu es le seul Dieu.', 5, 1269),
+(5530, 'Refrain', 1, 'Reçois toute notre affection; \n\r tu es le seul Dieu vivant! \n\r Reçois toute notre affection; \n\r tu es le seul Dieu.', 5, 1269);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (5531, 'Strophe', 1, 'Dans les heures sombres de crainte et de doute, \n\r seul dans mon désert, j\'ai perdu la route. \n\r Mais Dieu s\'approche de ma souffrance. \n\r Je n\'suis pas oublié, car Dieu est El Roï.', 1, 1270),
 (5532, 'Refrain', 1, 'El Roï, toi qui vois dans le secret de mon cœur. \n\r Tu connais mes pensées, tout de moi. \n\r El Roï, toi qui vois dans ta sagesse infinie, \n\r tu consoles et je suis libre en toi.', 2, 1270),
 (5533, 'Strophe', 2, 'Je loue ta sagesse, ta tendre affection. \n\r Tu me relèves de l\'humiliation, \n\r car tu t\'approches de ma souffrance. \n\r Je n\'suis pas oublié, car tu es El Roï.', 3, 1270),
@@ -8108,8 +8107,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (5797, 'Refrain', 1, 'Nous élevons le nom qui sauve, \n\r Le nom tout-puissant de Jésus. \n\r À lui le sceptre et la couronne, \n\r Car l\'oppresseur Il a vaincu!', 3, 1320),
 (5798, 'Strophe', 2, 'Prions, c\'est lui l\'espoir de ce pays! \n\r Restons debout, unis, joyeux, \n\r car rien n\'est impossible à Dieu!', 4, 1320),
 (5799, 'Strophe', 1, 'Nous nous attendons à te voir, \n\r nous nous préparons à recevoir \n\r ton Esprit qui te loue et te contemple, \n\r ton feu qui sanctifie ton temple. \n\r Viens et sonde nos pensées, \n\r mets en nous ta sainteté, \n\r revêts-nous d\'un esprit de pureté; \n\r Jésus, que tu sois glorifié!', 1, 1321),
-(5800, 'Strophe', 1, 'Nous nous attendons à te voir, \n\r nous nous préparons à recevoir \n\r ton Esprit qui te loue et te contemple, \n\r ton feu qui sanctifie ton temple. \n\r Viens et sonde nos pensées, \n\r mets en nous ta sainteté, \n\r revêts-nous d\'un esprit de pureté; \n\r Jésus, que tu sois glorifié!', 2, 1321);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(5800, 'Strophe', 1, 'Nous nous attendons à te voir, \n\r nous nous préparons à recevoir \n\r ton Esprit qui te loue et te contemple, \n\r ton feu qui sanctifie ton temple. \n\r Viens et sonde nos pensées, \n\r mets en nous ta sainteté, \n\r revêts-nous d\'un esprit de pureté; \n\r Jésus, que tu sois glorifié!', 2, 1321),
 (5801, 'Refrain', 1, 'Alléluia, alléluia, alléluia, \n\r que ton Esprit habite au milieu de nous! \n\r Alléluia, alléluia, alléluia. \n\r Tu règnes à jamais, oui, à jamais, à jamais, \n\r ton règne dure à toujours.', 3, 1321),
 (5802, 'Strophe', 2, 'Louange, honneur, puissance et gloire \n\r soient à notre Père, au Roi des rois! \n\r Louange, honneur, puissance et gloire \n\r aux siècles des siècles, amen. Amen.', 4, 1321),
 (5803, 'Strophe', 1, 'Quand l\'Éternel ramena les captifs de Sion, \n\r nous étions comme ceux qui font un rêve. \n\r Alors notre bouche était remplie de cris de joie \n\r et notre langue de chants d\'allégresse. \n\r Alors on disait parmi les nations:', 1, 1322),
@@ -8384,8 +8382,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (6072, 'Strophe', 2, 'Ton pouvoir n\'aura jamais de fin. \n\r Dieu, tu es encore Dieu. \n\r Dieu, tu es encore Dieu. \n\r Pour toi, les idoles ne sont rien. \n\r Dieu, tu es encore Dieu. \n\r Dieu, tu es encore Dieu. \n\r Tu es tout pour moi. Tu es tout pour moi.', 3, 1377),
 (6073, 'Refrain', 1, 'Tu as tout créé, Dieu. \n\r Tu as tout créé, des étoiles au cri du nouveau-né. \n\r Tu es souverain Dieu. \n\r Tu es souverain. \n\r Tu étais, tu es et tu reviens. \n\r Tu es Dieu. Tu es Dieu. Le seul Dieu.', 4, 1377),
 (6074, 'Strophe', 1, 'C\'est par tes souffrances que je suis guéri. \n\r Ta miséricorde me donne la vie. \n\r C\'est dans ta mort que se trouve mon salut, \n\r inépuisable est ta grâce, mon Jésus!', 1, 1378),
-(6075, 'Strophe', 2, 'Les clous du calvaire, l\'épine et la croix \n\r ont frappé un juste, condamné pour moi. \n\r C\'est par amour que tu as comparu, \n\r inépuisable est ta grâce, mon Jésus!', 2, 1378);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(6075, 'Strophe', 2, 'Les clous du calvaire, l\'épine et la croix \n\r ont frappé un juste, condamné pour moi. \n\r C\'est par amour que tu as comparu, \n\r inépuisable est ta grâce, mon Jésus!', 2, 1378),
 (6076, 'Strophe', 3, 'C\'est dans ma faiblesse que je viens à toi, \n\r poser ma détresse au pied de mon Roi. \n\r Un seul regard et je suis secouru. \n\r Inépuisable est ta grâce, mon Jésus!', 3, 1378),
 (6077, 'Strophe', 1, 'J\'ai faim, je viens à toi, \n\r je le sais: tu rassasies. \n\r J\'ai soif, mais je sais que ton amour ne peut tarir. \n\r Je m\'attends à toi, je m\'attends à toi.', 1, 1379),
 (6078, 'Refrain', 1, 'À genoux devant toi, \n\r je t\'offre tout de moi. \n\r Jésus, tu es le seul pour qui je vis.', 2, 1379),
@@ -8396,7 +8393,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (6083, 'Strophe', 3, 'J\'aime l\'Éternel car Il entend ma voix. \n\r Il a penché son oreille vers moi. \n\r Je marcherai devant l\'Éternel \n\r sur la terre des vivants.', 3, 1380),
 (6084, 'Strophe', 4, 'Je l\'invoquerai toute ma vie. \n\r J\'aime l\'Éternel, j\'aime l\'Éternel, \n\r j\'aime l\'Éternel car Il entend ma voix. \n\r Il a penché son oreille vers moi.', 4, 1380),
 (6085, 'Strophe', 1, 'Ma vie est entre tes mains, je compte sur toi. \n\r Ton amour toujours présent, je compte sur toi. \n\r Même si les montagnes s\'écroulent dans la mer, \n\r je compte sur toi.', 1, 1381),
-(6086, 'Refrain', 1, 'Même si les étoiles tombent et le monde tremble, \n\r tous les jours tu es fidèle, \n\r nouvelle grâce des cieux, \n\r comme un arbre dans ton temple \n\r entouré par les murs de ton amour.', 2, 1381),
+(6086, 'Refrain', 1, 'Même si les étoiles tombent et le monde tremble, \n\r tous les jours tu es fidèle, \n\r nouvelle grâce des cieux, \n\r comme un arbre dans ton temple \n\r entouré par les murs de ton amour.', 2, 1381);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (6087, 'Strophe', 2, 'Quand je ne vois pas le chemin, je compte sur toi. \n\r Je crois en ta parole, je compte sur toi. \n\r Même si je m\'enfonce, coule sous les vagues, \n\r je compte sur toi. \n\r Je sais que tu me guideras vers la terre ferme.', 3, 1381),
 (6088, 'Refrain', 1, 'Tous les jours tu es fidèle, \n\r nouvelle grâce des cieux, \n\r comme un arbre dans ton temple \n\r entouré par les murs de ton amour.', 4, 1381),
 (6089, 'Refrain', 1, 'Je demeure sous l\'abri du Très-Haut, \n\r et je me repose \n\r à l\'ombre du Dieu tout-puissant. \n\r Il est mon refuge et mon appui, \n\r l\'Éternel en qui je me confie.', 1, 1382),
@@ -8665,8 +8663,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (6352, 'Strophe', 2, 'Entends le son des cœurs \n\r Qui reviennent à toi, \n\r Reviennent à toi. \n\r Dans ton Royaume, \n\r Les vies brisées sont restaurées, \n\r Sont restaurées.', 5, 1426),
 (6353, 'Refrain', 1, 'Hosanna! Hosanna! \n\r Tu es le Roi, le Sauveur, \n\r A toi la gloire et l\'honneur. \n\r Hosanna! Hosanna! \n\r Nous t\'accueillons parmi nous, \n\r Sois le bienvenu, ô Jésus.', 6, 1426),
 (6354, 'Strophe', 1, 'Je vois le roi de gloire, \n\r Qui revient sur les nuées. \n\r Les nations tremblent, les nations tremblent. \n\r Je vois son amour, sa grâce \n\r Qui efface nos péchés. \n\r Ton peuple chante, ton peuple chante.', 1, 1427),
-(6355, 'Refrain', 1, '«Hosanna, hosanna, \n\r Hosanna à toi, Seigneur. \n\r Hosanna, hosanna, \n\r Hosanna à toi, Seigneur.»', 2, 1427);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(6355, 'Refrain', 1, '«Hosanna, hosanna, \n\r Hosanna à toi, Seigneur. \n\r Hosanna, hosanna, \n\r Hosanna à toi, Seigneur.»', 2, 1427),
 (6356, 'Strophe', 2, 'Je vois une génération, \n\r Qui prend sa place avec foi. \n\r Le cœur fervent, le cœur fervent. \n\r Je vois venir un réveil, \n\r Qui s\'attise quand nous prions. \n\r Nous te cherchons, nous te cherchons.', 3, 1427),
 (6357, 'Refrain', 1, '«Hosanna, hosanna, \n\r Hosanna à toi, Seigneur. \n\r Hosanna, hosanna, \n\r Hosanna à toi, Seigneur.»', 4, 1427),
 (6358, 'Strophe', 3, 'Prends mon cœur et rends-le pur, \n\r Ouvre grand mes yeux à ta vérité. \n\r Montre-moi comment aimer, comme tu m\'aimes. \n\r Rends-moi sensible à ta peine. \n\r Tout en moi vit pour voir venir ton règne \n\r Dès maintenant et pour l\'éternité.', 5, 1427),
@@ -8976,8 +8973,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (6662, 'Refrain', 1, 'Brise en moi ce qui ne te plaît pas \n\r Inspire moi viens guider mes pas,', 7, 1498),
 (6663, 'Strophe', 4, 'Donne- moi, la joie de ton pardon, \n\r Je me confie en toi.', 8, 1498),
 (6664, 'Strophe', 1, 'Saint saint saint est le Seigneur \n\r Dieu puissant et fort \n\r La terre et les ceux sont remplis de sa gloire', 1, 1499),
-(6665, 'Strophe', 2, 'Hosana Hosana \n\r Au plus haut des cieux', 2, 1499);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(6665, 'Strophe', 2, 'Hosana Hosana \n\r Au plus haut des cieux', 2, 1499),
 (6666, 'Strophe', 1, 'Saint-Esprit descends sur nous \n\r Descends sur nous \n\r Consolateur, Ami \n\r À nouveau touche nos vies \n\r Saint-Esprit descends sur nous \n\r Descends sur nous \n\r Que Ta puissance vienne \n\r Que Ta voix résonne \n\r Viens et change nos cœurs \n\r Accomplis Ta parole \n\r Saint-Esprit descends sur nous \n\r Personne n\'a vu, ni entendu \n\r Personne n\'a connu ce que Dieu réserve \n\r Que les cieux s\'ouvrent \n\r Et que vienne la pluie \n\r Sur Ton église et sur nos vies', 1, 1500),
 (6667, 'Strophe', 1, 'Tous ont besoin d’être aimés \n\r D’un amour sans limite. \n\r Que ta grâce coule en moi. \n\r Tous ont besoin de pardon, \n\r De la bonté d’un Sauveur, \n\r L’espoir des nations.', 1, 1501),
 (6668, 'Strophe', 2, 'Sauveur, il déplace les montagnes, \n\r Mon Dieu sauve avec puissance, \n\r Il sauve avec puissance. \n\r Pour toujours créateur du salut, \n\r Jésus a vaincu la mort. \n\r Il a vaincu la mort.', 2, 1501),
@@ -8987,7 +8983,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (6672, 'Refrain', 1, 'Ah! Répandons la divine semence. \n\r Dans le succès comme dans le mépris. \n\r Le jour se lève et la moisson s\'avance, \n\r Et Dieu, là-haut, nous réserve le prix.', 2, 1502),
 (6673, 'Strophe', 2, 'Semons sur le bord de la route, \n\r Semons sur le terrain pierreux; \n\r Semons dans le cœur où le doute \n\r Semble étouffer la voix des cieux. \n\r Semons! Et, si l\'on vous écoute, \n\r Parlons du Sauveur glorieux.', 3, 1502),
 (6674, 'Strophe', 3, 'Semons lorsque, dans sa tristesse, \n\r Notre cœur murmure : « À quoi bon? » \n\r Répétons à tous la promesse \n\r Et l\'Évangile du pardon. \n\r Semons! Bientôt, douce allégresse, \n\r Luira le jour de la moisson.', 4, 1502),
-(6675, 'Intro', 1, 'Ta parole est ma boussole', 1, 1503),
+(6675, 'Intro', 1, 'Ta parole est ma boussole', 1, 1503);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (6676, 'Pré-Refrain', 1, 'Ta parole est ma boussole \n\r Elle me guide et m’éclaire \n\r Me révèle ton image  \n\r ô mon Dieu;', 2, 1503),
 (6677, 'Strophe', 1, 'Ta parole est ma boussole \n\r Elle me rapproche de Toi \n\r Elle me remplit de ta joie \n\r Elle me conduit vers l’Eternité.', 3, 1503),
 (6678, 'Strophe', 1, 'Venez le célébrer, \n\r Son grand amour Venez le chanter, \n\r Le fils de Dieu est venu donner la vie. \n\r Nous te fêtons, ô Roi, \n\r Car tu nous fais partager ta joie \n\r Et nous offrons en ton honneur \n\r Un chant d\'amour, Seigneur. \n\r Venez le célébrer, célébrer, célébrer, chanter, \n\r Célébrer, chanter notre Roi. \n\r (x2)', 1, 1504),
@@ -9176,8 +9173,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (6861, 'Strophe', 1, 'À toi la gloire! Ô mon céleste Père,\r\nQui dans l\'abîme où j\'étais loin de toi,\r\nVins par Jésus m\'inonder de lumière\r\nEt de l\'esclave, un beau jour, faire un roi!\r\n', 1, 1550),
 (6862, 'Refrain', 1, 'Amour sûblime \r\nDe l\'Éternel!\r\nPardon du crime,\r\nC\'est le grand message du ciel.\r\n', 2, 1550),
 (6863, 'Strophe', 2, 'Oh! Quel amour, quel amour insondable,\r\nDivin Sauveur, t\'a fait descendre en moi!\r\nBlasphémateur indigne et misérable,\r\nÀ ton seul nom je frissonnais d\'effroi.\r\n', 3, 1550),
-(6864, 'Strophe', 3, 'À toi ce coeur, ce pauvre coeur qui t\'aime!\r\nÀ toi ma vie, ô toi qui m\'as sauvé!\r\nHumble fleuron à ton pur diadème,\r\nJe suis à toi, car ton sang m\'a lavé.\r\n', 4, 1550);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(6864, 'Strophe', 3, 'À toi ce coeur, ce pauvre coeur qui t\'aime!\r\nÀ toi ma vie, ô toi qui m\'as sauvé!\r\nHumble fleuron à ton pur diadème,\r\nJe suis à toi, car ton sang m\'a lavé.\r\n', 4, 1550),
 (6865, 'Strophe', 4, 'Garde, ô mon Dieu! Protège ta conquête,\r\nTrop faible, hélas, pour combattre sans toi.\r\nEt que bientôt, dans l\'éternelle fête,\r\nAvec les tiens je contemple mon Roi! \r\n\r\n', 5, 1550),
 (6866, 'Strophe', 1, 'Je veux chanter l\'amour puissant\r\nQui sauve et qui délivre,\r\nQui remplit mon coeur maintenant\r\nDe joie et me fait vivre.\r\n', 1, 1551),
 (6867, 'Refrain', 1, 'Je veux chanter, \r\nChanter de tout mon coeur\r\nL\'amour de Dieu, \r\nL\'amour de mon Sauveur.\r\n', 2, 1551),
@@ -9401,8 +9397,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (7085, 'Refrain', 1, 'Jésus, Jésus,\r\nQui peut sonder son amour?\r\nJésus, Jésus,\r\nJe t\'aime en retour.\r\n', 2, 1607),
 (7086, 'Strophe', 2, 'Mon Sauveur m\'aime,\r\nMalgré mon indignité,\r\nToujours le même,\r\nPlein de pitié.\r\nIl voit ma souffrance,\r\nIl enlève mon souci,\r\nSon amour immense\r\nEst mon sûr abri.\r\n', 3, 1607),
 (7087, 'Strophe', 3, 'Mon Sauveur m\'aime,\r\nComme un joyau précieux\r\nDu diadème\r\nQu\'il porte aux cieux.\r\nSa vie éternelle,\r\nIl la partage avec moi,\r\nSa gloire immortelle,\r\nIl l\'offre à ma foi. \r\n\r\n', 4, 1607),
-(7088, 'Strophe', 1, 'Lorsque dans ma souillure\r\nSans bonheur et sans paix,\r\nDans une voie impure,\r\nLoin de Dieu je marchais,\r\nTout l\'amour du Calvaire\r\nÀ moi s\'est révélé,\r\nTerrassant l\'adversaire,\r\nBrisant mon coeur souillé.\r\n', 1, 1608);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(7088, 'Strophe', 1, 'Lorsque dans ma souillure\r\nSans bonheur et sans paix,\r\nDans une voie impure,\r\nLoin de Dieu je marchais,\r\nTout l\'amour du Calvaire\r\nÀ moi s\'est révélé,\r\nTerrassant l\'adversaire,\r\nBrisant mon coeur souillé.\r\n', 1, 1608),
 (7089, 'Refrain', 1, 'L\'amour de Jésus m\'est doux,\r\nChaque jour il m\'est plus doux.\r\nAmour qui me presse\r\nD\'inviter sans cesse\r\nTous au divin rendez-vous.\r\n', 2, 1608),
 (7090, 'Strophe', 2, 'Cet amour fort et tendre\r\nDe mon divin Sauveur,\r\nOh! Je le veux répandre\r\nPartout avec ardeur,\r\nParmi tous ceux dont l\'âme\r\nLutte et soupire encor\r\nSous l\'esclavage infâme\r\nDu péché, de la mort.\r\n', 3, 1608),
 (7091, 'Strophe', 3, 'Quand la foi, l\'espérance\r\nPasseront pour jamais,\r\nDe Christ, l\'amour immense\r\nNous remplira de paix.\r\nObjets de sa tendresse,\r\nLes phalanges d\'élus\r\nRépéteront sans cesse\r\nTout l\'amour de Jésus. \r\n\r\n', 4, 1608),
@@ -9415,7 +9410,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (7098, 'Strophe', 3, 'Amour parfait que rien ne lasse\r\nTu l\'offres au plus dégradé;\r\nTu fais surabonder la grâce\r\nOù les péchés ont abondé.\r\n', 3, 1610),
 (7099, 'Strophe', 4, 'Oh! pour tes souffrances suprêmes,\r\nPour tes pitiés, pour tes pardons,\r\nPour tout l\'amour dont tu nous aimes,\r\nSauveur béni, nous t\'adorons! \r\n\r\n', 4, 1610),
 (7100, 'Strophe', 1, 'Redites-moi l\'histoire\r\nDe l\'amour de Jésus;\r\nParlez-moi de la gloire\r\nQu\'il promet aux élus.\r\nJ\'ai besoin qu\'on m\'instruise,\r\nCar je suis ignorant,\r\nQu\'à Christ on me conduise\r\nComme un petit enfant.\r\n', 1, 1611),
-(7101, 'Refrain', 1, 'Redites-moi l\'histoire (ter)\r\nDe l\'amour de Jésus.\r\n', 2, 1611),
+(7101, 'Refrain', 1, 'Redites-moi l\'histoire (ter)\r\nDe l\'amour de Jésus.\r\n', 2, 1611);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (7102, 'Strophe', 2, 'Redites-moi l\'histoire\r\nDe la crèche à la croix;\r\nÉveillez ma mémoire,\r\nOublieuse parfois.\r\nCette histoire si belle,\r\nDites-la simplement;\r\nElle est toujours nouvelle,\r\nRépétez-la souvent. \r\n', 3, 1611),
 (7103, 'Strophe', 3, 'Redites-moi l\'histoire\r\nDe mon divin Sauveur ;\r\nC\'est lui, dont la victoire\r\nAffranchit le pécheur.\r\nCe glorieux message,\r\nOh! redites-le moi,\r\nLorsque je perds courage,\r\nLorsque faiblit ma foi. \r\n\r\n', 4, 1611),
 (7104, 'Strophe', 1, 'Oh! parlez-moi de Christ, mon Sauveur\r\nSur ce grand thème revenez,\r\nChantez sa grâce et sa faveur,\r\nSon nom béni, chantez! chantez!\r\n', 1, 1612),
@@ -9637,8 +9633,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (7320, 'Strophe', 4, 'Qu\'en nous quittant, Sauveur fidèle!\r\nNous demeurions unis en toi;\r\nHabite en nos coeurs par la foi,\r\nEt que l\'Esprit nous renouvelle ! \r\n\r\n', 4, 1662),
 (7321, 'Strophe', 1, 'Ta voix, Jésus, nous dit à tous;\r\n« Aimez-vous!\r\nGardez ma loi nouvelle, \r\nAimez-vous! »\r\nLoi sainte et belle, \r\nJésus, nous l\'entendrons,\r\nJésus, nous la suivrons. (bis)\r\n', 1, 1663),
 (7322, 'Strophe', 2, 'Ta mort, Jésus, a répété :\r\n« Charité!\r\nPour réjouir la terre,\r\nCharité! »\r\nSur le Calvaire,\r\nJésus nous t\'entendrons,\r\nJésus nous te suivrons. (bis) \r\n\r\n', 2, 1663),
-(7323, 'Strophe', 1, 'Ô Seigneur! ô Sauveur! que nos lèvres te louent! \r\nMais qu\'avec nos accents nos oeuvres soient d\'accord!\r\nSi par nos actions nos coeurs te désavouent,\r\nDans nos chants les plus beaux tout est vain, tout est mort. (bis)\r\n', 1, 1664);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(7323, 'Strophe', 1, 'Ô Seigneur! ô Sauveur! que nos lèvres te louent! \r\nMais qu\'avec nos accents nos oeuvres soient d\'accord!\r\nSi par nos actions nos coeurs te désavouent,\r\nDans nos chants les plus beaux tout est vain, tout est mort. (bis)\r\n', 1, 1664),
 (7324, 'Strophe', 2, 'Tu naquis pour servir, et servir fut ta gloire;\r\nServir est à jamais le sceau de tes enfants.\r\nQui fait peu t\'aime peu; gui se borne à te croire\r\nNe te croit point encore, ô Sauveur des croyants! (bis)\r\n', 2, 1664),
 (7325, 'Strophe', 3, 'Quoi! Seigneur! je croirais à tes saintes promesses,\r\nEt pour tes ordres saints je n\'aurais point de foi!\r\nSoumis pour espérer, pour goûter tes largesses,\r\nJe ne le serais plus pour accepter ta loi! (bis)\r\n', 3, 1664),
 (7326, 'Strophe', 4, 'Que de maux, de périls et de besoins m\'appellent!\r\nQue de frères, d\'amis, Dieu jette dans mes bras!\r\nQue d\'oeuvres à fonder! que d\'oeuvres qui chancellent!\r\nTravaillons, le loisir n\'appartient qu\'aux ingrats. (bis) \r\n\r\n', 4, 1664),
@@ -9868,8 +9863,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (7550, 'Strophe', 3, 'Sonnez, de l\'heure suprême,\r\nEt la honte et le mépris\r\nQuand le Fils de Dieu lui-même\r\nDu salut paya le prix.\r\nÉclatez en cris de joie,\r\nLouez le Triomphateur!\r\nLa tombe a lâché sa proie,\r\nSur la mort, Christ est vainqueur.\r\n', 4, 1721),
 (7551, 'Strophe', 4, 'Votre voix, cloches fidèles,\r\nVa, parcourant l\'univers\r\nSupplier tous les rebelles,\r\nQui gémissent dans les fers,\r\nDe chercher la délivrance,\r\nLe pardon, la liberté\r\nEn Christ, leur seule espérance,\r\nPour le temps, l\'éternité.\r\n\r\n', 5, 1721),
 (7552, 'Strophe', 1, 'Chantons la victoire\r\nDu Roi glorieux,\r\nLouons sa mémoire\r\nChère aux coeurs pieux.\r\nRedressons la tête,\r\nUn immense espoir\r\nAu ciel se reflète\r\nÀ l\'heure du soir.\r\nSur la pure cime\r\nQu\'embrase l\'amour,\r\nDu règne sublime\r\nS\'annonce le jour.\r\n', 1, 1722),
-(7553, 'Strophe', 2, 'Sous nos yeux le monde\r\nSe meurt dans la nuit.\r\nLe mal surabonde\r\nEt la paix s\'enfuit.\r\nFrères, la lumière\r\nViens sur nous du ciel,\r\nMontrons à la terre\r\nSon Emmanuel.\r\nNe prends nul relâche,\r\nO peuple de Dieu!\r\nEt sois pour la tâche\r\nBaptisé de feu.\r\n', 2, 1722);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(7553, 'Strophe', 2, 'Sous nos yeux le monde\r\nSe meurt dans la nuit.\r\nLe mal surabonde\r\nEt la paix s\'enfuit.\r\nFrères, la lumière\r\nViens sur nous du ciel,\r\nMontrons à la terre\r\nSon Emmanuel.\r\nNe prends nul relâche,\r\nO peuple de Dieu!\r\nEt sois pour la tâche\r\nBaptisé de feu.\r\n', 2, 1722),
 (7554, 'Strophe', 3, 'Vers tous les rivages\r\nS\'en vont tes enfants :\r\nAux peuples sauvages\r\nLes plus ignorants.\r\nC\'est l\'appel suprême\r\nQu\'adresse en tous lieux\r\nL\'Évangile même\r\nDu grand Roi des cieux.\r\nQue tout coeur l\'implore,\r\nQue sur tous enfin\r\nSe lève l\'aurore\r\nDu salut divin!\r\n	\r\n4\r\nMessagers, mes frères,\r\nDe ce dernier jour,\r\nÀ vous nos prières,\r\nÀ vous notre amour!\r\nLutte en la vallée,\r\nVeille sur les monts,\r\nUne est la mêlée\r\nOù nous combattons.\r\nBientôt, dans sa gloire,\r\nReviandra Jésus...\r\nPeuple de victoire\r\nMarche et ne crains plus!\r\n\r\n', 3, 1722),
 (7555, 'Strophe', 1, 'Entends-tu le chant joyeux?\r\nJésus sauve aujourd\'hui!\r\nIl retentit en tous lieux,\r\nJésus sauve aujourd\'hui!\r\nC\'est un cri de délivrance,\r\nUn cantique d\'espérance,\r\nQui remplit l\'espace immense :\r\nJésus sauve aujourd\'hui!\r\n', 1, 1723),
 (7556, 'Strophe', 2, 'Partout élève la voix\r\nJésus sauve aujourd\'hui!\r\nVaillant héraut de la croix\r\nJésus sauve aujourd\'hui!\r\nÀ parler, Jésus t\'appelle,\r\nRépands au loin la nouvelle,\r\nEn connais-tu de plus belle?\r\nJésus sauve aujourd\'hui!\r\n', 2, 1723),
@@ -9880,7 +9874,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (7561, 'Strophe', 3, 'Seigneur, que nos requêtes\r\nS\'élèvent jusqu\'à toi,\r\nPour hâter les conquêtes\r\nDe ta divine foi.\r\nPour hâter les conquêtes\r\nDe ta divine foi.\r\n', 3, 1724),
 (7562, 'Strophe', 4, 'Qu\'aux plus lointains rivages\r\nLe Sauveur soit connu,\r\nQu\'aux bords les plus sauvages\r\nIl soit le bienvenu!\r\nQu\'aux bords les plus sauvages\r\nIl soit le bienvenu! \r\n', 4, 1724),
 (7563, 'Strophe', 5, 'Et comme l\'eau profonde\r\nCouvre le sein des mers,\r\nQue ta lumière inonde \r\nTous les peuples divers!\r\nQue ta lumière inonde \r\nTous les peuples divers!\r\n	\r\n6\r\nQu\'un seul troupeau fidèle,\r\nFormant un même coeur,\r\nSuive d\'un même zèle\r\nLa voix d\'un seul pasteur! \r\nSuive d\'un même zèle\r\nLa voix d\'un seul pasteur! \r\n\r\n', 5, 1724),
-(7564, 'Strophe', 1, 'Réjouis-toi, chrétien, voici ton Maître,\r\nIl va quitter son glorieux palais.\r\nTrois messagers ici-bas vont paraître\r\nEt préparer le royaume de paix.\r\n', 1, 1725),
+(7564, 'Strophe', 1, 'Réjouis-toi, chrétien, voici ton Maître,\r\nIl va quitter son glorieux palais.\r\nTrois messagers ici-bas vont paraître\r\nEt préparer le royaume de paix.\r\n', 1, 1725);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (7565, 'Refrain', 1, 'Veille encor, bientôt dans la gloire\r\nNotre Roi paraîtra des cieux.\r\nC\'est pour Sion l\'immortelle victoire :\r\nVoici le jour, frère, lève les yeux!\r\n', 2, 1725),
 (7566, 'Strophe', 2, 'Le premier ange, au vol grand at rapide,\r\nSur tous les lieux répète solennel :\r\nCrains le Seigneur, ô toi, monde perfide,\r\nLe jugement va descendre du ciel!\r\n', 3, 1725),
 (7567, 'Strophe', 3, 'Fuis Babylone! annonce le deuxième,\r\nLe bon Berger rassemble ses troupeaux;\r\nIl les conduit à la maison qu\'il aime\r\nEt sur l\'impie iI répand ses fléaux.\r\n', 4, 1725),
@@ -10102,8 +10097,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (7783, 'Strophe', 4, 'Ô mon âme, prends courage!\r\nJésus marche devant toi,\r\nEt, jusquau bout du voyage,\r\nSon amour veille sur moi.\r\n', 4, 1774),
 (7784, 'Strophe', 5, 'Ne crains pas quil abandonne\r\nSa brebis dans le chemin;\r\nIl est fidèle, et personne\r\nNe lôtera de sa main.\r\n\r\n', 5, 1774),
 (7785, 'Strophe', 1, 'Seigneur, tu donnes ta grâce\r\nAu coeur qui sattend à toi;\r\nAh! que sa douce efficace\r\nSe répande aussi sur moi.\r\nOui, sur moi! (bis)\r\nSe répande aussi sur moi!\r\n', 1, 1775),
-(7786, 'Strophe', 2, 'Père tendre et secourable,\r\nJai souvent enfreint ta loi;\r\nQuoique impur et misérable,\r\nOh! pardonne et bénis-moi.\r\nBénis-moi! (bis)\r\nOh! pardonne et bénis-moi!\r\n', 2, 1775);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(7786, 'Strophe', 2, 'Père tendre et secourable,\r\nJai souvent enfreint ta loi;\r\nQuoique impur et misérable,\r\nOh! pardonne et bénis-moi.\r\nBénis-moi! (bis)\r\nOh! pardonne et bénis-moi!\r\n', 2, 1775),
 (7787, 'Strophe', 3, 'Ô Sauveur toujours propice,\r\nFais que je mattache à toi!\r\nJai faim, jai soif de justice;\r\nJe tappelle, réponds-moi!\r\nRéponds-moi! (bis)\r\nJe tappelle, réponds-moi!\r\n', 3, 1775),
 (7788, 'Strophe', 4, 'Par ton amour, ô bon Père,\r\nPar le sang versé pour moi,\r\nPar lEsprit qui seul opère,\r\nDieu trois fois saint, sauve-moi!\r\nSauve-moi! (bis)\r\nDieu trois fois saint, sauve-moi!\r\n\r\n', 4, 1775),
 (7789, 'Strophe', 1, 'Jésus, par ton sang précieux,\r\nEnlève mon iniquité,\r\nRegarde-moi du haut des cieux,\r\nDis-moi que tu m\'as pardonné...\r\nJ\'ai longtemps erré, coeur rebelle,\r\nMais j\'entends ta voix qui m\'appelle,\r\nAu pied de la croix maintenant,\r\nTout confus, brisé, je me rends.\r\n', 1, 1776),
@@ -10327,8 +10321,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (8007, 'Refrain', 1, 'Jésus, Sauveur, que je t\'aime,\r\nO toi qui mourus pour moi,\r\nEt qui veux, dans le ciel même,\r\nQu\'un jour je règne avec toi!\r\n', 2, 1829),
 (8008, 'Strophe', 2, 'Sur ta croix, victime sainte,\r\nMon péché fut expié.\r\nPlus d\'angoisse, plus de crainte :\r\nTon sang m\'a purifié.\r\n', 3, 1829),
 (8009, 'Strophe', 3, 'Il n\'est aucune autre chose\r\nQui puisse apaiser mon coeur;\r\nEn toi seul je me repose,\r\nEn toi, mon puissant Sauveur.\r\n', 4, 1829),
-(8010, 'Strophe', 4, 'À toi, Jésus, j\'abandonne\r\nMon coeur, mon âme et mes jours!\r\nQu\'en moi ton amour rayonne,\r\nJe veux te servir toujours.\r\n\r\n', 5, 1829);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(8010, 'Strophe', 4, 'À toi, Jésus, j\'abandonne\r\nMon coeur, mon âme et mes jours!\r\nQu\'en moi ton amour rayonne,\r\nJe veux te servir toujours.\r\n\r\n', 5, 1829),
 (8011, 'Strophe', 1, 'Source de tous les biens où nous devons prétendre,\r\nAimable et doux Sauveur!\r\nEn mon coeur suppliant daigne aujourd\'hui répandre\r\nLes dons de ta faveur. (bis)\r\n', 1, 1830),
 (8012, 'Strophe', 2, 'De toutes mes langueurs, de toutes mes faiblesses\r\nTes yeux sont les témoins\r\nEt du plus haut du ciel d\'où tu fais tes largesses,\r\nTu vois tous mes besoins. (bis)\r\n', 2, 1830),
 (8013, 'Strophe', 3, 'Tu sais quels biens surtout sont les plus nécessaires\r\nÀ mon coeur abattu,\r\nEt combien, dans l\'excès de toutes mes misères,\r\nJe suis pauvre en vertu. (bis)\r\n', 3, 1830),
@@ -10344,7 +10337,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (8023, 'Refrain', 1, 'Compter sur lui d\'heure en heure\r\nTant que dure le combat\r\nQue l\'on vive ou que l\'on meure\r\nCompter sur lui, tout est là\r\nQue l\'on vive ou que l\'on meure\r\nCompter sur lui, tout est là.\r\n', 2, 1832),
 (8024, 'Strophe', 2, 'Que si l\'ennemi se montre,\r\nMon coeur n\'en n\'est point troublé\r\nAvec Christ à sa rencontre\r\nJe puis aller sans trembler.\r\n', 3, 1832),
 (8025, 'Strophe', 3, 'Suis-je en paix, vers la lumière\r\nMon chant s\'élève attendri\r\nPour se changer en prière\r\nSi l\'horizon s\'assombrit.\r\n', 4, 1832),
-(8026, 'Strophe', 4, 'Qu\'on m\'approuve ou qu\'on me blâme\r\nEt demain comme aujourd\'hui\r\nJe ne veux, quoi qu\'on réclame,\r\nJamais compter que sur lui.\r\n\r\n', 5, 1832),
+(8026, 'Strophe', 4, 'Qu\'on m\'approuve ou qu\'on me blâme\r\nEt demain comme aujourd\'hui\r\nJe ne veux, quoi qu\'on réclame,\r\nJamais compter que sur lui.\r\n\r\n', 5, 1832);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (8027, 'Strophe', 1, 'Ah! Donne à mon âme\r\nPlus de sainteté\r\nPlus d\'ardente flamme,\r\nDe sérénité.\r\nPlus de confiance,\r\nPour rester debout\r\nPlus de patience,\r\nPour supporter tout!\r\n', 1, 1833),
 (8028, 'Strophe', 2, 'Fais que je contemple\r\nSans cesse l\'Agneau,\r\nSon vivant exemple,\r\nSa croix, son tombeau;\r\nSa grâce fidèle,\r\nSon immense amour,\r\nSa gloire éternelle,\r\nSon prochaine retour!\r\n', 2, 1833),
 (8029, 'Strophe', 3, 'Jésus, à mes larmes\r\nTu veux compatir;\r\nDe toutes tes armes\r\nViens me revêtir;\r\nPar plus de prières,\r\nDe zèle et de foi,\r\nQue dans la lumière\r\nJe marche avec toi!\r\n', 3, 1833),
@@ -10565,8 +10559,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (8244, 'Strophe', 3, 'Mais je doutais encor :\r\nSe peut-il, ô merveille,\r\nQue seule, quand tout dort,\r\nLa grâce toujours veille?\r\n« Pitié! je vais mourir! »\r\nMurmurai-je à voix basse.\r\nEt je la vis s\'ouvrir,\r\nLa porte de la Grâce! (bis)\r\n', 3, 1881),
 (8245, 'Strophe', 4, 'Et je vis, sur le seuil,\r\nDebout dans la lumière,\r\nJésus! Quel doux accueil\r\nIl fit à ma misère!\r\n« Je t\'attendais; pourquoi,\r\nDit-il, pauvre âme lasse,\r\nViens-tu si tard? C\'est moi,\r\nC\'est moi qui suis la Grâce! » (bis)\r\n\r\n', 4, 1881),
 (8246, 'Strophe', 1, 'Maître, entends-tu la tempête\r\nEt ses terribles accents?\r\nParle, Seigneur, et l\'arrête;\r\nSauve, sauve tes enfants!\r\nMais aucun bruit ne l\'éveille;\r\nIl dort et nous périssons.\r\nÀ nos cris prête l\'oreille,\r\nSauve-nous, nous t\'en prions!\r\n', 1, 1882),
-(8247, 'Refrain', 1, 'Il parle aux flots en démence :\r\nPaix vous soit!\r\nLa mer, les vents font silence;\r\nPaix vous soit! (bis)\r\nIl est notre délivrance;\r\nPaix vous soit!\r\n', 2, 1882);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(8247, 'Refrain', 1, 'Il parle aux flots en démence :\r\nPaix vous soit!\r\nLa mer, les vents font silence;\r\nPaix vous soit! (bis)\r\nIl est notre délivrance;\r\nPaix vous soit!\r\n', 2, 1882),
 (8248, 'Strophe', 2, 'Maître, mon coeur qui chancelle\r\nTraverse les grandes eaux,\r\nEt l\'orage à ma nacelle\r\nLivre de rudes assauts.\r\nOh! qui verra ma détresse?\r\nD\'où me viendra le secours?\r\nÀ toi, Seignaur, je m\'adnesse,\r\nC\'est à toi que j\'ai recours.\r\n', 3, 1882),
 (8249, 'Strophe', 3, 'Maître, l\'onde est apaisée,\r\nLe doute a quitté mon coeur,\r\nEt mon âme consolée\r\nA retrouvé son Sauveur.\r\nOh! prends en ta main ma vie,\r\nJusques au jour de ma mort.\r\nEn toi seul je me confie;\r\nTu me conduiras au port.\r\n\r\n', 4, 1882),
 (8250, 'Strophe', 1, 'Le vent soufflait et faisait rage,\r\nTandis qu\'avec peine on ramait,\r\nInsensible au bruit de l\'orage,\r\nJésus dormait...\r\n', 1, 1883),
@@ -10795,8 +10788,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (8473, 'Strophe', 4, 'Montre-leur, au-delà du court pèlerinage\r\nQu\'ils vont sous ton regard accomplir ici-bas,\r\nLe refuge éternel, le celeste héritage,\r\nLa victoire et la paix après tous les combats.\r\n\r\n', 4, 1934),
 (8474, 'Strophe', 1, 'Père saint, dont la clémence\r\nFait luire sur ce beau jour\r\nLa clarté de l\'espérance\r\nAvec celle de l\'amour,\r\nVeuille dès la première heure\r\nAccorder à ces époux\r\nDe tes grâces la meilleure,\r\nDe tes bienfaits le plus doux.\r\nDe tes grâces la meilleure,\r\nDe tes bienfaits le plus doux.\r\n', 1, 1935),
 (8475, 'Strophe', 2, 'Que sans cesse à leur prière\r\nRéponde ton prompt secours;\r\nSois leur force et leur lumière\r\nAux bons comme aux mauvais jours;\r\nEt sur tes traces bénies,\r\nLes guidant au droit chemin,\r\nTiens toujours leurs mains unies,\r\nSeigneur Jésus, dans ta main!\r\nTiens toujours leurs mains unies,\r\nSeigneur Jésus, dans ta main!\r\n\r\n', 2, 1935),
-(8476, 'Strophe', 1, 'Sur ces époux, Père éternel!\r\nJette en cet instant solennel\r\nUn regard favorable.\r\nDieu riche en bénédictions!\r\nFais briller sur eux les rayons\r\nDe ta face adorable;\r\nQu\'en toi, grand Roi!\r\nLeur prière\r\nTrouve un père\r\nDoux et tendre;\r\nToujours prêt à les entendre.\r\n', 1, 1936);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(8476, 'Strophe', 1, 'Sur ces époux, Père éternel!\r\nJette en cet instant solennel\r\nUn regard favorable.\r\nDieu riche en bénédictions!\r\nFais briller sur eux les rayons\r\nDe ta face adorable;\r\nQu\'en toi, grand Roi!\r\nLeur prière\r\nTrouve un père\r\nDoux et tendre;\r\nToujours prêt à les entendre.\r\n', 1, 1936),
 (8477, 'Strophe', 2, 'Ils ont imploré ton saint nom :\r\nComble, Seigneur! leur union\r\nDe ta faveur céleste.\r\nSur leur maison verse ta paix :\r\nQue ta grâce, en mille bienfaits\r\nSur eux se manifeste.\r\nAmen! Amen!\r\nSois leur guide,\r\nLeur égide;\r\nSanctifie\r\nChacun des jours de leur vie.\r\n\r\n', 2, 1936),
 (8478, 'Strophe', 1, 'Sur ces époux, Seigneur, fais reposer ta grâce!\r\nC\'est toi qui les unis pour jamais en ce jour.\r\nFais resplendir sur eux la clarté de ta face\r\nEt répands en leurs coeurs ta joie et ton amour.\r\n', 1, 1937),
 (8479, 'Strophe', 2, 'Qu\'à cette heure, à tes pieds, leur âme soit bénie!\r\nScelle par ton Esprit leurs promesses, leurs voeux!\r\nIls vont marcher ensemble au sentiers de la vie,\r\nDans ces sentiers, Seigneur, sois leur guide à tous deux!\r\n', 2, 1937),
@@ -10811,7 +10803,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (8488, 'Strophe', 2, 'Vers Dieu s\'élève un doux chant,\r\nQuand règne l\'amour.\r\nPoint de mot rude et méchant,\r\nQuand règne l\'amour.\r\nPartout sur notre chemin\r\nFleurissent rose et jasmin :\r\nLa terre est un beau jardin,\r\nQuand règne l\'amour.\r\n', 3, 1939),
 (8489, 'Strophe', 3, 'Le ciel sourit, bienveillant,\r\nQuand règne l\'amour.\r\nChacun se montre accueillant,\r\nQuand règne l\'amour.\r\nPlus gaîment chante l\'oiseau,\r\nEt murmure le ruisseau,\r\nL\'azur du ciel est plus beau,\r\nQuand règne l\'amour.\r\n', 4, 1939),
 (8490, 'Strophe', 4, 'Jésus, tout entier prends-moi,\r\nPour que chaque jour\r\nNotre foyer soit par toi\r\nGardé dans l\'amour.\r\nTu me mettras à l\'abri\r\nDe tout mal, de tout souci.\r\nPar toi je serai béni,\r\nJésus, Roi d\'amour.\r\n\r\n', 5, 1939),
-(8491, 'Strophe', 1, 'Ô toi qui t\'es donné le nom sacré de Père,\r\nToi qui de la famille as formé les doux noeuds,\r\nToi dont le divin Fils s\'appelle Époux et Frère,\r\nPour ceux que nous aimons veuille exaucer nos voeux!\r\n', 1, 1940),
+(8491, 'Strophe', 1, 'Ô toi qui t\'es donné le nom sacré de Père,\r\nToi qui de la famille as formé les doux noeuds,\r\nToi dont le divin Fils s\'appelle Époux et Frère,\r\nPour ceux que nous aimons veuille exaucer nos voeux!\r\n', 1, 1940);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (8492, 'Strophe', 2, 'Bénis le cher foyer, abri de nos tendresses;\r\nSois-en l\'hôte et l\'ami, sois-en le protecteur;\r\nPréserve-le du mal, source de nos tristesses,\r\nEt que nous soyons riches du vrai bonheur.\r\n', 2, 1940),
 (8493, 'Strophe', 3, 'Fais que tous nos enfants, élévés dans ta crainte,\r\nGuidés par notre exemple, et par toi soutenus,\r\nRespectent le devoir, observent ta loi sainte,\r\nEt marchent avec nous sur les pas de Jésus.\r\n', 3, 1940),
 (8494, 'Strophe', 4, 'Nous les plaçons, Seigneur, à l\'ombre de tes ailes :\r\nQu\'ils soient humbles et purs, et qu\'ils gardent la foi;\r\nÀ te prier pour eux que nous soyons fidèles;\r\nQue pour les aimer bien, nous les aimions en toi!\r\n', 4, 1940),
@@ -11015,8 +11008,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (8692, 'Strophe', 2, 'Je frappe au matin, quand toute la nature\r\nNous parle d\'un Père tendre et tout-puissant.\r\nJe frappe à midi, quand la moisson est mûre,\r\nRévélant l\'amour d\'un Dieu si prévoyant.\r\n', 3, 1987),
 (8693, 'Strophe', 3, 'J\'ai frappé souvent, au jour de l\'allégresse,\r\nJ\'ai frappé de nuit, quand tu semblais si las;\r\nJe voyais ta peine et toute ta détresse,\r\nJe voulais t\'aider, mais tu ne m\'ouvris pas.\r\n\r\n', 4, 1987),
 (8694, 'Refrain', 1, 'À toi ma vie!\r\nSeigneur, qui m\'as fait voir\r\nTa croix bénie\r\nOù j\'ai trouvé l\'espoir.\r\n', 1, 1988),
-(8695, 'Strophe', 1, 'Si tu m\'offrais ta grâce,\r\nMême au plus grand pécheur,\r\nHélas! devant ta face\r\nTremblant serait mon coeur.\r\n', 2, 1988);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(8695, 'Strophe', 1, 'Si tu m\'offrais ta grâce,\r\nMême au plus grand pécheur,\r\nHélas! devant ta face\r\nTremblant serait mon coeur.\r\n', 2, 1988),
 (8696, 'Strophe', 2, 'Je connais ma misère,\r\nMes fautes, mon péché;\r\nMais Jésus, comme un frère,\r\nC\'est toi qui m\'as cherché!\r\n', 3, 1988),
 (8697, 'Strophe', 3, 'Pardonne mon offense,\r\nEt subviens à ma foi!\r\nDu mal, de sa puissance,\r\nÔ Christ, délivre-moi!\r\n', 4, 1988),
 (8698, 'Strophe', 4, 'Consacre-moi toi-même,\r\nC\'est mon plus cher désir!\r\nJe t\'appartiens, je t\'aime\r\nEt je veux te servir.\r\n\r\n', 5, 1988),
@@ -11268,8 +11260,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (8944, 'Strophe', 2, 'Proclamer le dernier message\r\nAu monde entier: c\'est là ton but!\r\nVa, jusqu\'au plus lointain rivage,\r\nVers tout peuple et toute tribu.\r\n', 3, 2044),
 (8945, 'Strophe', 3, 'Dis au pécheur qu\'il se répente,\r\nQue Christ est mort pour le sauver,\r\nQu\'il sera fort dans la tourmente\r\nS\'il s\'appuie au divin Rocher.\r\n\r\n', 4, 2044),
 (8946, 'Strophe', 1, 'Travaillons et luttons!\r\nNous sommes au Seigneur,\r\nSuivons l\'étroit sentier qui conduit à la vie,\r\nJésus marche avec nous, avançons sans frayeur,\r\nIl nous garde et son bras toujours nous fortifie.\r\n', 1, 2045),
-(8947, 'Refrain', 1, 'Travaillons et luttons! (bis)\r\nSoyons prêts et prions,\r\nBientôt le Maître va venir!\r\n', 2, 2045);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(8947, 'Refrain', 1, 'Travaillons et luttons! (bis)\r\nSoyons prêts et prions,\r\nBientôt le Maître va venir!\r\n', 2, 2045),
 (8948, 'Strophe', 2, 'Travaillons et luttons!\r\nQue les coeurs affligés.\r\nLes perdus loin de Dieu retrouvent l\'espérance,\r\nVers la croix dirigeons leurs regards angoissés,\r\nPressons-les d\'accepter Jésus leur délivrance.\r\n', 3, 2045),
 (8949, 'Strophe', 3, 'Travaillons et luttons!\r\nIl nous appelle tous,\r\nPoint de lâches, de tièdes, la moisson est grande,\r\nPour servir notre Chef, ne pensons plus à nous,\r\nEn avant! vers le but, le Maître le demande.\r\n', 4, 2045),
 (8950, 'Strophe', 4, 'Travaillons et luttons!\r\nSans jamais nous lasser,\r\nDe notre Rédempteur élevant la bannière,\r\nFidèles jusqu\'au bout, sachons persévérer,\r\nLe repos nous attend dans la pleine lumière!\r\n\r\n', 5, 2045),
@@ -11286,7 +11277,8 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (8961, 'Strophe', 3, 'Jésus nous appelle tous\r\nÀ vaincre pour lui,\r\nÀ vaincre en luttant à genoux,\r\nIl sera notre appui.\r\n', 4, 2048),
 (8962, 'Strophe', 4, 'À l\'oeuvre jusqu\'au matin\r\nDu jour éternel.\r\nBientôt, bientôt viendra la fin\r\nEt nous serons au ciel.\r\n\r\n', 5, 2048),
 (8963, 'Strophe', 1, 'À toi nos transports d\'allégresse\r\nÀ toi, Seigneur, nos plus beaux chants,\r\nÀ toi nos rêves de jeunesse,\r\nÀ toi les fleurs de nos printemps!\r\n	\r\nRefrain\r\nGloire, honneur, sagesse et puissance\r\nAu Dieu qui nous a tant aimés,\r\nRichesse, force, obéissance\r\nÀ l\'agneau qui nous a sauvés!\r\n', 1, 2049),
-(8964, 'Strophe', 2, 'À toi nos élans juveniles,\r\nNos frais bonheurs, nos saints désirs,\r\nLes gerbes de nos champs fertiles,\r\nNos durs labeurs, nos purs loisirs!\r\n', 2, 2049),
+(8964, 'Strophe', 2, 'À toi nos élans juveniles,\r\nNos frais bonheurs, nos saints désirs,\r\nLes gerbes de nos champs fertiles,\r\nNos durs labeurs, nos purs loisirs!\r\n', 2, 2049);
+INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
 (8965, 'Strophe', 3, 'À toi pour publier ta grâce\r\nEt pour couronner Jésus Roi,\r\nRevêtus de la sainte audace\r\nDes vaillants héros de la foi!\r\n', 3, 2049),
 (8966, 'Strophe', 4, 'Sois le centre de notre vie.\r\nVis au tréfonds de notre coeur,\r\nEt toujours notre âme affranchie\r\nChantera son libérateur!\r\n\r\n', 4, 2049),
 (8967, 'Strophe', 1, 'Amis, chantons, chantons ensemble\r\nUne heure joyeuse a sonné.\r\nAh !  qu\'un même élan nous rassemble,\r\nCe jour, c\'est Dieu qui l\'a donné.\r\n', 1, 2050),
@@ -11524,8 +11516,7 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 (9199, 'Strophe', 2, 'Viens! toi qui sauves de la mort\r\nPar ta croix.  (bis)\r\nViens! toi seul qui conduis au port\r\nPar ta croix.  (bis)\r\nEn Golgotha, mon espérance\r\nRenaît au sein de la souffrance,\r\nEt j\'ai trouvé la délivrance\r\nPar ta croix.\r\n', 2, 2106),
 (9200, 'Strophe', 3, 'Christ! je veux être par la foi\r\nVers ta croix. (bis)\r\nChrist! à jamais grandir en toi\r\nVers ta croix. (bis)\r\nC\'est mon bonheur et c\'est ma vie :\r\nPosséder la paix infinie,\r\nL\'amour et la part de Marie\r\nVers ta croix.\r\n\r\n', 3, 2106),
 (9201, 'Strophe', 1, 'Le ciel pâlit à l\'orient\r\nQu\'embaume au loin la myrrhe.\r\nTu dors tranquille et souriant,\r\nÀ l\'heure où l\'ombre expire.\r\nVa! prends nos coeurs, ô doux Jésus\r\nNos coeurs joyeux, nos coeurs décus,\r\nPrends-Ies pour un sourire!\r\n', 1, 2107),
-(9202, 'Strophe', 2, 'Dans l\'humble crèche, pauvrement,\r\nSans gloire tu reposes,\r\nEt nous baisons pieusement\r\nTes pieds mignons et roses,\r\nNous adorons, ô Roi clément,\r\nTon oeil d\'azur, ton front charmant,\r\nEt tes paupières closes!\r\n', 2, 2107);
-INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, `idChant`) VALUES
+(9202, 'Strophe', 2, 'Dans l\'humble crèche, pauvrement,\r\nSans gloire tu reposes,\r\nEt nous baisons pieusement\r\nTes pieds mignons et roses,\r\nNous adorons, ô Roi clément,\r\nTon oeil d\'azur, ton front charmant,\r\nEt tes paupières closes!\r\n', 2, 2107),
 (9203, 'Strophe', 3, 'Oh! dors malgré le jour qui luit,\r\nBaigné d\'un flot d\'aurore.\r\nTes yeux verraient, perçant la nuit,\r\nLa Croix que l\'aube dore.\r\nSommeille en paix, Agneau tremblant,\r\nAgneau très pur, Agneau très blanc,\r\nLongtemps, longtemps encore!\r\n\r\n', 3, 2107),
 (9204, 'Strophe', 1, 'Mon Dieu, plus près de toi,\r\nPlus près de toi!\r\nCest le mot de ma foi :\r\nPlus près de toi!\r\nDans le jour où lépreuve\r\nDéborde comme un fleuve,\r\nGarde-moi près de toi,\r\nPlus près de toi!\r\n', 1, 2108),
 (9205, 'Strophe', 2, 'Plus près de toi, Seigneur,\r\nPlus près de toi!\r\nTiens-moi dans ma douleur\r\nPlus près de toi!\r\nAlors que la souffrance\r\nFait son oeuvre en silence,\r\nToujours plus près de toi,\r\nSeigneur, tiens-moi!\r\n', 2, 2108),
@@ -11702,9 +11693,11 @@ INSERT INTO `strophe` (`idStrophe`, `type`, `identifiant`, `texte`, `position`, 
 -- Structure de la table `theme`
 --
 
-CREATE TABLE `theme` (
-  `idTheme` int(11) NOT NULL,
-  `libelleTheme` varchar(50) NOT NULL
+DROP TABLE IF EXISTS `theme`;
+CREATE TABLE IF NOT EXISTS `theme` (
+  `idTheme` int(11) NOT NULL AUTO_INCREMENT,
+  `libelleTheme` varchar(50) NOT NULL,
+  PRIMARY KEY (`idTheme`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -11713,13 +11706,15 @@ CREATE TABLE `theme` (
 -- Structure de la table `trame`
 --
 
-CREATE TABLE `trame` (
-  `idTrame` int(11) NOT NULL,
+DROP TABLE IF EXISTS `trame`;
+CREATE TABLE IF NOT EXISTS `trame` (
+  `idTrame` int(11) NOT NULL AUTO_INCREMENT,
   `dateModification` datetime NOT NULL,
   `dateExecution` date NOT NULL,
   `propriétaire` int(11) NOT NULL,
-  `commentaire` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `commentaire` text NOT NULL,
+  PRIMARY KEY (`idTrame`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `trame`
@@ -11734,10 +11729,12 @@ INSERT INTO `trame` (`idTrame`, `dateModification`, `dateExecution`, `propriéta
 -- Structure de la table `trame_chant`
 --
 
-CREATE TABLE `trame_chant` (
+DROP TABLE IF EXISTS `trame_chant`;
+CREATE TABLE IF NOT EXISTS `trame_chant` (
   `idTrame` int(11) NOT NULL,
   `idChant` int(11) NOT NULL,
-  `ordre` int(11) NOT NULL
+  `ordre` int(11) NOT NULL,
+  PRIMARY KEY (`idTrame`,`idChant`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -11755,11 +11752,13 @@ INSERT INTO `trame_chant` (`idTrame`, `idChant`, `ordre`) VALUES
 -- Structure de la table `trame_chant_strophe`
 --
 
-CREATE TABLE `trame_chant_strophe` (
+DROP TABLE IF EXISTS `trame_chant_strophe`;
+CREATE TABLE IF NOT EXISTS `trame_chant_strophe` (
   `idTrame` int(11) NOT NULL,
   `idChant` int(11) NOT NULL,
   `idStrophe` int(11) NOT NULL,
-  `ordre` int(11) NOT NULL
+  `ordre` int(11) NOT NULL,
+  PRIMARY KEY (`idTrame`,`idChant`,`idStrophe`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -11786,94 +11785,14 @@ INSERT INTO `trame_chant_strophe` (`idTrame`, `idChant`, `idStrophe`, `ordre`) V
 --
 -- Index pour la table `chant`
 --
-ALTER TABLE `chant`
-  ADD PRIMARY KEY (`idChant`);
 ALTER TABLE `chant` ADD FULLTEXT KEY `titre` (`titre`);
 ALTER TABLE `chant` ADD FULLTEXT KEY `titreUsuel` (`titreUsuel`);
 
 --
--- Index pour la table `chant_theme`
---
-ALTER TABLE `chant_theme`
-  ADD UNIQUE KEY `idChant` (`idChant`,`idTheme`);
-
---
--- Index pour la table `profil`
---
-ALTER TABLE `profil`
-  ADD PRIMARY KEY (`idProfil`);
-
---
--- Index pour la table `recueil`
---
-ALTER TABLE `recueil`
-  ADD PRIMARY KEY (`idRecueil`);
-
---
 -- Index pour la table `strophe`
 --
-ALTER TABLE `strophe`
-  ADD PRIMARY KEY (`idStrophe`);
 ALTER TABLE `strophe` ADD FULLTEXT KEY `texte` (`texte`);
 
---
--- Index pour la table `theme`
---
-ALTER TABLE `theme`
-  ADD PRIMARY KEY (`idTheme`);
-
---
--- Index pour la table `trame`
---
-ALTER TABLE `trame`
-  ADD PRIMARY KEY (`idTrame`);
-
---
--- Index pour la table `trame_chant`
---
-ALTER TABLE `trame_chant`
-  ADD PRIMARY KEY (`idTrame`,`idChant`);
-
---
--- Index pour la table `trame_chant_strophe`
---
-ALTER TABLE `trame_chant_strophe`
-  ADD PRIMARY KEY (`idTrame`,`idChant`,`idStrophe`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `chant`
---
-ALTER TABLE `chant`
-  MODIFY `idChant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2162;
---
--- AUTO_INCREMENT pour la table `profil`
---
-ALTER TABLE `profil`
-  MODIFY `idProfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT pour la table `recueil`
---
-ALTER TABLE `recueil`
-  MODIFY `idRecueil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT pour la table `strophe`
---
-ALTER TABLE `strophe`
-  MODIFY `idStrophe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9372;
---
--- AUTO_INCREMENT pour la table `theme`
---
-ALTER TABLE `theme`
-  MODIFY `idTheme` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `trame`
---
-ALTER TABLE `trame`
-  MODIFY `idTrame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
