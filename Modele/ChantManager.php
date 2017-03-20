@@ -1,13 +1,13 @@
 <?php
 
 
-	Class SongManager extends Manager{
+	Class ChantManager extends Manager{
 		public function songSeen($song){
 			$song->setNbConsultations($song->getNbConsultations()+1);
 			$this->persistSong($song);
 		}
 		/**
-		 * 
+		 * Retourne la chanson dont l'identifiant est passé en paramètre
 		 **/
 		public function getSong($songId){
 			$song = null; //Pour l'instant nous n'avons pas de chanson
@@ -26,7 +26,7 @@
 			return $song;
 		}
 		/**
-		 * 
+		 * Récupère tous les chants dont le numéro correspond à celui passé en paramètre
 		 **/
 		public function getSongsByNumChant($numChant){
 			$song = null; //Pour l'instant nous n'avons pas de chanson
@@ -45,7 +45,7 @@
 			return $songs;
 		}
 		/**
-		 * 
+		 * Récupère tous les chants du recueil dont l'identifiant a été passé en paramètre
 		 **/
 		public function getSongsByRecueil($recueilId){
 			$song = null; //Pour l'instant nous n'avons pas de chanson
@@ -149,7 +149,9 @@
 			//die();
 			return $songs;
 		}
-		
+		/**
+		 * R�cup�re les strophe de la chanson dont l'identifiant est passé en paramètre
+		 **/
 		public function getStrophesForSong($songId){
 			//va chercher les infos en bdd
 			$stmt = $this->dbh->prepare("SELECT * FROM strophe WHERE idChant = ?");

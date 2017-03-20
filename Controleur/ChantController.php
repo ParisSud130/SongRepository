@@ -1,12 +1,12 @@
 <?php
-	class SongController extends Controller{
+	class ChantController extends Controller{
 		
 		private $sm;	
 		private $tm;	
 
 
 		public function __construct(){
-			$this->sm = new SongManager();
+			$this->sm = new ChantManager();
 			$this->tm = new ThemeManager();
 		}
 				

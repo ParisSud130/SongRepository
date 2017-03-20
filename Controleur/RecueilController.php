@@ -9,7 +9,7 @@
 
 		public function __construct(){
 			$this->rm = new RecueilManager();
-			$this->sm = new SongManager();
+			$this->sm = new ChantManager();
 		}
 				
 		public function showAction(){

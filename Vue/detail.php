@@ -32,7 +32,7 @@
 	
 	<div class="sidebox widget">
 		<h3 class="widget-title">Recherche</h3>
-		<form class="searchform" method="post" action="<?php echo $this->relativeUrl("song", "search") ?>">
+		<form class="searchform" method="post" action="<?php echo $this->relativeUrl("chant", "search") ?>">
 			<input type="text" name="keywords" type="text" placeholder="tapez et appuyez sur Entr&eacute;e"/>
 		</form>
 	</div>

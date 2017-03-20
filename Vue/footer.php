@@ -4,7 +4,7 @@
 		<div id="first" class="widget-area">
 			<div class="widget widget_search">
 				<h3 class="widget-title">Recherche</h3>
-				<form class="searchform" method="post" action="<?php echo $this->relativeUrl("song", "search") ?>" >
+				<form class="searchform" method="post" action="<?php echo $this->relativeUrl("chant", "search") ?>" >
 					<input type="text" name="keywords" type="text" placeholder="tapez et appuyez sur Entr&eacute;e"/>
 				</form>
 			</div>
@@ -30,10 +30,10 @@
 			?>
 					<li> 
 						<div class="frame">
-							<a href="<?php echo $this->relativeUrl("song", "show", array("id"=>$song->getIdChant())) ?>"><img src="Vue/style/images/art/s<?php echo $i ?>.jpg" /></a>
+							<a href="<?php echo $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"><img src="Vue/style/images/art/s<?php echo $i ?>.jpg" /></a>
 						</div>
 						<div class="meta">
-							<h6><a href="<?php echo $this->relativeUrl("song", "show", array("id"=>$song->getIdChant())) ?>"> <?php echo $song->getTitre() ?> </a></h6>
+							<h6><a href="<?php echo $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"> <?php echo $song->getTitre() ?> </a></h6>
 							<em>Vu <?php echo $song->getNbConsultations() ?> fois </em>
 						</div>
 					</li>

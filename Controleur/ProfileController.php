@@ -14,7 +14,7 @@
 			if($error != ""){
 				$params = array ( "error" => $error);
 			}
-			$sc = new SongController();
+			$sc = new ChantController();
 			$sc->homeAction();
 			die();
 		}

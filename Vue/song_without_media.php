@@ -2,7 +2,7 @@
  		<!-- Begin Standard Format -->
  		<div class="post format-standard box"> 
 			<h2 class="title">
-			 <a href="<?= $this->relativeUrl("song", "show", array("id"=>$song->getIdChant())) ?>"><?= $song->getTitre() ?></a>
+			 <a href="<?= $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"><?= $song->getTitre() ?></a>
 			 <span style="float: right;">
 			     <a href="<?= $this->relativeUrl("recueil", "show", array("id"=>$song->getRecueil()->getIdRecueil())) ?>"><?= $song->getRecueil()->getNomRecueil()."</a> #".$song->getNumChant() ?>
 			 </span>

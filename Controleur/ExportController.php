@@ -5,7 +5,7 @@
         private $tm;    
 
         public function __construct(){
-            $this->sm = new SongManager();
+            $this->sm = new ChantManager();
             $this->tm = new ThemeManager();
         }
                 
