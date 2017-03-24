@@ -5,7 +5,7 @@
 		/*** DATABASE INFORMATIONS ***/
 		const DB_HOST = "localhost";
 		const DB_USER = "root";
-		const DB_PASS = "Ninj@kid041292";
+		const DB_PASS = "";
 		const DB_NAME = "song_repository";
 
 		static public $class_folders = array(__DIR__, "Utils/fpdf", "Modele", "Vue", "Controleur", "Utils", "Utils/kint");
