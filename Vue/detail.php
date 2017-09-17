@@ -25,7 +25,6 @@
 	<div class="sidebox widget">
 		<h3 class="widget-title">Actions</h3>
 		<ul>
-			<li><a href="#">Ajouter à ma trame</a></li>
 			<li><a target="_blank" href="<?php echo $this->relativeUrl("export", "chantToPdf", array("id"=>$song->getIdChant())) ?>">Exporter ce chant en PDF</a></li>
 		</ul>
 	</div>
@@ -35,15 +34,6 @@
 		<form class="searchform" method="post" action="<?php echo $this->relativeUrl("chant", "search") ?>">
 			<input type="text" name="keywords" type="text" placeholder="tapez et appuyez sur Entr&eacute;e"/>
 		</form>
-	</div>
-
-	<div class="sidebox widget">
-		<h3 class="widget-title">Themes</h3>
-		<ul>
-			<li><a href="#">Nature</a></li>
-			<li><a href="#">Photography</a></li>
-			<li><a href="#">Video</a></li>
-		</ul>
 	</div>
 
 </div>
