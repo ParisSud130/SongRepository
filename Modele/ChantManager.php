@@ -119,16 +119,15 @@
 			$str_key = implode($new_key," ");
 			
 			//va chercher les infos sur cette page en bdd
-			$sql = "SELECT DISTINCT chant.*, recueil.*, MATCH (chant.titre) AGAINST (':$str_key' IN BOOLEAN MODE) AS score1, MATCH (S1.texte) AGAINST (':$str_key' IN BOOLEAN MODE) AS score2
+			$sql = "SELECT DISTINCT chant.*, recueil.*, MATCH (chant.titre) AGAINST (:str_key IN BOOLEAN MODE) AS score1, MATCH (S1.texte) AGAINST (:str_key IN BOOLEAN MODE) AS score2
 						FROM strophe S1
 						LEFT JOIN chant ON chant.idChant = S1.idChant
 						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil
-						WHERE MATCH (chant.titre) AGAINST (':$str_key' IN BOOLEAN MODE) OR MATCH (chant.titreUsuel) AGAINST (':$str_key' IN BOOLEAN MODE) OR MATCH (S1.texte) AGAINST (':$str_key' IN BOOLEAN MODE) 
+						WHERE MATCH (chant.titre) AGAINST (:str_key IN BOOLEAN MODE) OR MATCH (chant.titreUsuel) AGAINST (:str_key IN BOOLEAN MODE) OR MATCH (S1.texte) AGAINST (:str_key IN BOOLEAN MODE) 
 						GROUP BY idChant
 						ORDER BY score1 DESC, score2 DESC, nbConsultations, numChant, recueil.idRecueil LIMIT 50";
-	
 			$stmt = $this->dbh->prepare($sql);
-			$stmt->bindValue(":str_key", $str_key);
+			$stmt->bindValue(":str_key", $str_key, PDO::PARAM_STR);
 			$stmt->execute();
 			$results = $stmt->fetchAll();
 						
