@@ -49,16 +49,15 @@
 		 **/
 		public function getSongsByRecueil($recueilId){
 			$song = null; //Pour l'instant nous n'avons pas de chanson
-			$sql = "SELECT chant.*, recueil.*
+			$sql = "SELECT *
 						FROM chant
-						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil 
-						WHERE recueil.idRecueil = ?
+						WHERE chant.idRecueil = ?
 						ORDER BY chant.numchant";
 			//va chercher les infos en bdd
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->execute(array($recueilId));
 			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			$songs = $this->hydrateSongs($results);
+			$songs = $this->hydrateSongsWithoutStrophe($results);
 			//Kint::dump( $songs );
 			//die();
 			return $songs;
@@ -175,27 +174,8 @@
 		*	VALEUR RETOURNEE : instance de la classe Chant
 		*******************************************************************************************************************/
 		public function hydrateSong($songResult){
-			$nbConsultations = $songResult["nbConsultations"];
-			settype($nbConsultations, "integer");
-
-			$infos = array (
-	
-				'_idChant' => $songResult["idChant"],
-				'_titre' => $songResult["titre"],
-				'_titreUsuel' => $songResult["titreUsuel"],
-				'_idRecueil' => $songResult["idRecueil"],
-				'_auteur' => $songResult["auteur"],
-				'_compositeur' => $songResult["compositeur"],
-				'_copyright' => $songResult["copyright"],
-				'_tonalite' => $songResult["tonalite"],
-				'_lien' => $songResult["lien"],
-				'_typeLien' => $songResult["typeLien"],
-				'_commentaire' => $songResult["commentaire"],
-				'_etat' => $songResult["etat"],
-				'_dateModification' => $songResult["dateModification"],
-				'_nbConsultations' => $nbConsultations,
-				'_numChant' => $songResult["numChant"] );
-
+			$song = $this->hydrateSongWithoutStrophe($songResult);
+			
 			if (array_key_exists('idRecueil', $songResult) && array_key_exists('nomRecueil', $songResult)) {
 				$infosRecueil = array (
 					'_idRecueil' => $songResult["idRecueil"],
@@ -205,7 +185,6 @@
 			}
 			$strophes = $this-> getStrophesForSong($songResult["idChant"]);
 		
-			$song = new Chant($infos);
 			$song -> setStrophes($strophes);
 	
 			return $song;
@@ -262,6 +241,20 @@
 			$songs = [];
 			foreach($results as $result) {
 				$songs[] = $this->hydrateSong($result);
+			}
+			return $songs;
+		}
+		
+		/******************************************************************************************************************
+		*	FONCTION : hydrateSongsWithoutStrophe
+		*	PARAMETRES EN ENTREE :	lignes de la table chant provenant de la base de donnes
+		*	DESCRIPTION : Appelle la mthode hydrateSongWithoutStrophe pour un ensemble de ligne de la table Chant
+		*	VALEUR RETOURNEE : arrays contenant des instances de la classe Chant
+		*******************************************************************************************************************/
+		public function hydrateSongsWithoutStrophe($results){
+			$songs = [];
+			foreach($results as $result) {
+				$songs[] = $this->hydrateSongWithoutStrophe($result);
 			}
 			return $songs;
 		}

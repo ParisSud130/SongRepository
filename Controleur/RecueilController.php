@@ -27,7 +27,7 @@
                     $songs = $this->sm->getLastSongs();
 				}
 			    $params = array( "songs"=>$songs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro );
-        		new View("accueil.php", Config::APP_NAME, $params);
+				new View("liste.php", Config::APP_NAME, $params);
 			}
 		}
 }

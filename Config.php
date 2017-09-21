@@ -4,8 +4,8 @@
 
 		/*** DATABASE INFORMATIONS ***/
 		const DB_HOST = "localhost";
-		const DB_USER = "root";
-		const DB_PASS = "";
+		const DB_USER = "songRep";
+		const DB_PASS = "songRep";
 		const DB_NAME = "song_repository";
 
 		static public $class_folders = array(__DIR__, "Utils/fpdf", "Modele", "Vue", "Controleur", "Utils", "Utils/kint");
