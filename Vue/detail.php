@@ -35,6 +35,15 @@
 			<input type="text" name="keywords" type="text" placeholder="tapez et appuyez sur Entr&eacute;e"/>
 		</form>
 	</div>
+	<div class="sidebox widget">
+		<h3 class="widget-title">Recueils</h3>
+		<ul>
+		<?php $i=1;
+foreach ($recueils as $recueil){  ?>
+			<li><a href="<?php echo $this->relativeUrl("recueil", "show", array("id"=>$recueil->getIdRecueil())) ?>"><?php echo $recueil->getNomRecueil();?></a></li>
+		<?php ++$i; } ?>
+		</ul>
+	</div>
 
 </div>
 <!--End Sidebar -->
