@@ -17,8 +17,9 @@
 		public function homeAction(){
 			$lastSongs = $this->sm->getLastSongs();
 			$mostViewedSongs = $this->sm->getMostViewedSongs();
-			$intro = "Les dernières chansons ajoutées sur ".Config::APP_NAME;
-			$params = array( "songs"=>$lastSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro);
+			$recueils = $this->rm->getRecueils();
+			$intro = "Les derniÃ¨res chansons ajoutÃ©es sur ".Config::APP_NAME;
+			$params = array( "songs"=>$lastSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro, "recueils"=>$recueils);
 			new View("accueil.php", Config::APP_NAME, $params);
 		}
 	
@@ -28,19 +29,20 @@
 
 			// 1 : On force la conversion en nombre entier
 			$numberToSearch = (int) $keywords;
-			if ($numberToSearch >= 1 ) {//Si le nombre obtenu est supérieur à 1, c'est un numéro qui a été entré
+			if ($numberToSearch >= 1 ) {//Si le nombre obtenu est supÃ©rieur Ã  1, c'est un numÃ©ro qui a Ã©tÃ© entrÃ©
 				$searchedSongs = $this->sm->getSongsByNumChant($numberToSearch);
-				$intro = "Les chants ayant pour numéro $numberToSearch";
+				$intro = "Les chants ayant pour numÃ©ro $numberToSearch";
 			}
-			else{//Sinon on cherche la chaine telle qu'elle a été saisie
+			else{//Sinon on cherche la chaine telle qu'elle a Ã©tÃ© saisie
 				$searchedSongs = $this->sm->searchSongs($keywords);
 				$intro = "Les chants contenant $keywords";
 			}
 
 			$mostViewedSongs = $this->sm->getMostViewedSongs();
+			$recueils = $this->rm->getRecueils();
 
 			//shoote la vue
-			$params = array( "songs"=>$searchedSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro );
+			$params = array( "songs"=>$searchedSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro,"recueils"=>$recueils );
 			new View("accueil.php", Config::APP_NAME, $params);
 		}
 		
@@ -65,7 +67,7 @@
 					new View("detail.php", Config::APP_NAME." - ".$song->getTitre(), $params);
 				}
 				else{
-					die("chant introuvable; page à coder");
+					die("chant introuvable; page Ã  coder");
 				}
 			}
 			else{
