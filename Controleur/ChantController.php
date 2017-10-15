@@ -2,12 +2,16 @@
 	class ChantController extends Controller{
 		
 		private $sm;	
-		private $tm;	
+		private $tm;
+		private $rm;
+		
 
 
 		public function __construct(){
 			$this->sm = new ChantManager();
 			$this->tm = new ThemeManager();
+			$this->rm = new RecueilManager();
+			
 		}
 				
 		public function homeAction(){
@@ -55,8 +59,9 @@
 							$intro = "$nomRecueil #$numChant - $titre";
 						}
 					}
+					$recueils = $this->rm->getRecueils();
 					$this->sm->songSeen($song);
-					$params = array( "song"=>$song,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro );
+					$params = array( "song"=>$song,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro, "recueils"=>$recueils );
 					new View("detail.php", Config::APP_NAME." - ".$song->getTitre(), $params);
 				}
 				else{

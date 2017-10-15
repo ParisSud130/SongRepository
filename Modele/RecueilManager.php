@@ -20,6 +20,22 @@
 			}
 			return $recueil;
 		}
+		
+		public function getRecueils(){
+			$recueils = null; //Pour l'instant nous n'avons pas de recueil
+			$sql = "SELECT *
+						FROM recueil";
+						
+			//va chercher les infos en bdd
+			$stmt = $this->dbh->prepare($sql);
+			$stmt->execute(array());
+			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			$count = $stmt->rowCount();
+			if($count>0){
+				$recueils = $this->hydrateRecueils($results);
+			}
+			return $recueils;
+		}
 
 		public function hydrateRecueil($result){
 			$infos = array (
