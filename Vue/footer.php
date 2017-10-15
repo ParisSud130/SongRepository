@@ -7,6 +7,16 @@
 				<form class="searchform" method="post" action="<?php echo $this->relativeUrl("chant", "search") ?>" >
 					<input type="text" name="keywords" type="text" placeholder="tapez et appuyez sur Entr&eacute;e"/>
 				</form>
+				<h3 class="widget-title">Recueils</h3>
+				<ul>
+				<?php $i=1;
+					foreach ($recueils as $recueil){ 
+				?>
+					<li>
+					<a href="<?php echo $this->relativeUrl("recueil", "show", array("id"=>$recueil->getIdRecueil())) ?>"><?php echo $recueil->getNomRecueil();?></a>
+					</li>
+				<?php ++$i; } ?>
+				</ul>
 			</div>
 		</div><!-- #first .widget-area -->
 	
