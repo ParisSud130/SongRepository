@@ -16,6 +16,7 @@
 			if (isset($_GET["id"])){
 				$id = $_GET["id"];
 				$recueil = $this->rm->getRecueil($id);
+				$recueils = $this->rm->getRecueils();
     			$mostViewedSongs = $this->sm->getMostViewedSongs();
 				if(isset($recueil)){//Si le recueil existe
     				

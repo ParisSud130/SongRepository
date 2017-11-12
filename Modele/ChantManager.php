@@ -119,15 +119,15 @@
 			$str_key = implode($new_key," ");
 			
 			//va chercher les infos sur cette page en bdd
-			$sql = "SELECT DISTINCT chant.*, recueil.*, MATCH (chant.titre) AGAINST (:str_key IN BOOLEAN MODE) AS score1, MATCH (S1.texte) AGAINST (:str_key IN BOOLEAN MODE) AS score2
+			$sql = "SELECT DISTINCT chant.*, recueil.*, MATCH (chant.titre) AGAINST ('$str_key' IN BOOLEAN MODE) AS score1, MATCH (S1.texte) AGAINST ('$str_key' IN BOOLEAN MODE) AS score2
 						FROM strophe S1
 						LEFT JOIN chant ON chant.idChant = S1.idChant
 						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil
-						WHERE MATCH (chant.titre) AGAINST (:str_key IN BOOLEAN MODE) OR MATCH (chant.titreUsuel) AGAINST (:str_key IN BOOLEAN MODE) OR MATCH (S1.texte) AGAINST (:str_key IN BOOLEAN MODE) 
+						WHERE MATCH (chant.titre) AGAINST ('$str_key' IN BOOLEAN MODE) OR MATCH (chant.titreUsuel) AGAINST ('$str_key' IN BOOLEAN MODE) OR MATCH (S1.texte) AGAINST ('$str_key' IN BOOLEAN MODE) 
 						GROUP BY idChant
 						ORDER BY score1 DESC, score2 DESC, nbConsultations, numChant, recueil.idRecueil LIMIT 50";
 			$stmt = $this->dbh->prepare($sql);
-			$stmt->bindValue(":str_key", $str_key, PDO::PARAM_STR);
+			//$stmt->bindValue("'$str_key'", $str_key, PDO::PARAM_STR);
 			$stmt->execute();
 			$results = $stmt->fetchAll();
 						
@@ -135,7 +135,7 @@
 			$songs = $this->hydrateSongs($results);
 			
 			/*
-			$songs = [];
+			$songs = array();
 			foreach($results as $result) {
 				$song = $this->getSong($result["idChant"]);
 				if($song != NULL) {
@@ -183,8 +183,13 @@
 				$infos['_recueil'] = $recueil;
 			}
 			$strophes = $this-> getStrophesForSong($songResult["idChant"]);
-		
-			$song -> setStrophes($strophes);
+		   
+		    if(! is_null($strophes)){
+				$song -> setStrophes($strophes);
+			}
+			else{
+				$song -> setStrophes(array(new Strophe()));
+			}
 	
 			return $song;
 		}
@@ -237,7 +242,7 @@
 		*	VALEUR RETOURNEE : arrays contenant des instances de la classe Chant
 		*******************************************************************************************************************/
 		public function hydrateSongs($results){
-			$songs = [];
+			$songs = array();
 			foreach($results as $result) {
 				$songs[] = $this->hydrateSong($result);
 			}
@@ -251,7 +256,7 @@
 		*	VALEUR RETOURNEE : arrays contenant des instances de la classe Chant
 		*******************************************************************************************************************/
 		public function hydrateSongsWithoutStrophe($results){
-			$songs = [];
+			$songs = array();
 			foreach($results as $result) {
 				$songs[] = $this->hydrateSongWithoutStrophe($result);
 			}
@@ -310,7 +315,7 @@
 		*	VALEUR RETOURNEE : arrays contenant des instances de la classe strophe
 		*******************************************************************************************************************/
 		public function hydrateStrophes($results){
-			$strophes = [];
+			$strophes = array();
 			foreach($results as $result) {
 				$strophes[] = $this->hydrateStrophe($result);
 			}

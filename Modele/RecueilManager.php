@@ -47,7 +47,7 @@
 		}
 
 		public function hydrateRecueils($results){
-			$recueils = [];
+			$recueils = array();
 			foreach($results as $result) {
 				$recueils[] = $this->hydrateRecueil($result);
 			}

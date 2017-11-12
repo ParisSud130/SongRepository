@@ -17,8 +17,9 @@
 		public function homeAction(){
 			$lastSongs = $this->sm->getLastSongs();
 			$mostViewedSongs = $this->sm->getMostViewedSongs();
+			$recueils = $this->rm->getRecueils();
 			$intro = "Les dernières chansons ajoutées sur ".Config::APP_NAME;
-			$params = array( "songs"=>$lastSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro);
+			$params = array( "songs"=>$lastSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro, "recueils"=>$recueils);
 			new View("accueil.php", Config::APP_NAME, $params);
 		}
 	
@@ -38,9 +39,10 @@
 			}
 
 			$mostViewedSongs = $this->sm->getMostViewedSongs();
+			$recueils = $this->rm->getRecueils();
 
 			//shoote la vue
-			$params = array( "songs"=>$searchedSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro );
+			$params = array( "songs"=>$searchedSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro,"recueils"=>$recueils );
 			new View("accueil.php", Config::APP_NAME, $params);
 		}
 		

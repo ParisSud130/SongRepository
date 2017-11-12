@@ -22,8 +22,19 @@
 		}
 
 		public function go(){
+			if(class_exists($this->controller)){
+				try {
+					$controller = new $this->controller();
+					call_user_func(array($controller, $this->method));
+				} catch (Exception $e) {
+					call_user_func(array(Config::HOME_CONTROLLER, Config::HOME_METHOD));
+				}
+			}
+			else{
+			$this->controller = Config::HOME_CONTROLLER;
 			$controller = new $this->controller();
-			call_user_func(array($controller, $this->method));
+			call_user_func(array($controller, Config::HOME_METHOD));
+			}
 		}
 
 		public static function generateUrl($controller, $method, $params = array()){

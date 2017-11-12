@@ -13,7 +13,7 @@
 	<ul>
 		<?php foreach($songs as $song){ ?>
 			
-		 <li><a href="<?= $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"><?= $song->getNumChant()." - ".$song->getTitre() ?></a></li>
+		 <li><a href="<?php echo $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"><?php echo $song->getNumChant()." - ".$song->getTitre() ?></a></li>
 		<?php 	}?>
 	</ul>
 </div>
