@@ -7,6 +7,9 @@
 				<form class="searchform" method="post" action="<?php echo $this->relativeUrl("chant", "search") ?>" >
 					<input type="text" name="keywords" type="text" placeholder="tapez et appuyez sur Entr&eacute;e"/>
 				</form>
+			</div>
+			<div class="widget widget_search">
+				<?php if(isset($recueils)){ ?>
 				<h3 class="widget-title">Recueils</h3>
 				<ul>
 				<?php $i=1;
@@ -17,6 +20,7 @@
 					</li>
 				<?php ++$i; } ?>
 				</ul>
+				<?php }?>
 			</div>
 		</div><!-- #first .widget-area -->
 	
