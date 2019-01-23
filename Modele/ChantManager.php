@@ -127,24 +127,10 @@
 						GROUP BY idChant
 						ORDER BY score1 DESC, score2 DESC, nbConsultations, numChant, recueil.idRecueil LIMIT 50";
 			$stmt = $this->dbh->prepare($sql);
-			//$stmt->bindValue("'$str_key'", $str_key, PDO::PARAM_STR);
 			$stmt->execute();
 			$results = $stmt->fetchAll();
-						
-
 			$songs = $this->hydrateSongs($results);
-			
-			/*
-			$songs = array();
-			foreach($results as $result) {
-				$song = $this->getSong($result["idChant"]);
-				if($song != NULL) {
-					$songs[] = $song;
-				}
-			}
-			*/
-			//Kint::dump( $songs );
-			//die();
+
 			return $songs;
 		}
 		/**
