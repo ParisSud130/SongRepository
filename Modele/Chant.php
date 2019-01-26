@@ -26,54 +26,53 @@ class Chant{
 		     // Alors pour chaque clé, on récupère sa valeur.
 			foreach($args as $key => $value){
 				switch($key){
-					
 					case "_idChant":
-						$this->_idChant = $value;
+						$this->setIdChant($value);
 						break;
 					case "_titre":
-						$this->_titre = $value;
+						$this->setTitre($value);
 						break;
 					case "_titreUsuel":
-						$this->_titreUsuel = $value;
+						$this->setTitreUsuel($value);
 						break;
 					case "_idRecueil":
-						$this->_idRecueil = $value;
+						$this->setIdRecueil($value);
 						break;
 					case "_auteur":
-						$this->_auteur = $value;
+						$this->setAuteur($value);
 						break;
 					case "_compositeur":
-						$this->_compositeur = $value;
+						$this->setCompositeur($value);
 						break;
 					case "_copyright":
-						$this->_copyright = $value;
+						$this->setCopyright($value);
 						break;
 					case "_tonalite":
-						$this->_tonalite = $value;
+						$this->setTonalite($value);
 						break;
 					case "_lien":
-						$this->_lien = $value;
+						$this->setLien($value);
 						break;
 					case "_typeLien":
-						$this->_typeLien = $value;
+						$this->setTypeLien($value);
 						break;
 					case "_commentaire":
-						$this->_commentaire = $value;
+						$this->setCommentaire($value);
 						break;
 					case "_etat":
-						$this->_etat = $value;
+						$this->setEtat($value);
 						break;
 					case "_dateModification":
-						$this->_dateModification = $value;
+						$this->setDateModification($value);
 						break;
 					case "_nbConsultations":
-						$this->_nbConsultations = $value;
+						$this->setNbConsultations($value);
 						break;
 					case "_numChant":
-						$this->_numChant = $value;
+						$this->setNumChant($value);
 						break;
 					case "_strophes":
-						$this->_strophes = $value;
+						$this->setStrophes($value);
 						break;
 					case "_recueil":
 						if (is_a($value, 'Recueil')) {
@@ -88,67 +87,50 @@ class Chant{
 	}
 
 	//getters et setters
-
-		
 	public function getIdChant(){ return $this->_idChant; }
-	public function setIdChant($idChant){ $this->_idChant = $idChant; }
+	public function setIdChant(int $idChant){ $this->_idChant = $idChant; }
 
-		
 	public function getTitre(){ return $this->_titre; }
-	public function setTitre($titre){ $this->_titre = $titre; }
+	public function setTitre(string $titre){ $this->_titre = $titre; }
 
-		
 	public function getTitreUsuel(){ return $this->_titreUsuel; }
-	public function setTitreUsuel($titreUsuel){ $this->_titreUsuel = $titreUsuel; }
+	public function setTitreUsuel(string $titreUsuel){ $this->_titreUsuel = $titreUsuel; }
 
-		
 	public function getIdRecueil(){ return $this->_idRecueil; }
-	public function setIdRecueil($idRecueil){ $this->_idRecueil = $idRecueil; }
+	public function setIdRecueil(int $idRecueil){ $this->_idRecueil = $idRecueil; }
 
-		
 	public function getAuteur(){ return $this->_auteur; }
-	public function setAuteur($auteur){ $this->_auteur = $auteur; }
+	public function setAuteur(string $auteur){ $this->_auteur = $auteur; }
 
-		
 	public function getCompositeur(){ return $this->_compositeur; }
-	public function setCompositeur($compositeur){ $this->_compositeur = $compositeur; }
+	public function setCompositeur(string $compositeur){ $this->_compositeur = $compositeur; }
 
-		
 	public function getCopyright(){ return $this->_copyright; }
-	public function setCopyright($copyright){ $this->_copyright = $copyright; }
+	public function setCopyright(string $copyright){ $this->_copyright = $copyright; }
 
-		
 	public function getTonalite(){ return $this->_tonalite; }
-	public function setTonalite($tonalite){ $this->_tonalite = $tonalite; }
+	public function setTonalite(string $tonalite){ $this->_tonalite = $tonalite; }
 
-		
 	public function getLien(){ return $this->_lien; }
-	public function setLien($lien){ $this->_lien = $lien; }
+	public function setLien(string $lien){ $this->_lien = $lien; }
 
-		
 	public function getTypeLien(){ return $this->_typeLien; }
-	public function setTypeLien($typeLien){ $this->_typeLien = $typeLien; }
+	public function setTypeLien(string $typeLien){ $this->_typeLien = $typeLien; }
 
-		
 	public function getCommentaire(){ return $this->_commentaire; }
-	public function setCommentaire($commentaire){ $this->_commentaire = $commentaire; }
+	public function setCommentaire(string $commentaire){ $this->_commentaire = $commentaire; }
 
-		
 	public function getEtat(){ return $this->_etat; }
-	public function setEtat($etat){ $this->_etat = $etat; }
+	public function setEtat(string $etat){ $this->_etat = $etat; }
 
-		
 	public function getDateModification(){ return $this->_dateModification; }
 	public function setDateModification($dateModification){ $this->_dateModification = $dateModification; }
-
 		
 	public function getNbConsultations(){ return $this->_nbConsultations; }
-	public function setNbConsultations($nbConsultations){ $this->_nbConsultations = $nbConsultations; }
+	public function setNbConsultations(int $nbConsultations){ $this->_nbConsultations = $nbConsultations; }
 
-		
 	public function getNumChant(){ return $this->_numChant; }
-	public function setNumChant($numChant){ $this->_numChant = $numChant; }
-	
+	public function setNumChant(int $numChant){ $this->_numChant = $numChant; }
 	
 	public function getStrophes(){ return $this->_strophes; }
 	public function setStrophes(array $strophes){ 
@@ -156,7 +138,7 @@ class Chant{
 			$this->_strophes = $strophes; 
 		}
 	}
-	public function getStrophe($numStrophe){ return $this->_strophes[$numStrophe]; }
+	public function getStrophe(int $numStrophe){ return $this->_strophes[$numStrophe]; }
 
 	public function getRecueil(){ return $this->_recueil; }
 	public function setRecueil(Recueil $recueil){ 
@@ -165,7 +147,5 @@ class Chant{
 		}
 	}
 	
-	
-
 }
 ?>
