@@ -19,7 +19,7 @@
 			$mostViewedSongs = $this->sm->getMostViewedSongs();
 			$recueils = $this->rm->getRecueils();
 			$intro = "Les dernières chansons ajoutées sur ".Config::APP_NAME;
-			$params = array( "songs"=>$lastSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro, "recueils"=>$recueils);
+			$params = compact( "songs",  "mostViewedSongs",  "intro", "recueils");
 			new View("accueil.php", Config::APP_NAME, $params);
 		}
 	
@@ -42,31 +42,27 @@
 			$recueils = $this->rm->getRecueils();
 
 			//shoote la vue
-			$params = array( "songs"=>$searchedSongs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro,"recueils"=>$recueils );
+			$params = compact("songs", "mostViewedSongs", "intro", "recueils");
 			new View("accueil.php", Config::APP_NAME, $params);
 		}
 		
 		public function showAction(){
 			if (isset($_GET["id"])){
-				$id = $_GET["id"];
-				$song = $this->sm->getSong($id);
+				$song = $this->sm->getSong($_GET["id"]);
 				$mostViewedSongs = $this->sm->getMostViewedSongs();
 				if($song != null){
-					$intro = $song->getTitre();
+					$numChant = $song->getNumChant();
+					$titre = $song->getTitre();
+					$urlRecueil = $song->getIdRecueil() == NULL ? Router::generateRelativeUrl('chant', 'home', array()) : Router::generateRelativeUrl('recueil', 'show', array('id'=>$song->getIdRecueil()));
 					if($song->getRecueil() != NULL){
-						if($song->getRecueil()->getNomRecueil() != NULL){
-							$nomRecueil = $song->getRecueil()->getNomRecueil();
-							$numChant = $song->getNumChant();
-							$titre = $song->getTitre();
-							$intro = "$nomRecueil #$numChant - $titre";
-						}
+						$nomRecueil = $song->getRecueil()->getNomRecueil() == NULL ? "" : $song->getRecueil()->getNomRecueil();
 					}
 					$recueils = $this->rm->getRecueils();
 					$this->sm->songSeen($song);
-					$params = array( "song"=>$song,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro, "recueils"=>$recueils );
-					new View("detail.php", Config::APP_NAME." - ".$song->getTitre(), $params);
+					$params = compact("song","mostViewedSongs", "recueils", "urlRecueil", "nomRecueil", "numChant", "titre");
+					new View("detail.php", Config::APP_NAME, $params);
 				}
-				else{
+				else{ 
 					die("chant introuvable; page à coder");
 				}
 			}
