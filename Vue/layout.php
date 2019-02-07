@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title><?php echo Config::APP_NAME; ?></title>
+<title><?= Config::APP_NAME; ?></title>
 <link rel="stylesheet" type="text/css" media="all" href="Vue/style.css" />
 <link rel="stylesheet" type="text/css" href="Vue/style/css/media-queries.css" />
 <link rel="stylesheet" type="text/css" href="Vue/style/js/player/mediaelementplayer.css" />

@@ -5,14 +5,15 @@
 		/**
 		 * 
 		 **/
-		public function getRecueil($recueilId){
+		public function getRecueil(int $recueilId){
 			$recueil = null; //Pour l'instant nous n'avons pas de recueil
 			$sql = "SELECT recueil.* 
 						FROM recueil 
-						WHERE recueil.idRecueil = ?";
+						WHERE recueil.idRecueil = :recueilId";
 			//va chercher les infos en bdd
 			$stmt = $this->dbh->prepare($sql);
-			$stmt->execute(array($recueilId));
+			$stmt->bindValue(':recueilId', $recueilId, PDO::PARAM_INT);
+			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
 			$count = $stmt->rowCount();
 			if($count>0){
@@ -23,8 +24,7 @@
 		
 		public function getRecueils(){
 			$recueils = null; //Pour l'instant nous n'avons pas de recueil
-			$sql = "SELECT *
-						FROM recueil";
+			$sql = "SELECT * FROM recueil";
 						
 			//va chercher les infos en bdd
 			$stmt = $this->dbh->prepare($sql);
