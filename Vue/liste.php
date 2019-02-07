@@ -13,7 +13,7 @@
 	<ul>
 		<?php foreach($songs as $song){ ?>
 			
-		 <li><a href="<?php echo $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"><?php echo $song->getNumChant()." - ".$song->getTitre() ?></a></li>
+		 <li><a href="<?= $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"><?= $song->getNumChant()." - ".$song->getTitre() ?></a></li>
 		<?php 	}?>
 	</ul>
 </div>
@@ -24,7 +24,7 @@
 
 	<div class="sidebox widget">
 		<h3 class="widget-title">Recherche</h3>
-		<form class="searchform" method="post" action="<?php echo $this->relativeUrl("chant", "search") ?>">
+		<form class="searchform" method="post" action="<?= $this->relativeUrl("chant", "search") ?>">
 			<input type="text" name="keywords" type="text" placeholder="tapez et appuyez sur Entr&eacute;e"/>
 		</form>
 	</div>
