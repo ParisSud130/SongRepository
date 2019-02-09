@@ -20,7 +20,7 @@
 			try {
 				
 				$this->dbh = new PDO('mysql:host='.Config::DB_HOST.';dbname='.Config::DB_NAME, Config::DB_USER, Config::DB_PASS, array(
-					1002 => "SET NAMES utf8",
+					PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
 					PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
 					PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
 				));

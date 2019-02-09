@@ -13,10 +13,10 @@
 			$song = null; //Pour l'instant nous n'avons pas de chanson
 			$sql = "SELECT chant.*, recueil.idRecueil, recueil.nomRecueil 
 						FROM chant
-						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil WHERE chant.idChant = :songId";
+						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil WHERE chant.idChant = :idChant";
 			//va chercher les infos en bdd
 			$stmt = $this->dbh->prepare($sql);
-			$stmt->bindValue(':songId', $songId, PDO::PARAM_INT);
+			$stmt->bindValue(':idChant', $songId, PDO::PARAM_INT);
 			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
 			$count = $stmt->rowCount();
@@ -97,7 +97,7 @@
 		 * Recherche un chant en base de donn�es � partir des mots cl�s de la chaine de charact�res pass�e en param�tre
 		 * retourne les 50 chants qui correspondent le plus
 		 **/
-		public function searchSongs($keywords){
+		public function searchSongs(string $keywords){
 				
 			//converti la chaine en array
 			$arr_key = explode(" ", $keywords);
@@ -127,13 +127,10 @@
 						GROUP BY idChant
 						ORDER BY score1 DESC, score2 DESC, nbConsultations, numChant, recueil.idRecueil LIMIT 50";
 			$stmt = $this->dbh->prepare($sql);
-			//$stmt->bindValue("'$str_key'", $str_key, PDO::PARAM_STR);
 			$stmt->execute();
 			$results = $stmt->fetchAll();
-						
 			$songs = $this->hydrateSongs($results);
-			//Kint::dump( $songs );
-			//die();
+
 			return $songs;
 		}
 		/**
@@ -141,8 +138,8 @@
 		 **/
 		public function getStrophesForSong(int $songId){
 			//va chercher les infos en bdd
-			$stmt = $this->dbh->prepare("SELECT * FROM strophe WHERE idChant = :songId");
-			$stmt->bindValue(':songId', $songId, PDO::PARAM_INT);
+			$stmt = $this->dbh->prepare("SELECT * FROM strophe WHERE idChant = :idChant");
+			$stmt->bindValue(':idChant', $songId, PDO::PARAM_INT);
 			$stmt->execute();
 			$stropheResults = $stmt->fetchAll(PDO::FETCH_ASSOC);	
 			if (count($stropheResults, COUNT_RECURSIVE) >1){
@@ -254,7 +251,6 @@
 		}
 		
 		public function persistSong($song){
-
             $sql = "UPDATE chant ";
             $sql = $sql." SET titre = :titre, titreUsuel = :titreUsuel, idRecueil = :idRecueil, auteur = :auteur, compositeur = :compositeur, 
             copyright = :copyright, tonalite = :tonalite, lien = :lien, typeLien = :typeLien, commentaire = :commentaire, etat = :etat, dateModification = :dateModification, nbConsultations = :nbConsultations, numChant=:numChant ";

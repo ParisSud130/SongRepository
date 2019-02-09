@@ -12,7 +12,7 @@
 					LIMIT 1";
 
 			$stmt = $this->dbh->prepare($sql);
-			$stmt->bindValue(":login", $_POST['login']);
+			$stmt->bindValue(":login", $_POST['login'], , PDO::PARAM_STR);
 			$stmt->execute();
 			$user = $stmt->fetch();
 

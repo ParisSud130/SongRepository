@@ -4,7 +4,7 @@
 		<!-- Begin Logo -->
 		<div class="logo">
 		    <a href="index.php">
-				<img src="Vue/style/images/small-logo-white.png" alt="<?php echo $title; ?>" />
+				<img src="Vue/style/images/small-logo-white.png" alt="<?= $title; ?>" />
 			</a>
 	    </div>
 		<!-- End Logo -->
