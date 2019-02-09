@@ -53,7 +53,7 @@
 				if($song != null){
 					$numChant = $song->getNumChant();
 					$titre = $song->getTitre();
-					$urlRecueil = $song->getIdRecueil() == NULL ? Router::generateRelativeUrl('chant', 'home', array()) : Router::generateRelativeUrl('recueil', 'show', array('id'=>$song->getIdRecueil()));
+					$urlRecueil = $song->getIdRecueil() == NULL ? "#" : Router::generateRelativeUrl('recueil', 'show', array('id'=>$song->getIdRecueil()));
 					if($song->getRecueil() != NULL){
 						$nomRecueil = $song->getRecueil()->getNomRecueil() == NULL ? "" : $song->getRecueil()->getNomRecueil();
 					}

@@ -2,42 +2,42 @@
 
 
 	Class ChantManager extends Manager{
-		public function songSeen($song){
+		public function songSeen(Chant $song){
 			$song->setNbConsultations($song->getNbConsultations()+1);
 			$this->persistSong($song);
 		}
 		/**
 		 * Retourne la chanson dont l'identifiant est passé en paramètre
 		 **/
-		public function getSong($songId){
+		public function getSong(int $songId){
 			$song = null; //Pour l'instant nous n'avons pas de chanson
 			$sql = "SELECT chant.*, recueil.idRecueil, recueil.nomRecueil 
 						FROM chant
-						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil WHERE chant.idChant = ?";
+						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil WHERE chant.idChant = :songId";
 			//va chercher les infos en bdd
 			$stmt = $this->dbh->prepare($sql);
-			$stmt->execute(array($songId));
+			$stmt->bindValue(':songId', $songId, PDO::PARAM_INT);
+			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
 			$count = $stmt->rowCount();
 			if($count>0){
 				$song = $this->hydrateSong($result);
 			}
-			//$this->songSeen($song);
 			return $song;
 		}
 		/**
 		 * Récupère tous les chants dont le numéro correspond à celui passé en paramètre
 		 **/
-		public function getSongsByNumChant($numChant){
-			$song = null; //Pour l'instant nous n'avons pas de chanson
+		public function getSongsByNumChant(int $numChant){
 			$sql = "SELECT chant.*, recueil.*
 						FROM chant
 						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil 
-						WHERE chant.numchant = ?
+						WHERE chant.numchant = :numChant
 						ORDER BY chant.numchant";
 			//va chercher les infos en bdd
 			$stmt = $this->dbh->prepare($sql);
-			$stmt->execute(array($numChant));
+			$stmt->bindValue(':numChant', $numChant, PDO::PARAM_INT);
+			$stmt->execute();
 			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$songs = $this->hydrateSongs($results);
 			//Kint::dump( $songs );
@@ -48,14 +48,14 @@
 		 * Récupère tous les chants du recueil dont l'identifiant a été passé en paramètre
 		 **/
 		public function getSongsByRecueil($recueilId){
-			$song = null; //Pour l'instant nous n'avons pas de chanson
 			$sql = "SELECT *
 						FROM chant
-						WHERE chant.idRecueil = ?
+						WHERE chant.idRecueil = :recueilId;
 						ORDER BY chant.numchant";
 			//va chercher les infos en bdd
 			$stmt = $this->dbh->prepare($sql);
-			$stmt->execute(array($recueilId));
+			$stmt->bindValue(':recueilId', $recueilId, PDO::PARAM_INT);
+			$stmt->execute();
 			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$songs = $this->hydrateSongsWithoutStrophe($results);
 			//Kint::dump( $songs );
@@ -131,18 +131,7 @@
 			$stmt->execute();
 			$results = $stmt->fetchAll();
 						
-
 			$songs = $this->hydrateSongs($results);
-			
-			/*
-			$songs = array();
-			foreach($results as $result) {
-				$song = $this->getSong($result["idChant"]);
-				if($song != NULL) {
-					$songs[] = $song;
-				}
-			}
-			*/
 			//Kint::dump( $songs );
 			//die();
 			return $songs;
@@ -150,10 +139,11 @@
 		/**
 		 * R�cup�re les strophe de la chanson dont l'identifiant est passé en paramètre
 		 **/
-		public function getStrophesForSong($songId){
+		public function getStrophesForSong(int $songId){
 			//va chercher les infos en bdd
-			$stmt = $this->dbh->prepare("SELECT * FROM strophe WHERE idChant = ?");
-			$stmt->execute(array($songId));
+			$stmt = $this->dbh->prepare("SELECT * FROM strophe WHERE idChant = :songId");
+			$stmt->bindValue(':songId', $songId, PDO::PARAM_INT);
+			$stmt->execute();
 			$stropheResults = $stmt->fetchAll(PDO::FETCH_ASSOC);	
 			if (count($stropheResults, COUNT_RECURSIVE) >1){
 				$strophes = $this->hydrateStrophes($stropheResults);
@@ -172,7 +162,7 @@
 		*	DESCRIPTION : Renvoit une instance de la classe Chant  partir d'une entree de la table chant
 		*	VALEUR RETOURNEE : instance de la classe Chant
 		*******************************************************************************************************************/
-		public function hydrateSong($songResult){
+		public function hydrateSong(array $songResult){
 			$song = $this->hydrateSongWithoutStrophe($songResult);
 			
 			if (array_key_exists('idRecueil', $songResult) && array_key_exists('nomRecueil', $songResult)) {
