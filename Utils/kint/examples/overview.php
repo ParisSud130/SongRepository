@@ -150,27 +150,27 @@ for ( $i = 1; $i < 6; $i++ ) {
 	<title>Kint PHP debugging tool - overview</title>
 </head>
 <body>
-<div>
-	<label style="float: right">Switch theme:
-		<select onchange="window.location = '?theme=' + this.value">
-			<?php $chosen = isset( $_GET['theme'] ) ? $_GET['theme'] : 'original' ?>
-			<?php foreach ( $allowedThemes as $theme ) : ?>
-				<option value="<?php echo $theme ?>"<?php echo $theme === $chosen ? ' selected' : '' ?>>
-					<?php echo ucfirst( str_replace( '-', ' ', $theme ) ) ?>
-				</option>
-			<?php endforeach ?>
-		</select>
-	</label>
+	<div>
+		<label style="float: right">Switch theme:
+			<select onchange="window.location = '?theme=' + this.value">
+				<?php $chosen = isset( $_GET['theme'] ) ? $_GET['theme'] : 'original' ?>
+				<?php foreach ( $allowedThemes as $theme ) : ?>
+					<option value="<?php echo $theme ?>"<?php echo $theme === $chosen ? ' selected' : '' ?>>
+						<?php echo ucfirst( str_replace( '-', ' ', $theme ) ) ?>
+					</option>
+				<?php endforeach ?>
+			</select>
+		</label>
 
-	<h2>Kint PHP debugging tool - overview</h2>
-</div>
-<h3>Debug variables</h3>
-<?php
-$userManager->debugUser( $user );
-d( $userManager, $tabularData );
-d( $nestedArray );
-?>
-<h3>Trace</h3>
-<?php $userManager->ensureUser(); ?>
+		<h2>Kint PHP debugging tool - overview</h2>
+	</div>
+	<h3>Debug variables</h3>
+	<?php
+	$userManager->debugUser( $user );
+	d( $userManager, $tabularData );
+	d( $nestedArray );
+	?>
+	<h3>Trace</h3>
+	<?php $userManager->ensureUser(); ?>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <div class="intro"><a href="<?= $urlRecueil?>"><?= $nomRecueil ?></a><?= "#".$numChant." - ".$titre ?></div>
 
 <!-- Begin Container -->
-<div class="content box">
+<main class="content box">
 
 	<h1 class="title"><?= $song->getTitre(); ?></h1>
 	
@@ -16,7 +16,7 @@
 				<h3><?= $strophe->getType(). " ".$strophe->getIdentifiant(); ?></h3>
 				<p><?= nl2br ($strophe->getTexte()); } ?></p>
 	<div class="site-generator"><?= $song->getCopyright() ?></div>
-</div>
+</main>
 <!-- End Container -->
 
 <!-- Begin Sidebar -->

@@ -47,14 +47,17 @@
 		/**
 		 * Récupère tous les chants du recueil dont l'identifiant a été passé en paramètre
 		 **/
-		public function getSongsByRecueil($recueilId){
+		public function getSongsByRecueil(int $recueilId, int $offset=0, int $limit = 800){
 			$sql = "SELECT *
 						FROM chant
-						WHERE chant.idRecueil = :recueilId;
-						ORDER BY chant.numchant";
+						WHERE chant.idRecueil = :recueilId
+						ORDER BY chant.numchant
+						LIMIT :limit OFFSET :offset";
 			//va chercher les infos en bdd
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->bindValue(':recueilId', $recueilId, PDO::PARAM_INT);
+			$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+			$stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
 			$stmt->execute();
 			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$songs = $this->hydrateSongsWithoutStrophe($results);
@@ -97,7 +100,7 @@
 		 * Recherche un chant en base de donn�es � partir des mots cl�s de la chaine de charact�res pass�e en param�tre
 		 * retourne les 50 chants qui correspondent le plus
 		 **/
-		public function searchSongs(string $keywords){
+		public function searchSongs(string $keywords, int $offset=0, int $limit = 50){
 				
 			//converti la chaine en array
 			$arr_key = explode(" ", $keywords);
@@ -125,8 +128,10 @@
 						LEFT JOIN recueil ON recueil.idRecueil = chant.idRecueil
 						WHERE MATCH (chant.titre) AGAINST ('$str_key' IN BOOLEAN MODE) OR MATCH (chant.titreUsuel) AGAINST ('$str_key' IN BOOLEAN MODE) OR MATCH (S1.texte) AGAINST ('$str_key' IN BOOLEAN MODE) 
 						GROUP BY idChant
-						ORDER BY score1 DESC, score2 DESC, nbConsultations, numChant, recueil.idRecueil LIMIT 50";
+						ORDER BY score1 DESC, score2 DESC, nbConsultations, numChant, recueil.idRecueil LIMIT :offset, :limit";
 			$stmt = $this->dbh->prepare($sql);
+			$stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+			$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 			$stmt->execute();
 			$results = $stmt->fetchAll();
 			$songs = $this->hydrateSongs($results);

@@ -15,7 +15,7 @@
 		}
 				
 		public function homeAction(){
-			$lastSongs = $this->sm->getLastSongs();
+			$songs = $this->sm->getLastSongs();
 			$mostViewedSongs = $this->sm->getMostViewedSongs();
 			$recueils = $this->rm->getRecueils();
 			$intro = "Les dernières chansons ajoutées sur ".Config::APP_NAME;
@@ -30,11 +30,11 @@
 			// 1 : On force la conversion en nombre entier
 			$numberToSearch = (int) $keywords;
 			if ($numberToSearch >= 1 ) {//Si le nombre obtenu est supérieur à 1, c'est un numéro qui a été entré
-				$searchedSongs = $this->sm->getSongsByNumChant($numberToSearch);
+				$songs = $this->sm->getSongsByNumChant($numberToSearch);
 				$intro = "Les chants ayant pour numéro $numberToSearch";
 			}
 			else{//Sinon on cherche la chaine telle qu'elle a été saisie
-				$searchedSongs = $this->sm->searchSongs($keywords);
+				$songs = $this->sm->searchSongs($keywords);
 				$intro = "Les chants contenant $keywords";
 			}
 

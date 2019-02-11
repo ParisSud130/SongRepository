@@ -21,6 +21,23 @@
 			}
 			return $recueil;
 		}
+
+		/**
+		 * Récupère le nombre de chants du recueil dont l'identifiant a été passé en paramètre
+		 **/
+		public function getnumberOfSongsInRecueil(int $recueilId){
+			$sql = "SELECT count(*)
+						FROM chant
+						WHERE chant.idRecueil = :recueilId";
+			//va chercher les infos en bdd
+			$stmt = $this->dbh->prepare($sql);
+			$stmt->bindValue(':recueilId', $recueilId, PDO::PARAM_INT);
+			$stmt->execute();
+			$count = $stmt->fetch(PDO::FETCH_ASSOC);
+			//Kint::dump( $songs );
+			//die();
+			return $count;
+		}
 		
 		public function getRecueils(){
 			$recueils = null; //Pour l'instant nous n'avons pas de recueil

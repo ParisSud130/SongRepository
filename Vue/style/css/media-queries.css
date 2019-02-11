@@ -4,7 +4,7 @@
 /* iPad Landscape */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) { 
 	
-	.header,
+	header,
 	.wrapper,
 	#footer,
 	.site-generator {
@@ -37,7 +37,7 @@
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
 	
-	.header,
+	header,
 	.wrapper,
 	#footer,
 	.site-generator  {
@@ -71,7 +71,7 @@
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 	
-	.header,
+	header,
 	.wrapper,
 	#footer,
 	.site-generator,
@@ -151,7 +151,7 @@
 @media only screen and (max-width: 479px) {
 
 	
-	.header,
+	header,
 	.wrapper,
 	#footer,
 	.site-generator,

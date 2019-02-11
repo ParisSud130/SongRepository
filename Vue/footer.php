@@ -1,6 +1,6 @@
 <!-- Begin Footer -->
 <div class="footer-wrapper">
-	<div id="footer" class="four">
+	<footer class="four">
 		<div id="first" class="widget-area">
 			<div class="widget widget_search">
 				<h3 class="widget-title">Recherche</h3>
@@ -36,29 +36,29 @@
 	
 		<?php if(isset($mostViewedSongs)){ ?>
 		<div id="third" class="widget-area">
-		<div id="example-widget-3" class="widget example">
-			<h3 class="widget-title">Chants les plus populaires</h3>
-			<ul class="post-list">
-			<?php $i=1;
-				foreach($mostViewedSongs as $song){ 
-			?>
-					<li> 
-						<div class="frame">
-							<a href="<?= $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"><img src="Vue/style/images/art/s<?= $i ?>.jpg" /></a>
-						</div>
-						<div class="meta">
-							<h6><a href="<?= $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"> <?= $song->getTitre() ?> </a></h6>
-							<em>Vu <?= $song->getNbConsultations() ?> fois </em>
-						</div>
-					</li>
-			<?php 	++$i; } ?>
-			</ul>
-		</div>
+			<div class="widget example">
+				<h3 class="widget-title">Chants les plus populaires</h3>
+				<ul class="post-list">
+				<?php $i=1;
+					foreach($mostViewedSongs as $song){ 
+				?>
+						<li> 
+							<div class="frame">
+								<a href="<?= $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"><img src="Vue/style/images/art/s<?= $i ?>.jpg" /></a>
+							</div>
+							<div class="meta">
+								<h6><a href="<?= $this->relativeUrl("chant", "show", array("id"=>$song->getIdChant())) ?>"> <?= $song->getTitre() ?> </a></h6>
+								<em>Vu <?= $song->getNbConsultations() ?> fois </em>
+							</div>
+						</li>
+				<?php 	++$i; } ?>
+				</ul>
+			</div>
 		</div><!-- #third .widget-area -->
 		<?php }?>
 		
 		<div id="fourth" class="widget-area">
-		<div class="widget widget_archive">
+			<address class="widget widget_archive">
 				<h3 class="widget-title">Contact</h3>
 				<ul>
 					<li><a href="http://maps.google.com/?q=11 Rue Auguste Perret, 94800 Villejuif" target="_blank">11-13 rue August Perret</a></li>
@@ -67,9 +67,9 @@
 					<li><a href="mailto:webmaster@parissud130.org">E-mail: webmaster@parissud130.org</a> </li>
 					<li><a class="dribbble" href="http://www.parissud130.org/" target="_blank">www.parissud130.org</a></li>
 				</ul>
-			</div>
+			</address>
 		</div><!-- #fourth .widget-area -->
-	</div>
+	</footer>
 </div>
 <div class="site-generator-wrapper">
 	<div class="site-generator">Copyright Obscura 2012. Design by <a href="http://elemisfreebies.com">elemis</a>. All rights reserved.</div>

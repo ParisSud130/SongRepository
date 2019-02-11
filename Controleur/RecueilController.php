@@ -13,23 +13,34 @@
 		}
 				
 		public function showAction(){
-			if (isset($_GET["id"])){
+    		$mostViewedSongs = $this->sm->getMostViewedSongs();
+			if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 				$id = $_GET["id"];
 				$recueil = $this->rm->getRecueil($id);
+				$numberOfSongs = $this->rm->getnumberOfSongsInRecueil($id);
 				$recueils = $this->rm->getRecueils();
-    			$mostViewedSongs = $this->sm->getMostViewedSongs();
 				if(isset($recueil)){//Si le recueil existe
-    				
-        			$intro = "Les chants du recueil ".$recueil->getNomRecueil();
-    			    $songs = $this->sm->getSongsByRecueil($id);//On récupère les chants du recueil
+					if (isset($_GET["page"]) && is_numeric($_GET["page"])){
+						$page = $_GET["page"] > 1 ? $_GET["page"] : 1 ;
+						$offset = ($page-1)*Config::NUMBER_OF_SONGS_PER_PAGE;
+	    				$songs = $this->sm->getSongsByRecueil($id, $offset, Config::NUMBER_OF_SONGS_PER_PAGE);//On récupère les chants du recueil
+					} 
+					else {
+	    				$songs = $this->sm->getSongsByRecueil($id);//On récupère les chants du recueil
+					}
+	        		$intro = "Les chants du recueil ".$recueil->getNomRecueil();
 				}
-				else{//Sinon
-        			$intro = "Le recueil n'existe pas";
-                    $songs = $this->sm->getLastSongs();
+				else {
+		        	$intro = "Le recueil n'existe pas";
+		            $songs = $this->sm->getLastSongs();
 				}
-			    $params = array( "songs"=>$songs,  "mostViewedSongs"=>$mostViewedSongs,  "intro"=>$intro );
-				new View("liste.php", Config::APP_NAME, $params);
+			} 
+			else {
+	        	$intro = "Le recueil n'existe pas";
+	            $songs = $this->sm->getLastSongs();
 			}
+			$params = compact( "songs",  "mostViewedSongs",  "intro");
+			new View("liste.php", Config::APP_NAME, $params);
 		}
 }
 ?>

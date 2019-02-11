@@ -8,7 +8,7 @@ Version: 1.0
 /*-----------------------------------------------------------------------------------*/
 /*	RESET
 /*-----------------------------------------------------------------------------------*/
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, header, footer {
 	margin:0;
 	padding:0;
 	border:0;
@@ -295,7 +295,7 @@ hr {
     position: relative;
     z-index: 101;
 }
-.header {
+header {
     width: 1010px;
     margin: 0 auto;
 }
@@ -884,10 +884,10 @@ iframe {
     padding: 15px 0 0 0;
     line-height: 17px;
 }
-#footer .widget ul.post-list li {
+footer .widget ul.post-list li {
     padding: 11px 0 0 0
 }
-#footer .widget ul.post-list li:first-child,
+footer .widget ul.post-list li:first-child,
 .widget ul.post-list li:first-child {
     padding: 0
 }
@@ -1309,7 +1309,7 @@ li.post.pingback p {
     margin-bottom: 40px;
     text-align: center;
 }
-#footer .social {
+footer .social {
     margin: 0;
     text-align: left;
 }
@@ -1427,53 +1427,35 @@ li.post.pingback p {
     -moz-box-shadow: 0 -1px 0 rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.09);
     box-shadow: 0 -1px 0 rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.09);
 }
-#footer {
+footer {
     width: 1010px;
     margin: 0 auto;
     padding: 25px 0;
     overflow: hidden;
 }
-/* Two Footer Widget Areas */
-#footer.two .widget-area {
-    float: left;
-    margin-right: 3.7%;
-    width: 48.1%;
-}
-#footer.two .widget-area + .widget-area {
-    margin-right: 0
-}
-/* Three Footer Widget Areas */
-#footer.three .widget-area {
-    float: left;
-    margin-right: 3.7%;
-    width: 30.85%;
-}
-#footer.three .widget-area + .widget-area + .widget-area {
-    margin-right: 0
-}
 /* Four Footer Widget Areas */
-#footer.four .widget-area {
+footer .widget-area {
     float: left;
     margin-right: 3.7%;
     width: 22.2%;
 }
-#footer.four .widget-area + .widget-area + .widget-area + .widget-area {
+footer .widget-area + .widget-area + .widget-area + .widget-area {
     margin-right: 0
 }
-#footer h3 {
+footer h3 {
     font-size: 15px;
     margin-bottom: 15px;
 }
-#footer a,
+footer a,
 .site-generator a {
     color: #b9b9b9
 }
-#footer a:hover,
+footer a:hover,
 .site-generator a:hover,
-#footer .post-list a:hover {
+footer .post-list a:hover {
     color: #86aca3
 }
-#footer ul li {
+footer ul li {
     list-style: none
 }
 ul.flickr-feed {
@@ -1538,4 +1520,34 @@ ul.flickr-feed li img {
     background: transparent url(style/images/line.png) repeat-x left top;
     margin: 0;
     padding: 15px 0 0 0;
+}
+
+
+
+#search_bar {
+    background: rgba(0, 0, 0, 0.44);
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.44);
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.44);
+}
+#search_bar a {
+    color: #dedede;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+#search_bar a:hover {
+    color: #86aca3
+}
+
+#search_bar:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+#search_bar .searchform input {
+    padding: 8px 10px;
+    margin-bottom: 0px;
 }
